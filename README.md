@@ -26,6 +26,17 @@ https://flyer-topaz-40707494.figma.site
 - **Recipes** (`recipes/`) — reference builds: data table, modal set, and the
   full "assemble a desktop" dashboard.
 
+## Fully self-contained
+
+The stage makes **zero external network requests**. Inter, Barlow Condensed and
+JetBrains Mono are vendored in `fonts/` (latin subset, 121 KB total) and declared
+in `css/pathfinder.fonts.css` — Inter and JetBrains Mono are variable fonts, so
+each ships as one file with a weight range. The demo renders identically with the
+network switched off, which matters when venue wifi is unreliable.
+
+CSS and JS are cache-busted per page load, so the browser can never serve a stale
+copy of the library after an edit.
+
 ## Quick start
 
 ```bash

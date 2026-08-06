@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pathfinder 2.0 — Live Stage</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonts are vendored in ../fonts so the demo renders with the network off.
+     No external requests: the stage is fully self-contained. -->
+<link rel="preload" href="../fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
 <script>
   // Cache-bust the local library so the stage always runs current code. Without
   // this a browser can keep serving a stale pathfinder.js after an edit, which
@@ -14,6 +15,7 @@
   // deliberate: it runs during parse, so the stylesheets still block render.
   var PF_V = Date.now();
   document.write(
+    '<link rel="stylesheet" href="../css/pathfinder.fonts.css?v=' + PF_V + '">' +
     '<link rel="stylesheet" href="../tokens/pathfinder.tokens.css?v=' + PF_V + '">' +
     '<link rel="stylesheet" href="../css/pathfinder.css?v=' + PF_V + '">'
   );
