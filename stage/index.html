@@ -28,8 +28,9 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
+  /* Bottom-left: topbars own the top-right, toasts own the bottom-right. */
   #pf-live-chip {
-    position: fixed; top: 14px; right: 14px; z-index: 500;
+    position: fixed; bottom: 14px; left: 14px; z-index: 500;
     display: flex; align-items: center; gap: 8px;
     padding: 6px 14px; border-radius: 999px;
     background: rgba(3, 10, 20, 0.85);

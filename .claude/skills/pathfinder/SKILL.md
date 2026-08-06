@@ -54,6 +54,10 @@ Reference implementations live in `recipes/`:
 | "data table", "orders table", "partner list" | `recipes/data-table.html` |
 | "modal", "dialog", "confirm delete" | `recipes/modal.html` |
 | "assemble a desktop", "dashboard", "the full app" | `recipes/desktop.html` |
+| "detail view", "partner page", "tabs", "health metrics", "progress bars" | `recipes/detail.html` |
+| "form", "onboarding", "validation", "toggles", "settings" | `recipes/form.html` |
+| "empty state", "no results", "zero data" | `recipes/empty-state.html` |
+| "reset the stage", "clear it", "back to the start" | `recipes/welcome.html` |
 
 For a straight ask ("assemble a desktop"), copy the recipe into `stage/app.html`
 verbatim — it is already responsive and wired. Then adapt if the user adds
