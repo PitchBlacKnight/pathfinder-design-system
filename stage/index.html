@@ -7,8 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../tokens/pathfinder.tokens.css">
-<link rel="stylesheet" href="../css/pathfinder.css">
+<script>
+  // Cache-bust the local library so the stage always runs current code. Without
+  // this a browser can keep serving a stale pathfinder.js after an edit, which
+  // produces "phantom" bugs that don't exist in the source. document.write is
+  // deliberate: it runs during parse, so the stylesheets still block render.
+  var PF_V = Date.now();
+  document.write(
+    '<link rel="stylesheet" href="../tokens/pathfinder.tokens.css?v=' + PF_V + '">' +
+    '<link rel="stylesheet" href="../css/pathfinder.css?v=' + PF_V + '">'
+  );
+</script>
 <style>
   /* Stage chrome only — everything inside #stage is pure Pathfinder */
   #pf-bg {
@@ -64,7 +73,13 @@
 <div id="pf-bg" aria-hidden="true"></div>
 <div id="pf-live-chip"><span class="dot"></span>PATHFINDER LIVE</div>
 <div id="stage"></div>
-<script src="../js/pathfinder.js"></script>
-<script>Pathfinder.live("#stage", "app.html", 800);</script>
+<script>
+  (function () {
+    var s = document.createElement("script");
+    s.src = "../js/pathfinder.js?v=" + PF_V;
+    s.onload = function () { Pathfinder.live("#stage", "app.html", 800); };
+    document.body.appendChild(s);
+  })();
+</script>
 </body>
 </html>

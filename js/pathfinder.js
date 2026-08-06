@@ -17,6 +17,7 @@
     lastTrigger = trigger || document.activeElement;
     overlay.style.display = "flex";
     requestAnimationFrame(() => overlay.classList.add("open"));
+    Pathfinder.syncGates();
     const focusable = overlay.querySelector(
       "button, [href], input, select, textarea, [tabindex]"
     );
@@ -81,6 +82,16 @@
     });
     rows.forEach((r) => tbody.appendChild(r));
   }
+
+  /* ---------- Confirmation gate ----------
+     data-confirm-gate="checkboxId" on a button keeps it disabled until that
+     checkbox is checked. The spec requires this on the most critical deletes. */
+  Pathfinder.syncGates = function () {
+    document.querySelectorAll("[data-confirm-gate]").forEach(function (btn) {
+      const cb = document.getElementById(btn.getAttribute("data-confirm-gate"));
+      btn.disabled = !(cb && cb.checked);
+    });
+  };
 
   /* ---------- Table: selection ---------- */
   function syncRow(cb) {
@@ -148,6 +159,7 @@
       return;
     }
     if (e.target.matches("[data-select-row]")) syncRow(e.target);
+    if (e.target.matches('input[type="checkbox"]')) Pathfinder.syncGates();
     // data-filter-table targets tbody rows by data-status
     if (e.target.matches("[data-filter-table]")) {
       const table = document.querySelector(e.target.getAttribute("data-filter-table"));
@@ -159,7 +171,12 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") Pathfinder.closeModal();
+    if (e.key !== "Escape") return;
+    // Danger/confirmation dialogs are data-static: they require an explicit
+    // button press, so Escape must not dismiss them either.
+    const open = document.querySelector(".pf-modal-overlay.open");
+    if (open && open.hasAttribute("data-static")) return;
+    Pathfinder.closeModal();
   });
 
   /* ---------- Live stage hot-swap ----------
@@ -177,6 +194,11 @@
             const first = last === null;
             last = html;
             el.innerHTML = html;
+            Pathfinder.syncGates();
+            // data-open on an overlay renders it already open after a swap —
+            // routed through openModal so focus and gating are set up properly.
+            const pre = el.querySelector(".pf-modal-overlay[data-open]");
+            if (pre) requestAnimationFrame(() => Pathfinder.openModal(pre.id));
             el.classList.remove("pf-swap");
             void el.offsetWidth;
             el.classList.add("pf-swap");
