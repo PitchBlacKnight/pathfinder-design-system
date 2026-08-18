@@ -1,13 +1,12 @@
 # PATHFINDER DESIGN SYSTEM 2.0 — Agentic Demo Framework
 
 AVANT Communications Partner Portal design system, rebuilt as a live,
-agent-buildable component framework. Built on the SAP Fiori Horizon token
-suite (dark theme), extracted 1:1 from the published spec site:
+agent-buildable component framework. Dark-theme token suite, extracted 1:1 from the published spec site:
 https://flyer-topaz-40707494.figma.site
 
 ## What this is
 
-- **866 design tokens** (`tokens/pathfinder.tokens.css`) — every `--sap*` and
+- **866 design tokens** (`tokens/pathfinder.tokens.css`) — every `--pf*` and
   `--pf-*` custom property from the spec site, byte-exact.
 - **A token-pure component library** (`css/pathfinder.css` + `js/pathfinder.js`)
   — buttons, badges, data table, modal, cards, stat tiles, fields, toggle,
@@ -55,7 +54,7 @@ See `DEMO-SCRIPT.md` for the full interview run-of-show.
 
 ## Design decisions (the 2026 story)
 
-- **Tokens are the API.** Components consume `var(--sap*)` exclusively, so
+- **Tokens are the API.** Components consume `var(--pf*)` exclusively, so
   retheming (light mode, a second brand) is a token-file swap.
 - **Declarative behavior.** Interactivity is wired by data attributes
   (`data-sort`, `data-modal-open`, `data-toast`) with one delegated listener —
@@ -65,6 +64,6 @@ See `DEMO-SCRIPT.md` for the full interview run-of-show.
 - **Accessible by default.** `role="dialog"`, `aria-modal`, focus trap/restore,
   `aria-sort`, `aria-selected`, visible `:focus-visible` rings, WCAG-friendly
   text tokens on every surface.
-- **Responsive by breakpoint tokens.** `--sapBreakpoint_*` drives the grid:
+- **Responsive by breakpoint tokens.** `--pfBreakpoint_*` drives the grid:
   sidenav collapses under 1024px, tile grids restack under 600px, tables
   scroll within their container.

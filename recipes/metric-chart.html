@@ -1,0 +1,105 @@
+<!-- RECIPE: Metric chart — CSS-only bars, grouped series, sparklines.
+     No plotting library and no SVG. --v carries the value as a percentage of the
+     axis max; it resolves against .pf-chart-track, which is the grid row that
+     excludes the labels, so the scale stays accurate at every value.
+     Exercises .pf-chart, .pf-chart-plot, .pf-chart-bar, .pf-chart-legend,
+     .pf-sparkline. -->
+<div style="padding:40px;max-width:1100px;margin:0 auto;">
+  <div class="pf-stack" style="gap:24px;">
+
+    <div class="pf-card">
+      <div class="pf-chart">
+        <div class="pf-chart-head">
+          <div class="pf-stack" style="gap:4px;">
+            <span class="pf-overline pf-chart-title">Pipeline MRR · trailing 8 months</span>
+            <span class="pf-chart-total">$4.1M</span>
+          </div>
+          <span class="pf-badge pf-badge-active">↑ +14% vs last quarter</span>
+        </div>
+        <div class="pf-chart-plot">
+          <div class="pf-chart-col"><span class="pf-chart-val">$2.4M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:52"></div></div><span class="pf-chart-x">Jan</span></div>
+          <div class="pf-chart-col"><span class="pf-chart-val">$2.6M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:57"></div></div><span class="pf-chart-x">Feb</span></div>
+          <div class="pf-chart-col"><span class="pf-chart-val">$2.5M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:54"></div></div><span class="pf-chart-x">Mar</span></div>
+          <div class="pf-chart-col"><span class="pf-chart-val">$3.0M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:65"></div></div><span class="pf-chart-x">Apr</span></div>
+          <div class="pf-chart-col"><span class="pf-chart-val">$3.3M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:72"></div></div><span class="pf-chart-x">May</span></div>
+          <div class="pf-chart-col"><span class="pf-chart-val">$3.2M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:70"></div></div><span class="pf-chart-x">Jun</span></div>
+          <div class="pf-chart-col"><span class="pf-chart-val">$3.7M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:80"></div></div><span class="pf-chart-x">Jul</span></div>
+          <div class="pf-chart-col current"><span class="pf-chart-val">$4.1M</span><div class="pf-chart-track"><div class="pf-chart-bar" style="--v:89"></div></div><span class="pf-chart-x">Aug</span></div>
+        </div>
+        <div class="pf-chart-legend"><span class="pf-chart-key">Closed MRR</span></div>
+      </div>
+    </div>
+
+    <div class="pf-grid cols-2">
+
+      <div class="pf-card">
+        <div class="pf-chart">
+          <div class="pf-chart-head">
+            <div class="pf-stack" style="gap:4px;">
+              <span class="pf-overline pf-chart-title">Orders by quarter</span>
+              <span class="pf-chart-total">312</span>
+            </div>
+          </div>
+          <div class="pf-chart-plot">
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-group"><div class="pf-chart-bar muted" style="--v:48"></div><div class="pf-chart-bar" style="--v:62"></div></div></div><span class="pf-chart-x">Q1</span></div>
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-group"><div class="pf-chart-bar muted" style="--v:55"></div><div class="pf-chart-bar" style="--v:71"></div></div></div><span class="pf-chart-x">Q2</span></div>
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-group"><div class="pf-chart-bar muted" style="--v:70"></div><div class="pf-chart-bar" style="--v:66"></div></div></div><span class="pf-chart-x">Q3</span></div>
+          <div class="pf-chart-col current"><div class="pf-chart-track"><div class="pf-chart-group"><div class="pf-chart-bar muted" style="--v:74"></div><div class="pf-chart-bar" style="--v:92"></div></div></div><span class="pf-chart-x">Q4</span></div>
+          </div>
+          <div class="pf-chart-legend">
+            <span class="pf-chart-key muted">FY25</span>
+            <span class="pf-chart-key">FY26</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pf-card">
+        <div class="pf-chart">
+          <div class="pf-chart-head">
+            <div class="pf-stack" style="gap:4px;">
+              <span class="pf-overline pf-chart-title">Renewal rate · last 6 months</span>
+              <span class="pf-chart-total">94%</span>
+            </div>
+          </div>
+          <div class="pf-chart-plot">
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-bar good" style="--v:88"></div></div><span class="pf-chart-x">Mar</span></div>
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-bar good" style="--v:91"></div></div><span class="pf-chart-x">Apr</span></div>
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-bar critical" style="--v:73"></div></div><span class="pf-chart-x">May</span></div>
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-bar good" style="--v:86"></div></div><span class="pf-chart-x">Jun</span></div>
+          <div class="pf-chart-col"><div class="pf-chart-track"><div class="pf-chart-bar bad" style="--v:61"></div></div><span class="pf-chart-x">Jul</span></div>
+          <div class="pf-chart-col current"><div class="pf-chart-track"><div class="pf-chart-bar good" style="--v:94"></div></div><span class="pf-chart-x">Aug</span></div>
+          </div>
+          <div class="pf-chart-legend">
+            <span class="pf-chart-key good">On target</span>
+            <span class="pf-chart-key bad">Below threshold</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pf-grid cols-4">
+      <div class="pf-card pf-stat">
+        <span class="pf-stat-label">Active Partners</span>
+        <span class="pf-stat-value">1,284</span>
+        <div class="pf-sparkline"><i style="--v:40"></i><i style="--v:52"></i><i style="--v:48"></i><i style="--v:61"></i><i style="--v:70"></i><i style="--v:83"></i></div>
+      </div>
+      <div class="pf-card pf-stat">
+        <span class="pf-stat-label">Pipeline MRR</span>
+        <span class="pf-stat-value">$4.1M</span>
+        <div class="pf-sparkline"><i style="--v:52"></i><i style="--v:57"></i><i style="--v:54"></i><i style="--v:72"></i><i style="--v:80"></i><i style="--v:89"></i></div>
+      </div>
+      <div class="pf-card pf-stat">
+        <span class="pf-stat-label">Open Orders</span>
+        <span class="pf-stat-value">312</span>
+        <div class="pf-sparkline bad"><i style="--v:78"></i><i style="--v:74"></i><i style="--v:80"></i><i style="--v:69"></i><i style="--v:64"></i><i style="--v:58"></i></div>
+      </div>
+      <div class="pf-card pf-stat">
+        <span class="pf-stat-label">Avg. Deal Size</span>
+        <span class="pf-stat-value">$21.4K</span>
+        <div class="pf-sparkline good"><i style="--v:60"></i><i style="--v:58"></i><i style="--v:66"></i><i style="--v:71"></i><i style="--v:69"></i><i style="--v:77"></i></div>
+      </div>
+    </div>
+
+  </div>
+</div>

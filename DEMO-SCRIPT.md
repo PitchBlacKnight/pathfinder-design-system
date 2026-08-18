@@ -28,7 +28,7 @@ blue on every swap, which reads great on camera.
 
 ## The narrative (what you're actually demonstrating)
 
-> "Pathfinder 2.0 is our design system — 866 tokens on SAP Fiori Horizon, dark
+> "Pathfinder 2.0 is our design system — 866 tokens, dark
 > theme. I've taught it to Claude as an *agent skill*: the tokens, the component
 > anatomy, the do's and don'ts from our spec site. So instead of hand-coding, I
 > direct. Watch."
@@ -106,7 +106,7 @@ API that humans and AI both build with."*
 
 ```
 pathfinder-2.0/
-├── tokens/pathfinder.tokens.css   ← 866 SAP Horizon tokens, extracted 1:1 from the spec site
+├── tokens/pathfinder.tokens.css   ← 866 tokens, extracted 1:1 from the spec site
 ├── css/pathfinder.css             ← the pf- component library (token-pure)
 ├── js/pathfinder.js               ← declarative behaviors + the live hot-swap loop
 ├── stage/index.html               ← the stage (never edited during demos)
@@ -114,3 +114,26 @@ pathfinder-2.0/
 ├── recipes/                       ← reference builds: data-table, modal, desktop
 └── .claude/skills/pathfinder/     ← the agent skill: rules, recipes, etiquette
 ```
+
+---
+
+## Extra set piece — the Playground (Figma's component model, running)
+
+**http://localhost:4173/playground/** — a live properties panel shaped like
+Figma's right sidebar, driving real Pathfinder components. Change settings
+while they watch:
+
+- **Variant / Boolean / Text / Instance-swap properties** — the full current
+  property set, each labeled with its Figma name.
+- **Slot (GA June 2026)** — add badge/progress/avatars to a stat card's slot;
+  at 3 layers it reports `limitViolations: ABOVE_MAX`, and with "only allow
+  preferred instances" on, free text is blocked with `HAS_NON_PREFERRED` —
+  the actual Plugin API vocabulary.
+- **Modes** — theme chip re-resolves the semantic layer live; reduced-motion
+  toggle kills animation (the accessibility floor, demonstrated).
+- Readouts: generated markup (copyable) and the exact tokens resolving now,
+  with swatches. Badge in the header keeps score: "N tokens · 0 hex".
+
+The line: "This is Figma's component model — variants, properties, slots,
+modes — expressed in production code. Same vocabulary, same constraints,
+actually running."

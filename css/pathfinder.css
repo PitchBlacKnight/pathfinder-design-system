@@ -11,37 +11,37 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--sapBackgroundColor);
-  color: var(--sapTextColor);
-  font-family: var(--sapFontFamily);
-  font-size: var(--sapFontSize);
-  line-height: var(--sapContent_LineHeight);
+  background: var(--pfBackgroundColor);
+  color: var(--pfTextColor);
+  font-family: var(--pfFontFamily);
+  font-size: var(--pfFontSize);
+  line-height: var(--pfContent_LineHeight);
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: var(--sapFontHeaderFamily);
-  color: var(--sapTitleColor);
+  font-family: var(--pfFontHeaderFamily);
+  color: var(--pfTitleColor);
   margin: 0;
   letter-spacing: 0.01em;
 }
-h1 { font-size: var(--sapFontHeader1Size); font-weight: 700; }
-h2 { font-size: var(--sapFontHeader2Size); font-weight: 700; }
-h3 { font-size: var(--sapFontHeader3Size); font-weight: 600; }
-h4 { font-size: var(--sapFontHeader4Size); font-weight: 600; }
-h5 { font-size: var(--sapFontHeader5Size); font-weight: 600; }
+h1 { font-size: var(--pfFontHeader1Size); font-weight: 700; }
+h2 { font-size: var(--pfFontHeader2Size); font-weight: 700; }
+h3 { font-size: var(--pfFontHeader3Size); font-weight: 600; }
+h4 { font-size: var(--pfFontHeader4Size); font-weight: 600; }
+h5 { font-size: var(--pfFontHeader5Size); font-weight: 600; }
 
-a { color: var(--sapLinkColor); text-decoration: var(--sapLink_TextDecoration); }
-a:hover { color: var(--sapLinkHoverColor); text-decoration: var(--sapLink_Hover_TextDecoration); }
+a { color: var(--pfLinkColor); text-decoration: var(--pfLink_TextDecoration); }
+a:hover { color: var(--pfLinkHoverColor); text-decoration: var(--pfLink_Hover_TextDecoration); }
 
-code, .pf-mono { font-family: var(--sapFontMonoFamily); }
+code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 
-::selection { background: var(--sapContent_SearchHighlightColor); }
+::selection { background: var(--pfContent_SearchHighlightColor); }
 
-* { scrollbar-width: thin; scrollbar-color: var(--sapScrollBar_FaceColor) var(--sapScrollBar_TrackColor); }
+* { scrollbar-width: thin; scrollbar-color: var(--pfScrollBar_FaceColor) var(--pfScrollBar_TrackColor); }
 
 :focus-visible {
-  outline: var(--sapContent_FocusWidth) var(--sapContent_FocusStyle) var(--sapContent_FocusColor);
+  outline: var(--pfContent_FocusWidth) var(--pfContent_FocusStyle) var(--pfContent_FocusColor);
   outline-offset: 2px;
 }
 
@@ -51,7 +51,7 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--sapContent_LabelColor);
+  color: var(--pfContent_LabelColor);
 }
 
 /* ---------- Button ---------- */
@@ -60,70 +60,70 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: var(--sapElement_Height);
+  height: var(--pfElement_Height);
   padding: 0 16px;
-  border-radius: var(--sapButton_BorderCornerRadius);
-  border: var(--sapButton_BorderWidth) solid var(--sapButton_BorderColor);
-  background: var(--sapButton_Background);
-  color: var(--sapButton_TextColor);
-  font-family: var(--sapFontFamily);
-  font-size: var(--sapFontMediumSize);
+  border-radius: var(--pfButton_BorderCornerRadius);
+  border: var(--pfButton_BorderWidth) solid var(--pfButton_BorderColor);
+  background: var(--pfButton_Background);
+  color: var(--pfButton_TextColor);
+  font-family: var(--pfFontFamily);
+  font-size: var(--pfFontMediumSize);
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   transition:
-    background var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard),
-    border-color var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard),
-    color var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard),
-    transform var(--sapContent_TransitionDuration_S) var(--sapContent_Easing_Standard);
+    background var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard),
+    border-color var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard),
+    color var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard),
+    transform var(--pfContent_TransitionDuration_S) var(--pfContent_Easing_Standard);
 }
-.pf-btn:hover { background: var(--sapButton_Hover_Background); border-color: var(--sapButton_Hover_BorderColor); }
+.pf-btn:hover { background: var(--pfButton_Hover_Background); border-color: var(--pfButton_Hover_BorderColor); }
 .pf-btn:active { transform: translateY(1px); }
-.pf-btn:disabled { opacity: var(--sapContent_DisabledOpacity); cursor: not-allowed; }
+.pf-btn:disabled { opacity: var(--pfContent_DisabledOpacity); cursor: not-allowed; }
 
 .pf-btn-primary {
-  background: var(--sapButton_Emphasized_Background);
-  border-color: var(--sapButton_Emphasized_BorderColor);
-  color: var(--sapButton_Emphasized_TextColor);
-  font-weight: var(--sapButton_Emphasized_FontWeight);
+  background: var(--pfButton_Emphasized_Background);
+  border-color: var(--pfButton_Emphasized_BorderColor);
+  color: var(--pfButton_Emphasized_TextColor);
+  font-weight: var(--pfButton_Emphasized_FontWeight);
 }
 .pf-btn-primary:hover {
-  background: var(--sapButton_Emphasized_Hover_Background);
-  border-color: var(--sapButton_Emphasized_Hover_BorderColor);
+  background: var(--pfButton_Emphasized_Hover_Background);
+  border-color: var(--pfButton_Emphasized_Hover_BorderColor);
 }
 
 .pf-btn-secondary { /* token-default look, named for clarity in demos */ }
 
 .pf-btn-ghost {
-  background: var(--sapButton_Ghost_Background);
-  border-color: var(--sapButton_Ghost_BorderColor);
-  color: var(--sapButton_Ghost_TextColor);
+  background: var(--pfButton_Ghost_Background);
+  border-color: var(--pfButton_Ghost_BorderColor);
+  color: var(--pfButton_Ghost_TextColor);
 }
-.pf-btn-ghost:hover { background: var(--sapButton_Ghost_Hover_Background); border-color: var(--sapButton_Ghost_BorderColor); }
+.pf-btn-ghost:hover { background: var(--pfButton_Ghost_Hover_Background); border-color: var(--pfButton_Ghost_BorderColor); }
 
 .pf-btn-lite {
-  background: var(--sapButton_Lite_Background);
-  border-color: var(--sapButton_Lite_BorderColor);
-  color: var(--sapButton_Lite_TextColor);
+  background: var(--pfButton_Lite_Background);
+  border-color: var(--pfButton_Lite_BorderColor);
+  color: var(--pfButton_Lite_TextColor);
 }
-.pf-btn-lite:hover { background: var(--sapButton_Lite_Hover_Background); border-color: var(--sapButton_Lite_Hover_BorderColor); }
+.pf-btn-lite:hover { background: var(--pfButton_Lite_Hover_Background); border-color: var(--pfButton_Lite_Hover_BorderColor); }
 
 .pf-btn-danger {
-  background: var(--sapButton_Negative_Background);
-  border-color: var(--sapButton_Negative_BorderColor);
-  color: var(--sapButton_Negative_TextColor);
+  background: var(--pfButton_Negative_Background);
+  border-color: var(--pfButton_Negative_BorderColor);
+  color: var(--pfButton_Negative_TextColor);
 }
-.pf-btn-danger:hover { background: var(--sapButton_Negative_Hover_Background); border-color: var(--sapButton_Negative_Hover_BorderColor); }
+.pf-btn-danger:hover { background: var(--pfButton_Negative_Hover_Background); border-color: var(--pfButton_Negative_Hover_BorderColor); }
 
 .pf-btn-success {
-  background: var(--sapButton_Success_Background);
-  border-color: var(--sapButton_Success_BorderColor);
-  color: var(--sapButton_Success_TextColor);
+  background: var(--pfButton_Success_Background);
+  border-color: var(--pfButton_Success_BorderColor);
+  color: var(--pfButton_Success_TextColor);
 }
-.pf-btn-success:hover { background: var(--sapButton_Success_Hover_Background); border-color: var(--sapButton_Success_Hover_BorderColor); }
+.pf-btn-success:hover { background: var(--pfButton_Success_Hover_Background); border-color: var(--pfButton_Success_Hover_BorderColor); }
 
-.pf-btn-sm { height: var(--sapElement_Compact_Height); padding: 0 10px; font-size: var(--sapFontSmallSize); }
-.pf-btn-lg { height: var(--sapElement_LineHeight); padding: 0 24px; font-size: var(--sapFontLargeSize); }
+.pf-btn-sm { height: var(--pfElement_Compact_Height); padding: 0 10px; font-size: var(--pfFontSmallSize); }
+.pf-btn-lg { height: var(--pfElement_LineHeight); padding: 0 24px; font-size: var(--pfFontLargeSize); }
 
 /* ---------- Badge ---------- */
 .pf-badge {
@@ -132,9 +132,9 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   gap: 6px;
   padding: 3px 10px;
   border-radius: 999px;
-  border: 1px solid var(--sapNeutralBorderColor);
-  background: var(--sapNeutralBackground);
-  color: var(--sapNeutralTextColor);
+  border: 1px solid var(--pfNeutralBorderColor);
+  background: var(--pfNeutralBackground);
+  color: var(--pfNeutralTextColor);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -142,21 +142,21 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   white-space: nowrap;
 }
 .pf-badge-active,
-.pf-badge-positive { background: var(--sapSuccessBackground); border-color: var(--sapSuccessBorderColor); color: var(--sapPositiveTextColor); }
-.pf-badge-info { background: var(--sapInformationBackground); border-color: var(--sapInformationBorderColor); color: var(--sapInformativeTextColor); }
-.pf-badge-warning { background: var(--sapWarningBackground); border-color: var(--sapWarningBorderColor); color: var(--sapCriticalTextColor); }
+.pf-badge-positive { background: var(--pfSuccessBackground); border-color: var(--pfSuccessBorderColor); color: var(--pfPositiveTextColor); }
+.pf-badge-info { background: var(--pfInformationBackground); border-color: var(--pfInformationBorderColor); color: var(--pfInformativeTextColor); }
+.pf-badge-warning { background: var(--pfWarningBackground); border-color: var(--pfWarningBorderColor); color: var(--pfCriticalTextColor); }
 .pf-badge-critical,
-.pf-badge-negative { background: var(--sapErrorBackground); border-color: var(--sapErrorBorderColor); color: var(--sapNegativeTextColor); }
+.pf-badge-negative { background: var(--pfErrorBackground); border-color: var(--pfErrorBorderColor); color: var(--pfNegativeTextColor); }
 
 /* ---------- Card ---------- */
 .pf-card {
-  background: var(--sapTile_Background);
-  border: var(--sapGroup_BorderWidth) solid var(--sapTile_BorderColor);
-  border-radius: var(--sapCard_BorderCornerRadius);
+  background: var(--pfTile_Background);
+  border: var(--pfGroup_BorderWidth) solid var(--pfTile_BorderColor);
+  border-radius: var(--pfCard_BorderCornerRadius);
   padding: 20px;
 }
-.pf-card-interactive { cursor: pointer; transition: background var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard), border-color var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard); }
-.pf-card-interactive:hover { background: var(--sapTile_Hover_Background); border-color: var(--sapTile_Interactive_BorderColor); }
+.pf-card-interactive { cursor: pointer; transition: background var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard), border-color var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard); }
+.pf-card-interactive:hover { background: var(--pfTile_Hover_Background); border-color: var(--pfTile_Interactive_BorderColor); }
 
 /* ---------- Stat tile ---------- */
 .pf-stat { display: flex; flex-direction: column; gap: 6px; }
@@ -165,183 +165,183 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--sapContent_LabelColor);
+  color: var(--pfContent_LabelColor);
 }
 .pf-stat-value {
-  font-family: var(--sapFontHeaderFamily);
-  font-size: var(--sapFontHeader3Size);
+  font-family: var(--pfFontHeaderFamily);
+  font-size: var(--pfFontHeader3Size);
   font-weight: 700;
-  color: var(--sapTitleColor);
+  color: var(--pfTitleColor);
   line-height: 1.1;
 }
-.pf-stat-delta { font-size: var(--sapFontSmallSize); font-weight: 600; }
-.pf-stat-delta.up { color: var(--sapPositiveElementColor); }
-.pf-stat-delta.down { color: var(--sapNegativeElementColor); }
+.pf-stat-delta { font-size: var(--pfFontSmallSize); font-weight: 600; }
+.pf-stat-delta.up { color: var(--pfPositiveElementColor); }
+.pf-stat-delta.down { color: var(--pfNegativeElementColor); }
 
 /* ---------- Input / Field ---------- */
 .pf-field { display: flex; flex-direction: column; gap: 6px; }
 .pf-label {
-  font-size: var(--sapFontSmallSize);
+  font-size: var(--pfFontSmallSize);
   font-weight: 600;
-  color: var(--sapContent_LabelColor);
+  color: var(--pfContent_LabelColor);
   letter-spacing: 0.04em;
 }
-.pf-label .req { color: var(--sapField_RequiredColor); }
+.pf-label .req { color: var(--pfField_RequiredColor); }
 .pf-input, .pf-select, .pf-textarea {
   width: 100%;
-  height: var(--sapElement_Height);
+  height: var(--pfElement_Height);
   padding: 0 12px;
-  border-radius: var(--sapField_BorderCornerRadius);
-  border: var(--sapField_BorderWidth) var(--sapField_BorderStyle) transparent;
-  box-shadow: var(--sapField_Shadow);
-  background: var(--sapField_Background);
-  color: var(--sapField_TextColor);
-  font-family: var(--sapFontFamily);
-  font-size: var(--sapFontMediumSize);
-  transition: box-shadow var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard), background var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard);
+  border-radius: var(--pfField_BorderCornerRadius);
+  border: var(--pfField_BorderWidth) var(--pfField_BorderStyle) transparent;
+  box-shadow: var(--pfField_Shadow);
+  background: var(--pfField_Background);
+  color: var(--pfField_TextColor);
+  font-family: var(--pfFontFamily);
+  font-size: var(--pfFontMediumSize);
+  transition: box-shadow var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard), background var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard);
 }
 .pf-textarea { height: auto; min-height: 88px; padding: 10px 12px; resize: vertical; }
-.pf-input::placeholder, .pf-textarea::placeholder { color: var(--sapField_PlaceholderTextColor); }
-.pf-input:hover, .pf-select:hover, .pf-textarea:hover { background: var(--sapField_Hover_Background); box-shadow: var(--sapField_Hover_Shadow); }
+.pf-input::placeholder, .pf-textarea::placeholder { color: var(--pfField_PlaceholderTextColor); }
+.pf-input:hover, .pf-select:hover, .pf-textarea:hover { background: var(--pfField_Hover_Background); box-shadow: var(--pfField_Hover_Shadow); }
 .pf-input:focus, .pf-select:focus, .pf-textarea:focus {
   outline: none;
-  background: var(--sapField_Focus_Background);
-  box-shadow: inset 0 0 0 2px var(--sapField_Focus_BorderColor);
+  background: var(--pfField_Focus_Background);
+  box-shadow: inset 0 0 0 2px var(--pfField_Focus_BorderColor);
 }
-.pf-field.invalid .pf-input { background: var(--sapField_InvalidBackground); box-shadow: var(--sapField_InvalidShadow); }
-.pf-help { font-size: var(--sapFontSmallSize); color: var(--sapContent_LabelColor); }
-.pf-field.invalid .pf-help { color: var(--sapNegativeTextColor); }
-.pf-select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--sapContent_IconColor) 50%), linear-gradient(135deg, var(--sapContent_IconColor) 50%, transparent 50%); background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+.pf-field.invalid .pf-input { background: var(--pfField_InvalidBackground); box-shadow: var(--pfField_InvalidShadow); }
+.pf-help { font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+.pf-field.invalid .pf-help { color: var(--pfNegativeTextColor); }
+.pf-select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--pfContent_IconColor) 50%), linear-gradient(135deg, var(--pfContent_IconColor) 50%, transparent 50%); background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
 
 /* ---------- Toggle ---------- */
 .pf-toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
 .pf-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
 .pf-toggle .track {
   width: 40px; height: 22px; border-radius: 999px;
-  background: var(--sapButton_Track_Background);
-  border: 1px solid var(--sapButton_Track_BorderColor);
+  background: var(--pfButton_Track_Background);
+  border: 1px solid var(--pfButton_Track_BorderColor);
   position: relative; flex: none;
-  transition: background var(--sapContent_TransitionDuration_L) var(--sapContent_Easing_Standard);
+  transition: background var(--pfContent_TransitionDuration_L) var(--pfContent_Easing_Standard);
 }
 .pf-toggle .track::after {
   content: ""; position: absolute; top: 2px; left: 2px;
   width: 16px; height: 16px; border-radius: 50%;
-  background: var(--sapButton_Handle_Background);
-  border: 1px solid var(--sapButton_Handle_BorderColor);
-  transition: transform var(--sapContent_TransitionDuration_L) var(--sapContent_Easing_Standard);
+  background: var(--pfButton_Handle_Background);
+  border: 1px solid var(--pfButton_Handle_BorderColor);
+  transition: transform var(--pfContent_TransitionDuration_L) var(--pfContent_Easing_Standard);
 }
-.pf-toggle input:checked + .track { background: var(--sapButton_Track_Selected_Background); border-color: var(--sapButton_Track_Selected_BorderColor); }
+.pf-toggle input:checked + .track { background: var(--pfButton_Track_Selected_Background); border-color: var(--pfButton_Track_Selected_BorderColor); }
 .pf-toggle input:checked + .track::after { transform: translateX(18px); background: #fff; border-color: transparent; }
-.pf-toggle input:focus-visible + .track { outline: var(--sapContent_FocusWidth) solid var(--sapContent_FocusColor); outline-offset: 2px; }
-.pf-toggle .pf-toggle-label { font-size: var(--sapFontMediumSize); color: var(--sapContent_ForegroundTextColor); }
+.pf-toggle input:focus-visible + .track { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: 2px; }
+.pf-toggle .pf-toggle-label { font-size: var(--pfFontMediumSize); color: var(--pfContent_ForegroundTextColor); }
 
 /* ---------- Progress ---------- */
 .pf-progress {
   height: 8px; border-radius: 999px; overflow: hidden;
-  background: var(--sapProgress_Background);
-  border: 1px solid var(--sapProgress_BorderColor);
+  background: var(--pfProgress_Background);
+  border: 1px solid var(--pfProgress_BorderColor);
 }
 .pf-progress .bar {
   height: 100%; border-radius: 999px;
-  background: var(--sapProgress_Value_Background);
-  transition: width var(--sapContent_TransitionDuration_2XL) var(--sapContent_Easing_Decelerate);
+  background: var(--pfProgress_Value_Background);
+  transition: width var(--pfContent_TransitionDuration_2XL) var(--pfContent_Easing_Decelerate);
 }
-.pf-progress.positive .bar { background: var(--sapProgress_Value_PositiveBackground); }
-.pf-progress.critical .bar { background: var(--sapProgress_Value_CriticalBackground); }
-.pf-progress.negative .bar { background: var(--sapProgress_Value_NegativeBackground); }
+.pf-progress.positive .bar { background: var(--pfProgress_Value_PositiveBackground); }
+.pf-progress.critical .bar { background: var(--pfProgress_Value_CriticalBackground); }
+.pf-progress.negative .bar { background: var(--pfProgress_Value_NegativeBackground); }
 
 /* ---------- Avatar ---------- */
 .pf-avatar {
   width: 32px; height: 32px; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 11px; font-weight: 700; letter-spacing: 0.02em;
-  background: var(--sapAvatar_6_Background); color: var(--sapAvatar_6_TextColor);
-  border: 1px solid var(--sapAvatar_6_BorderColor);
+  background: var(--pfAvatar_6_Background); color: var(--pfAvatar_6_TextColor);
+  border: 1px solid var(--pfAvatar_6_BorderColor);
   flex: none;
 }
-.pf-avatar.c1 { background: var(--sapAvatar_1_Background); color: var(--sapAvatar_1_TextColor); }
-.pf-avatar.c2 { background: var(--sapAvatar_4_Background); color: var(--sapAvatar_4_TextColor); }
-.pf-avatar.c3 { background: var(--sapAvatar_7_Background); color: var(--sapAvatar_7_TextColor); }
-.pf-avatar.c4 { background: var(--sapAvatar_8_Background); color: var(--sapAvatar_8_TextColor); }
+.pf-avatar.c1 { background: var(--pfAvatar_1_Background); color: var(--pfAvatar_1_TextColor); }
+.pf-avatar.c2 { background: var(--pfAvatar_4_Background); color: var(--pfAvatar_4_TextColor); }
+.pf-avatar.c3 { background: var(--pfAvatar_7_Background); color: var(--pfAvatar_7_TextColor); }
+.pf-avatar.c4 { background: var(--pfAvatar_8_Background); color: var(--pfAvatar_8_TextColor); }
 .pf-avatar-group { display: inline-flex; }
-.pf-avatar-group .pf-avatar { margin-left: -8px; box-shadow: 0 0 0 2px var(--sapBackgroundColor); }
+.pf-avatar-group .pf-avatar { margin-left: -8px; box-shadow: 0 0 0 2px var(--pfBackgroundColor); }
 .pf-avatar-group .pf-avatar:first-child { margin-left: 0; }
 
 /* ---------- Tabs ---------- */
-.pf-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--sapGroup_ContentBorderColor); }
+.pf-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--pfGroup_ContentBorderColor); }
 .pf-tab {
   padding: 10px 16px;
-  background: var(--sapTab_Background);
-  border: none; border-bottom: var(--sapTab_Selected_Indicator_Dimension) solid transparent;
-  color: var(--sapTab_TextColor);
-  font-family: var(--sapFontFamily); font-size: var(--sapFontMediumSize); font-weight: 600;
+  background: var(--pfTab_Background);
+  border: none; border-bottom: var(--pfTab_Selected_Indicator_Dimension) solid transparent;
+  color: var(--pfTab_TextColor);
+  font-family: var(--pfFontFamily); font-size: var(--pfFontMediumSize); font-weight: 600;
   cursor: pointer;
-  transition: color var(--sapContent_TransitionDuration_M) var(--sapContent_Easing_Standard);
+  transition: color var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Standard);
 }
-.pf-tab:hover { color: var(--sapContent_ForegroundTextColor); }
-.pf-tab[aria-selected="true"] { color: var(--sapTab_Selected_TextColor); border-bottom-color: var(--sapTab_ForegroundColor); }
+.pf-tab:hover { color: var(--pfContent_ForegroundTextColor); }
+.pf-tab[aria-selected="true"] { color: var(--pfTab_Selected_TextColor); border-bottom-color: var(--pfTab_ForegroundColor); }
 
 /* ---------- Data Table ---------- */
 .pf-table-wrap {
-  background: var(--sapTile_Background);
-  border: 1px solid var(--sapGroup_ContentBorderColor);
-  border-radius: var(--sapGroup_BorderCornerRadius);
+  background: var(--pfTile_Background);
+  border: 1px solid var(--pfGroup_ContentBorderColor);
+  border-radius: var(--pfGroup_BorderCornerRadius);
   overflow: hidden;
 }
 .pf-table-toolbar {
   display: flex; align-items: center; gap: 12px;
   padding: 14px 16px;
-  border-bottom: 1px solid var(--sapGroup_ContentBorderColor);
+  border-bottom: 1px solid var(--pfGroup_ContentBorderColor);
 }
-.pf-table-toolbar .title { font-family: var(--sapFontHeaderFamily); font-size: 18px; font-weight: 600; margin-right: auto; }
-.pf-table { width: 100%; border-collapse: collapse; font-size: var(--sapFontMediumSize); }
+.pf-table-toolbar .title { font-family: var(--pfFontHeaderFamily); font-size: 18px; font-weight: 600; margin-right: auto; }
+.pf-table { width: 100%; border-collapse: collapse; font-size: var(--pfFontMediumSize); }
 .pf-table th {
-  background: var(--sapList_HeaderBackground);
-  color: var(--sapContent_DisabledTextColor);
+  background: var(--pfList_HeaderBackground);
+  color: var(--pfContent_DisabledTextColor);
   font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
   text-align: left; padding: 10px 16px;
-  border-bottom: 1px solid var(--sapList_HeaderBorderColor);
+  border-bottom: 1px solid var(--pfList_HeaderBorderColor);
   white-space: nowrap;
 }
 .pf-table th[data-sort] { cursor: pointer; user-select: none; }
-.pf-table th[data-sort]:hover { color: var(--sapContent_LabelColor); }
+.pf-table th[data-sort]:hover { color: var(--pfContent_LabelColor); }
 .pf-table th[data-sort]::after { content: " ⇅"; opacity: 0.5; }
-.pf-table th[data-sort][aria-sort="ascending"]::after { content: " ↑"; opacity: 1; color: var(--sapHighlightColor); }
-.pf-table th[data-sort][aria-sort="descending"]::after { content: " ↓"; opacity: 1; color: var(--sapHighlightColor); }
+.pf-table th[data-sort][aria-sort="ascending"]::after { content: " ↑"; opacity: 1; color: var(--pfHighlightColor); }
+.pf-table th[data-sort][aria-sort="descending"]::after { content: " ↓"; opacity: 1; color: var(--pfHighlightColor); }
 .pf-table td {
   padding: 12px 16px;
-  color: var(--sapContent_LabelColor);
-  border-bottom: 1px solid var(--sapList_BorderColor);
-  background: var(--sapList_Background);
+  color: var(--pfContent_LabelColor);
+  border-bottom: 1px solid var(--pfList_BorderColor);
+  background: var(--pfList_Background);
   white-space: nowrap;
 }
-.pf-table td.primary { color: var(--sapContent_ForegroundTextColor); font-weight: 600; }
-.pf-table td.mono { font-family: var(--sapFontMonoFamily); font-size: var(--sapFontSmallSize); }
-.pf-table tbody tr { transition: background var(--sapContent_TransitionDuration_S) var(--sapContent_Easing_Standard); }
-.pf-table tbody tr:hover td { background: var(--sapList_Hover_Background); }
-.pf-table tbody tr[aria-selected="true"] td { background: var(--sapList_SelectionBackgroundColor); }
+.pf-table td.primary { color: var(--pfContent_ForegroundTextColor); font-weight: 600; }
+.pf-table td.mono { font-family: var(--pfFontMonoFamily); font-size: var(--pfFontSmallSize); }
+.pf-table tbody tr { transition: background var(--pfContent_TransitionDuration_S) var(--pfContent_Easing_Standard); }
+.pf-table tbody tr:hover td { background: var(--pfList_Hover_Background); }
+.pf-table tbody tr[aria-selected="true"] td { background: var(--pfList_SelectionBackgroundColor); }
 .pf-table tbody tr:last-child td { border-bottom: none; }
-.pf-table-wrap.striped tbody tr:nth-child(even) td { background: var(--sapList_AlternatingBackground); }
-.pf-table-wrap.striped tbody tr:hover td { background: var(--sapList_Hover_Background); }
+.pf-table-wrap.striped tbody tr:nth-child(even) td { background: var(--pfList_AlternatingBackground); }
+.pf-table-wrap.striped tbody tr:hover td { background: var(--pfList_Hover_Background); }
 .pf-table-wrap.compact td { padding: 7px 16px; }
 .pf-table-wrap.compact th { padding: 7px 16px; }
 .pf-table-footer {
   display: flex; align-items: center; gap: 12px;
   padding: 12px 16px;
-  color: var(--sapList_FooterTextColor);
-  font-size: var(--sapFontSmallSize);
-  border-top: 1px solid var(--sapGroup_ContentBorderColor);
+  color: var(--pfList_FooterTextColor);
+  font-size: var(--pfFontSmallSize);
+  border-top: 1px solid var(--pfGroup_ContentBorderColor);
 }
 .pf-table-footer .pages { margin-left: auto; display: flex; gap: 4px; }
 .pf-page {
   min-width: 28px; height: 28px; border-radius: 6px;
   border: 1px solid transparent; background: transparent;
-  color: var(--sapContent_LabelColor); font-size: var(--sapFontSmallSize); font-weight: 600;
+  color: var(--pfContent_LabelColor); font-size: var(--pfFontSmallSize); font-weight: 600;
   cursor: pointer;
 }
-.pf-page:hover { background: var(--sapHoverColor); }
-.pf-page[aria-current="page"] { background: var(--sapContent_Selected_Background); color: var(--sapContent_Selected_TextColor); border-color: var(--sapList_SelectionBorderColor); }
-.pf-table input[type="checkbox"] { accent-color: var(--sapSelectedColor); width: 15px; height: 15px; cursor: pointer; }
+.pf-page:hover { background: var(--pfHoverColor); }
+.pf-page[aria-current="page"] { background: var(--pfContent_Selected_Background); color: var(--pfContent_Selected_TextColor); border-color: var(--pfList_SelectionBorderColor); }
+.pf-table input[type="checkbox"] { accent-color: var(--pfSelectedColor); width: 15px; height: 15px; cursor: pointer; }
 
 /* ---------- Modal ---------- */
 .pf-modal-overlay {
@@ -352,19 +352,19 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   display: flex; align-items: center; justify-content: center;
   padding: 24px;
   opacity: 0;
-  transition: opacity var(--sapContent_TransitionDuration_L) var(--sapContent_Easing_Standard);
+  transition: opacity var(--pfContent_TransitionDuration_L) var(--pfContent_Easing_Standard);
 }
 .pf-modal-overlay.open { opacity: 1; }
 .pf-modal {
-  background: var(--sapGroup_ContentBackground);
-  border: 1px solid var(--sapContent_ForegroundBorderColor);
-  border-radius: var(--sapDialog_BorderCornerRadius);
-  box-shadow: var(--sapContent_Shadow4);
+  background: var(--pfGroup_ContentBackground);
+  border: 1px solid var(--pfContent_ForegroundBorderColor);
+  border-radius: var(--pfDialog_BorderCornerRadius);
+  box-shadow: var(--pfContent_Shadow4);
   width: 560px; max-width: 100%;
   max-height: 85vh;
   display: flex; flex-direction: column;
   transform: translateY(12px) scale(0.98);
-  transition: transform var(--sapContent_TransitionDuration_L) var(--sapContent_Easing_Decelerate);
+  transition: transform var(--pfContent_TransitionDuration_L) var(--pfContent_Easing_Decelerate);
 }
 .pf-modal-overlay.open .pf-modal { transform: translateY(0) scale(1); }
 .pf-modal.sm { width: 420px; }
@@ -373,23 +373,23 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
 .pf-modal-header {
   display: flex; align-items: center; gap: 12px;
   padding: 18px 24px;
-  border-bottom: 1px solid var(--sapGroup_ContentBorderColor);
+  border-bottom: 1px solid var(--pfGroup_ContentBorderColor);
 }
-.pf-modal-header .title { font-family: var(--sapFontHeaderFamily); font-size: 20px; font-weight: 600; margin-right: auto; }
-.pf-modal.danger .pf-modal-header { box-shadow: var(--sapContent_Error_HeaderShadow); }
-.pf-modal.danger .pf-modal-header .title { color: var(--sapNegativeTextColor); }
-.pf-modal.confirmation .pf-modal-header { box-shadow: var(--sapContent_Information_HeaderShadow); }
+.pf-modal-header .title { font-family: var(--pfFontHeaderFamily); font-size: 20px; font-weight: 600; margin-right: auto; }
+.pf-modal.danger .pf-modal-header { box-shadow: var(--pfContent_Error_HeaderShadow); }
+.pf-modal.danger .pf-modal-header .title { color: var(--pfNegativeTextColor); }
+.pf-modal.confirmation .pf-modal-header { box-shadow: var(--pfContent_Information_HeaderShadow); }
 .pf-modal-close {
   width: 30px; height: 30px; border-radius: 8px;
   border: none; background: transparent;
-  color: var(--sapContent_IconColor); font-size: 15px; cursor: pointer; line-height: 1;
+  color: var(--pfContent_IconColor); font-size: 15px; cursor: pointer; line-height: 1;
 }
-.pf-modal-close:hover { background: var(--sapHoverColor); color: var(--sapContent_ForegroundTextColor); }
-.pf-modal-body { padding: 24px; overflow-y: auto; color: var(--sapContent_LabelColor); }
+.pf-modal-close:hover { background: var(--pfHoverColor); color: var(--pfContent_ForegroundTextColor); }
+.pf-modal-body { padding: 24px; overflow-y: auto; color: var(--pfContent_LabelColor); }
 .pf-modal-footer {
   display: flex; justify-content: flex-end; gap: 10px;
   padding: 16px 24px;
-  border-top: 1px solid var(--sapGroup_ContentBorderColor);
+  border-top: 1px solid var(--pfGroup_ContentBorderColor);
 }
 
 /* ---------- Notification / Toast ---------- */
@@ -398,19 +398,19 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   display: flex; gap: 12px; align-items: flex-start;
   min-width: 300px; max-width: 380px;
   padding: 14px 16px;
-  background: var(--sapGroup_ContentBackground);
-  border: 1px solid var(--sapInformationBorderColor);
-  border-radius: var(--sapPopover_BorderCornerRadius);
-  box-shadow: var(--sapContent_Shadow3);
-  animation: pf-toast-in var(--sapContent_TransitionDuration_XL) var(--sapContent_Easing_Decelerate);
+  background: var(--pfGroup_ContentBackground);
+  border: 1px solid var(--pfInformationBorderColor);
+  border-radius: var(--pfPopover_BorderCornerRadius);
+  box-shadow: var(--pfContent_Shadow3);
+  animation: pf-toast-in var(--pfContent_TransitionDuration_XL) var(--pfContent_Easing_Decelerate);
 }
-.pf-toast .icon { color: var(--sapInformativeElementColor); font-size: 16px; }
-.pf-toast.positive { border-color: var(--sapSuccessBorderColor); }
-.pf-toast.positive .icon { color: var(--sapPositiveElementColor); }
-.pf-toast.negative { border-color: var(--sapErrorBorderColor); }
-.pf-toast.negative .icon { color: var(--sapNegativeElementColor); }
-.pf-toast .t { font-weight: 600; color: var(--sapContent_ForegroundTextColor); font-size: var(--sapFontMediumSize); }
-.pf-toast .d { color: var(--sapContent_LabelColor); font-size: var(--sapFontSmallSize); margin-top: 2px; }
+.pf-toast .icon { color: var(--pfInformativeElementColor); font-size: 16px; }
+.pf-toast.positive { border-color: var(--pfSuccessBorderColor); }
+.pf-toast.positive .icon { color: var(--pfPositiveElementColor); }
+.pf-toast.negative { border-color: var(--pfErrorBorderColor); }
+.pf-toast.negative .icon { color: var(--pfNegativeElementColor); }
+.pf-toast .t { font-weight: 600; color: var(--pfContent_ForegroundTextColor); font-size: var(--pfFontMediumSize); }
+.pf-toast .d { color: var(--pfContent_LabelColor); font-size: var(--pfFontSmallSize); margin-top: 2px; }
 @keyframes pf-toast-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -428,43 +428,43 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   grid-area: top;
   display: flex; align-items: center; gap: 16px;
   padding: 0 24px;
-  background: var(--sapPageHeader_Background);
-  border-bottom: 1px solid var(--sapPageHeader_BorderColor);
+  background: var(--pfPageHeader_Background);
+  border-bottom: 1px solid var(--pfPageHeader_BorderColor);
 }
 .pf-topbar .spacer { margin-left: auto; }
 .pf-sidenav {
   grid-area: side;
   display: flex; flex-direction: column;
-  background: var(--sapShell_Navigation_Background);
-  border-right: 1px solid var(--sapShell_BorderColor);
+  background: var(--pfShell_Navigation_Background);
+  border-right: 1px solid var(--pfShell_BorderColor);
   padding: 16px 12px;
   gap: 2px;
 }
 .pf-sidenav .brand {
-  font-family: var(--sapFontHeaderFamily);
+  font-family: var(--pfFontHeaderFamily);
   font-size: 18px; font-weight: 700; letter-spacing: 0.06em;
-  color: var(--sapShell_TextColor);
+  color: var(--pfShell_TextColor);
   padding: 4px 12px 18px;
 }
-.pf-sidenav .brand .sub { display: block; font-size: 10px; letter-spacing: 0.18em; color: var(--sapShell_GroupTitleTextColor); font-family: var(--sapFontFamily); font-weight: 600; }
+.pf-sidenav .brand .sub { display: block; font-size: 10px; letter-spacing: 0.18em; color: var(--pfShell_GroupTitleTextColor); font-family: var(--pfFontFamily); font-weight: 600; }
 .pf-nav-item {
   display: flex; align-items: center; gap: 10px;
   padding: 9px 12px;
   border-radius: 8px;
-  color: var(--sapShell_Navigation_TextColor);
-  font-size: var(--sapFontMediumSize); font-weight: 500;
+  color: var(--pfShell_Navigation_TextColor);
+  font-size: var(--pfFontMediumSize); font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--sapContent_TransitionDuration_S) var(--sapContent_Easing_Standard), color var(--sapContent_TransitionDuration_S) var(--sapContent_Easing_Standard);
+  transition: background var(--pfContent_TransitionDuration_S) var(--pfContent_Easing_Standard), color var(--pfContent_TransitionDuration_S) var(--pfContent_Easing_Standard);
 }
-.pf-nav-item:hover { background: var(--sapShell_Navigation_Hover_Background); color: var(--sapShell_TextColor); text-decoration: none; }
-.pf-nav-item[aria-current="page"] { background: var(--sapShell_Navigation_Active_Background); color: var(--sapShell_Navigation_Selected_TextColor); }
+.pf-nav-item:hover { background: var(--pfShell_Navigation_Hover_Background); color: var(--pfShell_TextColor); text-decoration: none; }
+.pf-nav-item[aria-current="page"] { background: var(--pfShell_Navigation_Active_Background); color: var(--pfShell_Navigation_Selected_TextColor); }
 .pf-nav-group { margin: 16px 12px 6px; }
 .pf-main {
   grid-area: main;
   overflow-y: auto;
   padding: 28px;
-  background: var(--sapBackgroundColor);
+  background: var(--pfBackgroundColor);
 }
 
 /* Responsive: collapse sidenav under the L breakpoint (1024px) */
@@ -475,8 +475,141 @@ code, .pf-mono { font-family: var(--sapFontMonoFamily); }
   .pf-table { min-width: 640px; }
 }
 
+/* ---------- Chart ----------
+   Token-pure, CSS-only metric charts. No SVG, no plotting library: bar heights
+   and sparkline points are the only inline values, and every colour, gridline
+   and label comes from a --pfChart_* or semantic token. Works in both modes. */
+.pf-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pf-chart-head { display: flex; align-items: flex-start; gap: 12px; }
+.pf-chart-head .pf-chart-title { margin-right: auto; }
+.pf-chart-total {
+  font-family: var(--pfFontHeaderFamily);
+  font-size: var(--pfFontHeader3Size);
+  font-weight: 700;
+  color: var(--pfTitleColor);
+  line-height: 1.1;
+}
+
+/* Plot area — gridlines are a repeating background so they need no markup */
+.pf-chart-plot {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  gap: 10px;
+  height: 180px;
+  padding: 0 2px;
+  border-bottom: 1px solid var(--pfChart_LineColor_2);
+  background-image: repeating-linear-gradient(
+    to top,
+    var(--pfChart_LineColor_1) 0 1px,
+    transparent 1px 25%
+  );
+}
+.pf-chart-plot.tall { height: 240px; }
+
+/* One column = one period. --v is the value as a percentage of the axis max. */
+.pf-chart-col {
+  display: grid;
+  grid-template-rows: auto 1fr auto;   /* value | track | axis label */
+  justify-items: center;
+  align-items: end;
+  gap: 6px;
+  height: 100%;
+}
+/* Rows are assigned explicitly: a column may omit the value label, and auto
+   placement would otherwise put the track in the label's row and mis-scale it. */
+.pf-chart-val   { grid-row: 1; }
+.pf-chart-track { grid-row: 2; }
+.pf-chart-x     { grid-row: 3; }
+/* The track is the only thing a bar's height percentage resolves against, so
+   the scale stays honest no matter how tall the labels are. */
+.pf-chart-track {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.pf-chart-bar {
+  width: 100%;
+  max-width: 44px;
+  height: calc(var(--v, 0) * 1%);
+  min-height: 2px;
+  border-radius: var(--pfButton_BorderCornerRadius) var(--pfButton_BorderCornerRadius) 0 0;
+  background: var(--pfChart_OrderedColor_1);
+  transition: height var(--pfContent_TransitionDuration_2XL) var(--pfContent_Easing_Decelerate);
+}
+.pf-chart-bar.series-2 { background: var(--pfChart_OrderedColor_2); }
+.pf-chart-bar.series-3 { background: var(--pfChart_OrderedColor_3); }
+.pf-chart-bar.good     { background: var(--pfChart_Good); }
+.pf-chart-bar.bad      { background: var(--pfChart_Bad); }
+.pf-chart-bar.critical { background: var(--pfChart_Critical); }
+.pf-chart-bar.muted    { background: var(--pfChart_IBCS_Previous); }
+/* Highlight the current period without relying on colour alone */
+.pf-chart-col.current .pf-chart-bar { box-shadow: var(--pfContent_Selected_Shadow); }
+.pf-chart-col.current .pf-chart-x   { color: var(--pfContent_Selected_TextColor); }
+
+.pf-chart-val {
+  font-family: var(--pfFontMonoFamily);
+  font-size: var(--pfFontSmallSize);
+  color: var(--pfChart_Data_TextColor);
+  white-space: nowrap;
+}
+.pf-chart-x {
+  font-family: var(--pfFontFamily);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pfContent_LabelColor);
+  padding-top: 8px;
+}
+/* Grouped bars: two or more series sharing one period */
+.pf-chart-group { display: flex; align-items: flex-end; gap: 3px; width: 100%; height: 100%; justify-content: center; }
+.pf-chart-group .pf-chart-bar { max-width: 20px; }
+
+/* Legend */
+.pf-chart-legend { display: flex; flex-wrap: wrap; gap: 16px; }
+.pf-chart-key { display: inline-flex; align-items: center; gap: 8px; font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+.pf-chart-key::before {
+  content: "";
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  background: var(--pfChart_OrderedColor_1);
+}
+.pf-chart-key.series-2::before { background: var(--pfChart_OrderedColor_2); }
+.pf-chart-key.series-3::before { background: var(--pfChart_OrderedColor_3); }
+.pf-chart-key.good::before     { background: var(--pfChart_Good); }
+.pf-chart-key.bad::before      { background: var(--pfChart_Bad); }
+.pf-chart-key.muted::before    { background: var(--pfChart_IBCS_Previous); }
+
+/* Sparkline — inline trend for stat tiles. Bars keep it dependency-free. */
+.pf-sparkline {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 28px;
+}
+.pf-sparkline i {
+  flex: 1;
+  height: calc(var(--v, 0) * 1%);
+  min-height: 2px;
+  border-radius: 1px;
+  background: var(--pfChart_OrderedColor_1);
+  opacity: 0.55;
+}
+.pf-sparkline i:last-child { opacity: 1; }
+.pf-sparkline.good i { background: var(--pfChart_Good); }
+.pf-sparkline.bad i  { background: var(--pfChart_Bad); }
+
 /* ---------- Layout utilities ---------- */
-.pf-grid { display: grid; gap: var(--sapContent_GridGutter_L); }
+.pf-grid { display: grid; gap: var(--pfContent_GridGutter_L); }
 .pf-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
 .pf-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .pf-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
