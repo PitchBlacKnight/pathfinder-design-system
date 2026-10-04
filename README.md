@@ -25,6 +25,14 @@ https://flyer-topaz-40707494.figma.site
 - **Recipes** (`recipes/`) — reference builds: data table, modal set, and the
   full "assemble a desktop" dashboard.
 
+## Developer handoff
+
+`handoff/index.html` is the developer spec for the Figma library: setup, token
+tiers, every component's classes and Figma-to-code mapping, behavior hooks,
+accessibility baseline, floorplan references and known gaps. Figma component
+descriptions and floorplan notes link to it. Edit `handoff/components.json`,
+then rebuild: `python3 tools/build-handoff.py handoff/components.json handoff/index.html`.
+
 ## Fully self-contained
 
 The stage makes **zero external network requests**. Inter, Barlow Condensed and

@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pathfinder Developer Handoff</title>
+<link rel="stylesheet" href="../css/pathfinder.fonts.css">
+<link rel="stylesheet" href="../tokens/pathfinder.tokens.css">
+<link rel="stylesheet" href="../tokens/pathfinder.figma-additions.css">
+<link rel="stylesheet" href="../css/pathfinder.css">
+<script>try{var t=localStorage.getItem('pf-handoff-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<style>
+  /* Handoff page chrome. Every color is a token reference. */
+  body { margin: 0; background: var(--pfBackgroundColor); color: var(--pfTextColor); font-family: var(--pfFontFamily); line-height: 1.55; }
+  .ho { display: grid; grid-template-columns: 220px minmax(0, 1fr); max-width: 1320px; margin: 0 auto; }
+  .ho-nav { position: sticky; top: 0; align-self: start; height: 100vh; padding: 32px 20px; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid var(--pfGroup_ContentBorderColor); box-sizing: border-box; }
+  .ho-nav a { color: var(--pfContent_LabelColor); text-decoration: none; padding: 6px 10px; border-radius: 6px; font-size: var(--pfFontSize); }
+  .ho-nav a:hover { color: var(--pfTextColor); background: var(--pfShell_Hover_Background); }
+  .ho-nav .brand { font-family: var(--pfFontHeaderFamily); font-size: 20px; letter-spacing: .04em; color: var(--pfTextColor); margin: 0 10px 20px; }
+  .ho-nav .pf-btn { margin-top: 20px; }
+  main { padding: 48px 48px 96px; min-width: 0; }
+  section { margin-top: 64px; scroll-margin-top: 24px; }
+  h1 { margin: 8px 0 12px; line-height: 1.1; }
+  h2 { margin: 0 0 8px; font-size: var(--pfFontHeader3Size); }
+  .lead { color: var(--pfContent_LabelColor); max-width: 760px; margin: 0; }
+  .sub { color: var(--pfContent_LabelColor); max-width: 760px; margin: 0 0 20px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  a { color: var(--pfLinkColor); }
+  a:hover { color: var(--pfLinkHoverColor); }
+  .muted { color: var(--pfContent_LabelColor); }
+  .node { font-size: var(--pfFontSmallSize); }
+  pre { margin: 0; padding: 16px; overflow-x: auto; font-family: var(--pfFontMonoFamily); font-size: var(--pfFontSmallSize); }
+  .pf-table td { vertical-align: top; }
+  .pf-table ul { margin: 0; padding-left: 16px; }
+  .pf-table { table-layout: fixed; width: 100%; }
+  .pf-table td, .pf-table th { white-space: normal; }
+  .pf-table td code { font-size: var(--pfFontSmallSize); overflow-wrap: anywhere; }
+  .map col.c1 { width: 15%; } .map col.c2 { width: 11%; } .map col.c3 { width: 26%; } .map col.c4 { width: 26%; } .map col.c5 { width: 22%; }
+  @media (max-width: 900px) { .pf-table.map { min-width: 860px; } }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+  .checklist li { margin: 6px 0; }
+  @media (max-width: 900px) {
+    .ho { grid-template-columns: 1fr; }
+    .ho-nav { position: static; height: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--pfGroup_ContentBorderColor); padding: 16px; }
+    .ho-nav .brand { width: 100%; margin: 0 0 8px; }
+    .ho-nav .pf-btn { margin: 0 0 0 auto; }
+    main { padding: 32px 16px 64px; }
+    h1 { font-size: var(--pfFontHeader2Size); }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>
+</head>
+<body>
+<div class="ho">
+<nav class="ho-nav" aria-label="Sections">
+  <div class="brand">PATHFINDER</div>
+  <a href="#setup">Setup</a><a href="#tokens">Tokens</a><a href="#components">Components</a><a href="#behavior">Behavior</a><a href="#a11y">Accessibility</a><a href="#responsive">Responsive</a><a href="#floorplans">Floorplans</a><a href="#checklist">Handoff checklist</a><a href="#gaps">Known gaps</a>
+  <button class="pf-btn pf-btn-secondary pf-btn-sm" id="theme" type="button">Switch to Light</button>
+</nav>
+<main>
+  <span class="pf-overline">Pathfinder 2.0 · Figma library 1.2 · 2026-10-04</span>
+  <h1>Developer handoff</h1>
+  <p class="lead">Everything a developer needs to build from the Pathfinder Figma file. Figma shows what to build and which tokens it uses. This page covers how: classes, behavior, accessibility and what is not in code yet. It lives next to the code so the two stay in step.</p>
+  <div class="links">
+    <a class="pf-btn pf-btn-primary pf-btn-sm" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE">Figma library</a>
+    <a class="pf-btn pf-btn-secondary pf-btn-sm" href="https://port-sable-50786193.figma.site">Docs site</a>
+    <a class="pf-btn pf-btn-secondary pf-btn-sm" href="../playground/">Playground</a>
+    <a class="pf-btn pf-btn-secondary pf-btn-sm" href="../recipes/desktop.html">Recipes</a>
+  </div>
+  <div class="stats">
+    <div class="pf-card pf-stat"><span class="pf-stat-label">Mapped components</span><span class="pf-stat-value">39</span></div>
+    <div class="pf-card pf-stat"><span class="pf-stat-label">In pathfinder.css</span><span class="pf-stat-value">20</span></div>
+    <div class="pf-card pf-stat"><span class="pf-stat-label">Figma only</span><span class="pf-stat-value">18</span></div>
+    <div class="pf-card pf-stat"><span class="pf-stat-label">Contrast checks passing</span><span class="pf-stat-value">126/126</span></div>
+  </div>
+
+  <section id="setup">
+    <h2>Setup</h2>
+    <p class="sub">No build step and no dependencies. Load the files in this order; the additions file must come after the token file.</p>
+    <div class="pf-card"><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/pathfinder.fonts.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;tokens/pathfinder.tokens.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;tokens/pathfinder.figma-additions.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/pathfinder.css&quot;&gt;
+&lt;script src=&quot;js/pathfinder.js&quot; defer&gt;&lt;/script&gt;
+
+&lt;!-- Light mode: one attribute. Dark is the default. --&gt;
+&lt;html data-theme=&quot;light&quot;&gt;</code></pre></div>
+  </section>
+
+  <section id="tokens">
+    <h2>Tokens</h2>
+    <p class="sub">Figma variables carry their CSS name, so Dev Mode shows <code>var(--pfShell_Background)</code> instead of a hex value. Use the Component token when one exists, then the Theme token. Never hardcode a value: <code>./audit.sh</code> fails on any hex, rgb() or non-token font.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Figma collection</th><th>Holds</th><th>In code</th></tr></thead><tbody><tr><td><strong>1. Primitives</strong></td><td>Raw palette and alphas, such as blue/600 or white/a38.</td><td class="code">None. Never reference a primitive in product code.</td></tr><tr><td><strong>2. Theme</strong></td><td>Every color that changes between Dark and Light, including role tokens (control/*, content/*, global/*).</td><td class="code"><code>:root</code> and <code>:root[data-theme="light"]</code></td></tr><tr><td><strong>3. Layout</strong></td><td>Spacing, sizing, radius, type sizes and weights, motion, breakpoints. No modes.</td><td class="code"><code>--pfSpace*</code>, <code>--pfFont*Size</code>, <code>--pfBreakpoint_*</code></td></tr><tr><td><strong>4. Component</strong></td><td>Component-level tokens that alias Theme or Layout. This is what components bind to.</td><td class="code"><code>--pfButton_Emphasized_Background</code> and the rest</td></tr></tbody></table></div>
+  </section>
+
+  <section id="components">
+    <h2>Components</h2>
+    <p class="sub">Every Figma component, its code and how its properties map. Each Figma component description links to its row here. React props come from the docs site source: [def] read from the component definition, [use] inferred from usage.</p>
+    <div class="pf-table-wrap"><table class="pf-table map"><colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"></colgroup><thead><tr><th>Component</th><th>Status</th><th>HTML</th><th>Figma → code</th><th>React props (docs site)</th></tr></thead><tbody>
+<tr id="button">
+  <td><strong>Button</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=8-464">node 8:464</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;button class=&quot;pf-btn pf-btn-primary pf-btn-sm&quot;&gt;</code></td>
+  <td><ul><li>Variant: Default → .pf-btn-secondary; Emphasized → .pf-btn-primary; Ghost → .pf-btn-ghost; Reject → .pf-btn-danger; Accept → .pf-btn-success</li><li>Size: sm → .pf-btn-sm; md → (none); lg → .pf-btn-lg</li><li>State: Disabled → disabled attribute; Hover, Active, Focus → CSS states</li><li>Label → button text. Left/Right icon → icon prop</li></ul></td>
+  <td class="code"><code>variant(primary|secondary|ghost|danger|positive), size(sm|md|lg), disabled, icon [def]</code></td>
+</tr>
+<tr id="input">
+  <td><strong>Input</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=9-190">node 9:190</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-field&quot;&gt;&lt;label class=&quot;pf-label&quot;&gt;&lt;/label&gt;&lt;input class=&quot;pf-input&quot;&gt;&lt;p class=&quot;pf-help&quot;&gt;&lt;/p&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>State: Error → .pf-field.invalid / state=&quot;error&quot;; Disabled, ReadOnly → attributes</li><li>Label → .pf-label. Helper → .pf-help. Value → input value</li></ul></td>
+  <td class="code"><code>state(default|hover|focus|error|warning|success|disabled|readonly), size(default|compact) [def]</code></td>
+</tr>
+<tr id="checkbox">
+  <td><strong>Checkbox</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-62">node 10:62</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Value: Checked → checked; Indeterminate → indeterminate</li><li>State: Disabled → state=&quot;disabled&quot;</li></ul></td>
+  <td class="code"><code>checked, indeterminate, onChange, label, state(default|disabled|error) [def]</code></td>
+</tr>
+<tr id="toggle">
+  <td><strong>Toggle</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-129">node 10:129</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;label class=&quot;pf-toggle&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt;&lt;span class=&quot;track&quot;&gt;&lt;/span&gt;&lt;span class=&quot;pf-toggle-label&quot;&gt;&lt;/span&gt;&lt;/label&gt;</code></td>
+  <td><ul><li>Value: On → input checked / on</li><li>Size → size. Label → .pf-toggle-label / labelOn, labelOff</li></ul></td>
+  <td class="code"><code>on, onChange, size(default|compact), labelPosition(right|left|none), labelOn, labelOff, semantic(default|positive|negative|attention), disabled [def]</code></td>
+</tr>
+<tr id="badge">
+  <td><strong>Badge</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-194">node 10:194</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;span class=&quot;pf-badge pf-badge-gold&quot;&gt;</code></td>
+  <td><ul><li>Status: Neutral → .pf-badge-neutral; Information → .pf-badge-info; Positive → .pf-badge-positive; Critical (orange) → .pf-badge-critical; Negative (red) → .pf-badge-negative; Gold → .pf-badge-gold</li><li>.pf-badge-warning and .pf-badge-active stay as code aliases of critical and positive</li></ul></td>
+  <td class="code"><code>variant(positive|negative|critical|info|neutral|gold) [use]</code></td>
+</tr>
+<tr id="tag">
+  <td><strong>Tag</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-255">node 10:255</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Removable → dismissable</li></ul></td>
+  <td class="code"><code>dismissable, variant(info|positive|negative|critical|neutral) [use]</code></td>
+</tr>
+<tr id="avatar">
+  <td><strong>Avatar</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-368">node 10:368</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;span class=&quot;pf-avatar color-1&quot;&gt;MR&lt;/span&gt;</code></td>
+  <td><ul><li>Color 1-10 → .color-1 to .color-10 / colorIndex. The older .c1-.c4 classes still work</li><li>Initials → initials. Size → size</li></ul></td>
+  <td class="code"><code>size(xs|sm|md|lg|xl), type(initials|image|icon), colorIndex(1-10), shape(circle|square), initials [def]</code></td>
+</tr>
+<tr id="card">
+  <td><strong>Card</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-461">node 10:461</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-card&quot;&gt;  (.pf-card-interactive when clickable)</code></td>
+  <td><ul><li>Header, Footer booleans → header, footer slots. Content swap → body</li><li>State: Hover → .pf-card-interactive:hover</li></ul></td>
+  <td class="code"><code>header, body, footer [use]</code></td>
+</tr>
+<tr id="stat-tile">
+  <td><strong>Stat Tile</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-554">node 10:554</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-card pf-stat&quot;&gt;&lt;span class=&quot;pf-stat-label&quot;&gt;&lt;/span&gt;&lt;span class=&quot;pf-stat-value&quot;&gt;&lt;/span&gt;&lt;span class=&quot;pf-stat-delta up&quot;&gt;&lt;/span&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>Trend: Up → .pf-stat-delta.up; Down → .pf-stat-delta.down</li><li>Label → .pf-stat-label. Value → .pf-stat-value</li></ul></td>
+  <td class="code"><code>not found in the docs site source</code></td>
+</tr>
+<tr id="tab-item">
+  <td><strong>Tab item</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-614">node 10:614</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;button class=&quot;pf-tab&quot; aria-selected=&quot;true&quot;&gt;</code></td>
+  <td><ul><li>Selected → aria-selected=&quot;true&quot; / activeId</li></ul></td>
+  <td class="code"><code>part of Tabs: tabs[{id,label}] [def]</code></td>
+</tr>
+<tr id="tabs">
+  <td><strong>Tabs</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-618">node 10:618</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-tabs&quot;&gt; .pf-tab ×n</code></td>
+  <td><ul><li>Composed of Tab item</li></ul></td>
+  <td class="code"><code>tabs(id,label), activeId, onSelect, variant(default|boxed|inline), compact, semantic(none|positive|negative|critical|neutral) [def]</code></td>
+</tr>
+<tr id="notification">
+  <td><strong>Notification</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-710">node 10:710</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-toast positive&quot;&gt;  (inside .pf-toast-region)</code></td>
+  <td><ul><li>Status: Success → .pf-toast.positive; Error → .pf-toast.negative; Information, Warning → type only</li><li>Title → title. Message → body. Dismissible → closeable</li></ul></td>
+  <td class="code"><code>type(error|warning|success|information|neutral), title, body, closeable, showIcon, onClose [def]</code></td>
+</tr>
+<tr id="progress">
+  <td><strong>Progress</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=10-795">node 10:795</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-progress positive&quot;&gt;&lt;div class=&quot;bar&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>Status: Positive → .positive; Critical → .critical; Negative → .negative; Information → (default)</li><li>Amount → value. Show label → showLabel</li></ul></td>
+  <td class="code"><code>value, variant(default|positive|negative|critical|information), height, showLabel, indeterminate [def]</code></td>
+</tr>
+<tr id="table-header-cell">
+  <td><strong>Table / Header cell</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=11-38">node 11:38</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;th&gt; inside .pf-table</code></td>
+  <td><ul><li>Sort arrow → th[data-sort]</li></ul></td>
+  <td class="code"><code>part of DataTable columns [use]</code></td>
+</tr>
+<tr id="table-cell">
+  <td><strong>Table / Cell</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=11-78">node 11:78</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;td&gt; inside .pf-table</code></td>
+  <td><ul><li>Type=Custom Content swap → cell render function</li></ul></td>
+  <td class="code"><code>part of DataTable rows [use]</code></td>
+</tr>
+<tr id="data-table">
+  <td><strong>Data Table</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=11-82">node 11:82</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-table-wrap striped compact&quot;&gt;&lt;div class=&quot;pf-table-toolbar&quot;&gt;&lt;/div&gt;&lt;table class=&quot;pf-table&quot;&gt;&lt;/table&gt;&lt;div class=&quot;pf-table-footer&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>Compact rows → .pf-table-wrap.compact. Zebra → .striped</li></ul></td>
+  <td class="code"><code>columns, rows, sortable, selectable, filterable [use]</code></td>
+</tr>
+<tr id="select">
+  <td><strong>Select</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-112">node 15:112</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;select class=&quot;pf-select&quot;&gt;</code></td>
+  <td><ul><li>State: Error → .pf-field.invalid / state=&quot;error&quot;</li></ul></td>
+  <td class="code"><code>state(error|warning|success|disabled) [use]</code></td>
+</tr>
+<tr id="slider">
+  <td><strong>Slider</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-292">node 15:292</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Mode: Range → two values. Size: Compact → compact</li></ul></td>
+  <td class="code"><code>value, onChange, min, max, step, disabled, compact, semantic(default|positive|negative|attention), label, showValue [def]</code></td>
+</tr>
+<tr id="date-picker">
+  <td><strong>Date Picker</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-570">node 15:570</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Open → popover shown</li></ul></td>
+  <td class="code"><code>currentMonth, selectedDate, onSelect, onPrev, onNext, rangeStart, rangeEnd [use]</code></td>
+</tr>
+<tr id="file-upload-dropzone">
+  <td><strong>File Upload / Dropzone</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-618">node 15:618</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>State: Drag over → CSS state</li></ul></td>
+  <td class="code"><code>part of FileUpload [use]</code></td>
+</tr>
+<tr id="file-upload">
+  <td><strong>File Upload</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-660">node 15:660</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>File row state → state</li></ul></td>
+  <td class="code"><code>file, progress, state(uploading|complete|error) [use]</code></td>
+</tr>
+<tr id="accordion-item">
+  <td><strong>Accordion item</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-767">node 15:767</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Expanded → isOpen. Title → title. Content → content</li></ul></td>
+  <td class="code"><code>title, content, isOpen, onToggle, icon, itemStyle(default|filled|bordered) [def]</code></td>
+</tr>
+<tr id="accordion">
+  <td><strong>Accordion</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-771">node 15:771</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Composed of Accordion item</li></ul></td>
+  <td class="code"><code>items of Accordion item [def]</code></td>
+</tr>
+<tr id="nav-sidebar-item">
+  <td><strong>Nav / Sidebar item</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=16-29">node 16:29</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;a class=&quot;pf-nav-item&quot; aria-current=&quot;page&quot;&gt;</code></td>
+  <td><ul><li>State: Selected → aria-current=&quot;page&quot;</li></ul></td>
+  <td class="code"><code>items(label, href, icon) [use]</code></td>
+</tr>
+<tr id="nav-sidebar">
+  <td><strong>Nav / Sidebar</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=16-34">node 16:34</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;nav class=&quot;pf-sidenav&quot;&gt; .pf-nav-group &gt; .pf-nav-item</code></td>
+  <td><ul><li>Composed of Nav / Sidebar item</li></ul></td>
+  <td class="code"><code>items(label, href, icon), compact [use]</code></td>
+</tr>
+<tr id="nav-header-bar">
+  <td><strong>Nav / Header bar</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=16-69">node 16:69</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;header class=&quot;pf-topbar&quot;&gt;</code></td>
+  <td><ul><li>App shell: .pf-shell &gt; .pf-topbar + .pf-sidenav + .pf-main</li></ul></td>
+  <td class="code"><code>not found in the docs site source</code></td>
+</tr>
+<tr id="nav-stepper">
+  <td><strong>Nav / Stepper</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=16-105">node 16:105</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Composed of .Nav / Step. Proposed: ordered list, aria-current=&quot;step&quot; on the active step</li></ul></td>
+  <td class="code"><code>not found in the docs site source</code></td>
+</tr>
+<tr id="breadcrumb-item">
+  <td><strong>Breadcrumb item</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=16-175">node 16:175</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Type: Current → last item, not a link</li></ul></td>
+  <td class="code"><code>part of Breadcrumb items(label, href, icon) [def]</code></td>
+</tr>
+<tr id="breadcrumb">
+  <td><strong>Breadcrumb</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=45-9">node 45:9</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Collapsed → middle items replaced by an overflow item</li></ul></td>
+  <td class="code"><code>items(label, href, icon), compact [def]</code></td>
+</tr>
+<tr id="pagination">
+  <td><strong>Pagination</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=16-267">node 16:267</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;button class=&quot;pf-page&quot; aria-current=&quot;page&quot;&gt; ×n</code></td>
+  <td><ul><li>Selected page → aria-current=&quot;page&quot; / current</li></ul></td>
+  <td class="code"><code>current, total, onChange, compact [def]</code></td>
+</tr>
+<tr id="modal">
+  <td><strong>Modal</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=17-146">node 17:146</a></td>
+  <td><span class="pf-badge pf-badge-positive">In code</span></td>
+  <td class="code"><code>&lt;div class=&quot;pf-modal-overlay open&quot;&gt;&lt;div class=&quot;pf-modal danger lg&quot;&gt;…&lt;/div&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>Type: Danger → .pf-modal.danger. Size: sm, lg → .sm, .lg</li><li>Header, body, footer → .pf-modal-header, -body, -footer</li></ul></td>
+  <td class="code"><code>open, onClose, variant(default|danger|confirmation|fullscreen), size(sm|md|lg), title [def]</code></td>
+</tr>
+<tr id="tooltip">
+  <td><strong>Tooltip</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=17-240">node 17:240</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Placement → placement. Text → label</li></ul></td>
+  <td class="code"><code>label, placement(top|bottom|left|right|top-start|top-end) [def]</code></td>
+</tr>
+<tr id="popover">
+  <td><strong>Popover</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=17-345">node 17:345</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Type → content inside the popover</li></ul></td>
+  <td class="code"><code>placement(bottom|bottom-start|bottom-end|top|top-start|top-end|left|right), title [def]</code></td>
+</tr>
+<tr id="divider">
+  <td><strong>Divider</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=17-410">node 17:410</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Style → style. Label → label. Orientation: Vertical → not in the docs site</li></ul></td>
+  <td class="code"><code>label, badge, style [use]</code></td>
+</tr>
+<tr id="empty-state">
+  <td><strong>Empty State</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=27-122">node 27:122</a></td>
+  <td><span class="pf-badge pf-badge-info">Recipe</span></td>
+  <td class="code"><span class="muted">recipes/empty-state.html</span></td>
+  <td><ul><li>Type → icon + copy preset. Code: recipes/empty-state.html</li></ul></td>
+  <td class="code"><code>icon, title, description, actions [use]</code></td>
+</tr>
+<tr id="spinner">
+  <td><strong>Spinner</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=26-250">node 26:250</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li class="muted">No variant mapping</li></ul></td>
+  <td class="code"><code>not found in the docs site source</code></td>
+</tr>
+<tr id="skeleton">
+  <td><strong>Skeleton</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=26-257">node 26:257</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li class="muted">No variant mapping</li></ul></td>
+  <td class="code"><code>not found in the docs site source</code></td>
+</tr>
+<tr id="error-card">
+  <td><strong>Error Card</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=27-320">node 27:320</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li class="muted">No variant mapping</li></ul></td>
+  <td class="code"><code>not found in the docs site source</code></td>
+</tr>
+<tr id="error-page">
+  <td><strong>Error Page</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=27-384">node 27:384</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li class="muted">No variant mapping</li></ul></td>
+  <td class="code"><code>not found in the docs site source</code></td>
+</tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="behavior">
+    <h2>Behavior</h2>
+    <p class="sub"><code>js/pathfinder.js</code> wires all interaction through data attributes and one delegated listener, so markup added at runtime works without setup.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Attribute</th><th>On</th><th>Does</th></tr></thead><tbody><tr><td class="code"><code>data-modal-open=&quot;id&quot;</code></td><td>Any button</td><td>Opens the overlay with that id. Focus moves to its first control.</td></tr><tr><td class="code"><code>data-modal-close</code></td><td>Button inside a modal</td><td>Closes the modal and returns focus to the trigger.</td></tr><tr><td class="code"><code>data-static</code></td><td>.pf-modal-overlay</td><td>Danger and confirmation dialogs. Escape and overlay click do not close it.</td></tr><tr><td class="code"><code>data-confirm-gate=&quot;checkboxId&quot;</code></td><td>Button</td><td>Stays disabled until that checkbox is checked. Required on the most critical deletes.</td></tr><tr><td class="code"><code>data-toast=&quot;Title|Detail|tone&quot;</code></td><td>Any button</td><td>Shows a .pf-toast in the aria-live region. Can share a button with data-modal-close.</td></tr><tr><td class="code"><code>data-sort</code></td><td>th</td><td>Click toggles aria-sort ascending/descending. Numeric values sort as numbers.</td></tr><tr><td class="code"><code>data-select-all / data-select-row</code></td><td>Checkbox in th / td</td><td>Keeps row checkboxes and aria-selected in sync.</td></tr><tr><td class="code"><code>data-filter-table=&quot;#table&quot;</code></td><td>select</td><td>Shows only rows whose data-status matches the value (&quot;all&quot; shows every row).</td></tr><tr><td class="code"><code>data-open</code></td><td>.pf-modal-overlay</td><td>Renders the modal already open (used by the live stage).</td></tr></tbody></table></div>
+  </section>
+
+  <section id="a11y">
+    <h2>Accessibility</h2>
+    <p class="sub">The baseline every screen must keep.</p>
+    <div class="pf-card"><ul class="checklist">
+      <li><strong>Contrast:</strong> 63 pairings checked in both modes (126 checks), all at WCAG AA or better. Run <code>./contrast.sh</code> after any token change. Disabled text is exempt (WCAG 1.4.3).</li>
+      <li><strong>Focus:</strong> every control shows <code>:focus-visible</code> using <code>--pfContent_FocusColor</code> at <code>--pfContent_FocusWidth</code>. Do not remove outlines.</li>
+      <li><strong>Modals:</strong> <code>role="dialog"</code> and <code>aria-modal="true"</code>. Focus moves to the first control on open and back to the trigger on close. Escape closes every modal except <code>data-static</code> ones.</li>
+      <li><strong>State in ARIA:</strong> sorted column <code>aria-sort</code>, selected rows and tabs <code>aria-selected</code>, current page and nav item <code>aria-current="page"</code>.</li>
+      <li><strong>Announcements:</strong> toasts render in a region with <code>aria-live="polite"</code>.</li>
+      <li><strong>Labels:</strong> every input has a <code>.pf-label</code> tied by <code>for</code>/<code>id</code>. Required fields are marked in the label, not only by color.</li>
+    </ul></div>
+  </section>
+
+  <section id="responsive">
+    <h2>Responsive</h2>
+    <p class="sub">Floorplans are drawn at 1440. Breakpoint tokens (<code>--pfBreakpoint_M_Min</code> 600px, <code>L_Min</code> 1024px, <code>XL_Min</code> 1440px) define the steps; the media queries in <code>pathfinder.css</code> mirror them because CSS cannot read variables inside <code>@media</code>.</p>
+    <div class="pf-card"><ul class="checklist">
+      <li>Under 1024px the sidenav collapses.</li>
+      <li>Under 1024px three- and four-column grids drop to two columns.</li>
+      <li>Under 600px every grid restacks to one column.</li>
+      <li>Tables scroll inside <code>.pf-table-wrap</code>; the page never scrolls sideways.</li>
+    </ul></div>
+  </section>
+
+  <section id="floorplans">
+    <h2>Floorplans</h2>
+    <p class="sub">Each Figma floorplan frame carries a dev note with its shell, recipe and this link. Tables, steppers, modals and toasts inside them carry behavior notes.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Floorplan</th><th>Purpose</th><th>Code reference</th></tr></thead><tbody><tr><td><strong>Dashboard</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=4-61">page 4:61</a></td><td>Overview of partner KPIs, activity and recent records in one screen.</td><td class="code"><code>recipes/desktop.html, stage/app.html</code></td></tr><tr><td><strong>Project Manager</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=38-2">page 38:2</a></td><td>Command center for milestones, ownership, dependencies and delivery health.</td><td class="code"><span class="muted">None yet. Build from the components shown.</span></td></tr><tr><td><strong>Analytical List</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=35-2">page 35:2</a></td><td>Filterable, sortable master list with bulk actions and pagination.</td><td class="code"><code>recipes/data-table.html, recipes/orders-page.html</code></td></tr><tr><td><strong>Object Detail</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=38-255">page 38:255</a></td><td>Single record view: identity header, key facts, tabs and related records.</td><td class="code"><code>recipes/detail.html</code></td></tr><tr><td><strong>Project Information</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=38-467">page 38:467</a></td><td>Structured project record with grouped attributes and editable details.</td><td class="code"><span class="muted">None yet. Build from the components shown.</span></td></tr><tr><td><strong>Guided Wizard</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=38-717">page 38:717</a></td><td>Multi-step flow with per-step validation, progress and a review step.</td><td class="code"><code>recipes/form.html (fields only)</code></td></tr><tr><td><strong>Approval Queue</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=38-850">page 38:850</a></td><td>Review, approve, reject or escalate partner requests; high-risk items flagged.</td><td class="code"><span class="muted">None yet. Build from the components shown.</span></td></tr><tr><td><strong>IQA Builder</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=38-1057">page 38:1057</a></td><td>Workspace for authoring questions, logic, scoring and outcomes.</td><td class="code"><span class="muted">None yet. Build from the components shown.</span></td></tr><tr><td><strong>Connectivity Navigator</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=38-1322">page 38:1322</a></td><td>Spatial canvas with relationship context, selection details and navigation.</td><td class="code"><span class="muted">None yet. Build from the components shown.</span></td></tr></tbody></table></div>
+  </section>
+
+  <section id="checklist">
+    <h2>Handoff checklist</h2>
+    <p class="sub">What a design should meet before it is marked ready for development.</p>
+    <div class="pf-card"><ul class="checklist">
+      <li>Every fill, stroke, radius, spacing and type value is bound to a variable or style.</li>
+      <li>Only library components are used; anything new goes through the contribution flow on the Governance page first.</li>
+      <li>Hover, focus, disabled and error states are shown where they apply.</li>
+      <li>Empty, loading and error versions exist for every data surface.</li>
+      <li>Behavior that the screen cannot show (validation, sorting, what a button does) is written in a Figma note.</li>
+      <li>Placeholder content is replaced with real data or clearly marked as invented.</li>
+      <li>The screen is checked in Light mode by switching 2. Theme.</li>
+    </ul></div>
+  </section>
+
+  <section id="gaps">
+    <h2>Known gaps</h2>
+    <div class="pf-card"><ul class="checklist">
+      <li><strong>18 components are Figma only.</strong> They exist in Figma and the docs site but not in <code>pathfinder.css</code>. Build them from tokens and add them to the library rather than one-off in a product.</li>
+      <li><strong>No focus trap yet.</strong> Modals move and restore focus, but Tab can still leave an open modal. Add a trap in <code>openModal</code>.</li>
+      <li><strong>Stepper is not in code.</strong> Proposed markup: an ordered list with <code>aria-current="step"</code> on the active step.</li>
+      <li><strong>Code Connect is not published.</strong> It needs a Figma Organization or Enterprise plan; the file is on Pro. The mappings above stand in for it.</li>
+      <li><strong>Some floorplan content is invented:</strong> chart values, some table rows, file names, audit text and map positions. Do not treat them as real data.</li>
+    </ul></div>
+  </section>
+</main>
+</div>
+<script>
+  (function () {
+    var b = document.getElementById('theme'), r = document.documentElement;
+    function label() { b.textContent = r.dataset.theme === 'light' ? 'Switch to Dark' : 'Switch to Light'; }
+    label();
+    b.addEventListener('click', function () {
+      if (r.dataset.theme === 'light') delete r.dataset.theme; else r.dataset.theme = 'light';
+      try { localStorage.setItem('pf-handoff-theme', r.dataset.theme || ''); } catch (e) {}
+      label();
+    });
+  })();
+</script>
+</body>
+</html>
