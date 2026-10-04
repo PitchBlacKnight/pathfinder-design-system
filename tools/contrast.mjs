@@ -21,12 +21,14 @@
            ./contrast.sh --verbose  also print the composited RGB for each side
    ========================================================================== */
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TOKENS = join(ROOT, 'tokens', 'pathfinder.tokens.css');
+// Figma library additions load after the token file in every page; audit them too.
+const ADDITIONS = join(ROOT, 'tokens', 'pathfinder.figma-additions.css');
 
 const argv = process.argv.slice(2);
 const REPORT_ONLY = argv.includes('--report');
@@ -199,6 +201,7 @@ const PAIRINGS = [
   { what: 'Informative badge',          fg: '--pfInformativeTextColor',         on: [...TILE, '--pfInformationBackground'], min: 4.5 },
   { what: 'Warning badge',              fg: '--pfCriticalTextColor',            on: [...TILE, '--pfWarningBackground'],     min: 4.5 },
   { what: 'Negative badge',             fg: '--pfNegativeTextColor',            on: [...TILE, '--pfErrorBackground'],       min: 4.5 },
+  { what: 'Gold badge',                 fg: '--pfAccent_Gold_TextColor',        on: [...TILE, '--pfAccent_Gold_Background'], min: 4.5 },
 
   { group: 'Fields' },
   { what: 'Field text',                 fg: '--pfField_TextColor',              on: FIELD, min: 4.5 },
@@ -223,7 +226,7 @@ const PAIRINGS = [
   { what: 'Tab (selected)',             fg: '--pfTab_Selected_TextColor',               on: [...TILE, '--pfTab_Background'], min: 4.5 },
 
   { group: 'Avatars' },
-  ...[1, 4, 6, 7, 8].map(n => ({
+  ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => ({
     what: `Avatar ${n}`,
     fg: `--pfAvatar_${n}_TextColor`,
     on: [...TILE, `--pfAvatar_${n}_Background`],
@@ -257,7 +260,7 @@ function grade(r, pair) {
   return { label, ok: pass, aaa };
 }
 
-const css = readFileSync(TOKENS, 'utf8');
+const css = readFileSync(TOKENS, 'utf8') + (existsSync(ADDITIONS) ? '\n' + readFileSync(ADDITIONS, 'utf8') : '');
 const { dark, light } = parseTokens(css);
 
 const rows = [];

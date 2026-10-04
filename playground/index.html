@@ -10,6 +10,7 @@
   document.write(
     '<link rel="stylesheet" href="../css/pathfinder.fonts.css?v=' + PF_V + '">' +
     '<link rel="stylesheet" href="../tokens/pathfinder.tokens.css?v=' + PF_V + '">' +
+    '<link rel="stylesheet" href="../tokens/pathfinder.figma-additions.css?v=' + PF_V + '">' +
     '<link rel="stylesheet" href="../css/pathfinder.css?v=' + PF_V + '">'
   );
 </script>
@@ -312,7 +313,7 @@
   var SLOTS = {
     badge:    { name: 'pf-badge · info', html: '<span class="pf-badge pf-badge-info">▶ IN FLIGHT</span>' },
     progress: { name: 'pf-progress · positive', html: '<div class="pf-progress positive" style="margin-top:4px;width:200px"><div class="bar" style="width:64%"></div></div>' },
-    team:     { name: 'pf-avatar-group', html: '<span class="pf-avatar-group"><span class="pf-avatar c1">JD</span><span class="pf-avatar c3">DS</span><span class="pf-avatar c6">+4</span></span>' },
+    team:     { name: 'pf-avatar-group', html: '<span class="pf-avatar-group"><span class="pf-avatar c1">JD</span><span class="pf-avatar c3">DS</span><span class="pf-avatar color-6">+4</span></span>' },
     raw:      { name: 'free text (non-preferred)', html: '<span style="font-size:12px;color:var(--pfContent_LabelColor)">Ad-hoc annotation text</span>' }
   };
   var $ = function (q) { return document.querySelector(q); };

@@ -1,0 +1,226 @@
+/* ============================================================
+   PATHFINDER 2.0 - Figma library additions
+   Generated 2026-10-04 from the Figma library (file ysLgPqCzELzxKw6KVZdKjE).
+   Loaded right after pathfinder.tokens.css by index.html, playground and stage,
+   and read by ./contrast.sh. Source of truth: CLAUDE CODE/pathfinder-2.0.
+
+   Holds only what the Figma library has and pathfinder.tokens.css does not:
+   1. Tokens added in Figma (role tokens that component tokens alias,
+      elevation colors, avatar and gold accents, extra type sizes and weights).
+   2. Light values for tokens the code light block does not override.
+   Light precedence matches Figma: this repo's code values first, then the
+   docs site, then derived. Comments mark the last two: site = the docs site's
+   [data-theme=light]; derived = no explicit value anywhere, follows the code
+   light conventions (ink #0f172a neutrals, sky-600 accents). Unmarked values
+   equal a code value or follow another token.
+   ============================================================ */
+
+:root {
+  /* Elevation colors (bound to the shadow, focus and glow effect styles) */
+  --pfElevation_0_ShadowColor: #00000066;
+  --pfElevation_0_AmbientColor: #00000066;
+  --pfElevation_1_ShadowColor: #00000099;
+  --pfElevation_1_AmbientColor: #00000066;
+  --pfElevation_2_ShadowColor: #0000008c;
+  --pfElevation_2_HighlightColor: #ffffff0a;
+  --pfElevation_3_ShadowColor: #000000a6;
+  --pfElevation_3_AmbientColor: #0080ff14;
+  --pfElevation_4_ShadowColor: #000000bf;
+  --pfElevation_4_AmbientColor: #0080ff1f;
+  --pfElevation_GlowColor: #0080ff59;
+
+  /* Control roles */
+  --pfControl_Background: #ffffff0d;
+  --pfControl_BorderColor: #ffffff2e;
+  --pfControl_Hover_Background: #ffffff17;
+  --pfControl_Hover_BorderColor: #ffffff47;
+  --pfControl_Active_Background: #ffffff1f;
+  --pfControl_PressedBackground: #ffffff14;
+  --pfControl_Handle_Background: #0f1e35;
+  --pfControl_Handle_BorderColor: #ffffff33;
+  --pfControl_Handle_Selected_Background: #0a1628;
+  --pfControl_Token_Background: #ffffff0f;
+  --pfControl_Token_BorderColor: #ffffff26;
+  --pfControl_Field_Background: #ffffff0a;
+  --pfControl_Field_BorderColor: #ffffff2e;
+  --pfControl_Field_Hover_Background: #ffffff0f;
+  --pfControl_Field_Focus_Background: #ffffff0d;
+  --pfControl_Field_ReadOnly_Background: #ffffff05;
+  --pfControl_Track_Background: #ffffff1f;
+  --pfControl_Track_SubtleBackground: #ffffff1a;
+  --pfControl_Ghost_TextColor: #27bdfa;
+
+  /* Content roles */
+  --pfContent_BodyTextColor: #ffffffe0;
+  --pfContent_PlaceholderTextColor: #ffffff61;
+  --pfContent_SubtleBorderColor: #ffffff1a;
+  --pfContent_SurfaceBackground: #081224e0;
+  --pfContent_SurfaceHeaderBackground: #0f1e35;
+  --pfContent_SurfaceBorderColor: #ffffff14;
+  --pfContent_InsetBackground: #ffffff0a;
+  --pfContent_DividerColor: #ffffff0f;
+  --pfContent_StripeBackground: #ffffff05;
+  --pfContent_HoverBackground: #ffffff0a;
+  --pfContent_ListHoverBackground: #0080ff0f;
+  --pfContent_ListSelectionBackground: #0080ff33;
+  --pfContent_RequiredColor: #f472b6;
+
+  /* Highlight and status roles */
+  --pfGlobal_HighlightBorderColor: #27bdfa73;
+  --pfGlobal_HighlightHoverBackground: #27bdfa14;
+  --pfGlobal_HighlightSoftBackground: #27bdfa26;
+  --pfGlobal_HighlightMediumBackground: #27bdfa33;
+  --pfGlobal_PositiveFillColor: #22c55e;
+
+  /* Avatar accents */
+  --pfAccent_Avatar1_Background: #422006;
+  --pfAccent_Avatar1_TextColor: #fde68a;
+  --pfAccent_Avatar2_Background: #450a0a;
+  --pfAccent_Avatar2_TextColor: #fca5a5;
+  --pfAccent_Avatar3_Background: #4a044e;
+  --pfAccent_Avatar3_TextColor: #f0abfc;
+  --pfAccent_Avatar4_Background: #581c87;
+  --pfAccent_Avatar4_TextColor: #d8b4fe;
+  --pfAccent_Avatar5_Background: #1e1b4b;
+  --pfAccent_Avatar5_TextColor: #a5b4fc;
+  --pfAccent_Avatar6_Background: #0c1a47;
+  --pfAccent_Avatar6_TextColor: #93c5fd;
+  --pfAccent_Avatar7_Background: #042f2e;
+  --pfAccent_Avatar7_TextColor: #5eead4;
+  --pfAccent_Avatar8_Background: #14532d;
+  --pfAccent_Avatar8_TextColor: #86efac;
+  --pfAccent_Avatar9_Background: #3b0764;
+  --pfAccent_Avatar9_TextColor: #e879f9;
+  --pfAccent_Avatar10_Background: #0f172a;
+  --pfAccent_Avatar10_TextColor: #94a3b8;
+
+  /* Gold tier badge (.pf-badge-gold, Figma Badge Status=Gold) */
+  --pfAccent_Gold_Background: #e0a02026;
+  --pfAccent_Gold_BorderColor: #e0a02080;
+  --pfAccent_Gold_ElementColor: #e0a020;
+  --pfAccent_Gold_TextColor: #fde68a;
+  --pfAccent_Gold_Color: #e0a020;
+  --pfAccent_Gold_OnColor: #05101f;
+
+  /* Type */
+  --pfGlobal_FontXsmallSize: 11px;
+  --pfGlobal_FontMicroSize: 10px;
+  --pfGlobal_FontNanoSize: 9px;
+  --pfGlobal_FontDisplaySize: 96px;
+  --pfType_Weight_Regular: 400;
+  --pfType_Weight_Medium: 500;
+  --pfType_Weight_Semibold: 600;
+  --pfType_Weight_Bold: 700;
+  --pfType_Weight_Extrabold: 800;
+  --pfType_Weight_HeadingBold: 700;
+  --pfType_Weight_HeadingSemibold: 600;
+}
+
+:root[data-theme="light"] {
+  /* Existing tokens the code light block leaves on their dark values */
+  --pfBase_Background: #f4f6fb; /* site */
+  --pfShell_Background: #ffffff;
+  --pfBaseColor: #f4f6fb; /* derived */
+  --pfHighlightTextColor: #ffffff; /* derived */
+  --pfActiveColor: #0f172a12; /* derived */
+  --pfInformativeColor: #0284c7; /* derived */
+  --pfNeutralElementColor: #64748b; /* derived */
+  --pfContent_ForegroundColor: #0f172aeb;
+  --pfBorderColor: #0f172a14;
+  --pfContent_NonInteractiveIconColor: #0f172a80; /* derived */
+  --pfContent_ContrastTextColor: #ffffff; /* derived */
+  --pfContent_Selected_Hover_Background: #0080ff26; /* derived */
+  --pfContent_Placeholderloading_Background: #0f172a0f; /* derived */
+  --pfShell_Hover_Background: #0f172a14; /* derived */
+  --pfShell_Selected_Background: #0080ff1a; /* derived */
+  --pfShell_Selected_TextColor: #075985; /* derived */
+  --pfShell_InteractiveBackground: #0f172a0d; /* derived */
+  --pfShell_InteractiveBorderColor: #0f172a33; /* derived */
+  --pfBlockLayer_Background: #00000066; /* derived */
+  --pfChart_Background: #ffffffe6;
+  --pfAvatar_9_Background: var(--pfAccent_Avatar9_Background);
+  --pfAvatar_9_TextColor: var(--pfAccent_Avatar9_TextColor);
+  --pfAvatar_10_Background: var(--pfAccent_Avatar10_Background);
+  --pfAvatar_10_TextColor: var(--pfAccent_Avatar10_TextColor);
+
+  /* Elevation */
+  --pfElevation_0_ShadowColor: #00000014; /* derived */
+  --pfElevation_0_AmbientColor: #0000000f; /* derived */
+  --pfElevation_1_ShadowColor: #0000001a; /* derived */
+  --pfElevation_1_AmbientColor: #0000000f; /* derived */
+  --pfElevation_2_ShadowColor: #0000001f; /* site */
+  --pfElevation_2_HighlightColor: #ffffffcc; /* site */
+  --pfElevation_3_ShadowColor: #0f172a26;
+  --pfElevation_3_AmbientColor: #0080ff0d;
+  --pfElevation_4_ShadowColor: #0f172a33;
+  --pfElevation_4_AmbientColor: #0080ff14;
+  --pfElevation_GlowColor: #0080ff33; /* derived */
+
+  /* Control roles */
+  --pfControl_Background: #0f172a08;
+  --pfControl_BorderColor: #0f172a2e;
+  --pfControl_Hover_Background: #0f172a12;
+  --pfControl_Hover_BorderColor: #0f172a47;
+  --pfControl_Active_Background: #0f172a1f; /* derived */
+  --pfControl_PressedBackground: #0f172a14; /* derived */
+  --pfControl_Handle_Background: #ffffff;
+  --pfControl_Handle_BorderColor: #0f172a33;
+  --pfControl_Handle_Selected_Background: #ffffff; /* derived */
+  --pfControl_Token_Background: #0f172a0f; /* derived */
+  --pfControl_Token_BorderColor: #0f172a26; /* derived */
+  --pfControl_Field_Background: #ffffff;
+  --pfControl_Field_BorderColor: #0f172a2e;
+  --pfControl_Field_Hover_Background: #ffffff; /* derived */
+  --pfControl_Field_Focus_Background: #ffffff; /* derived */
+  --pfControl_Field_ReadOnly_Background: #0f172a05; /* derived */
+  --pfControl_Track_Background: #0f172a1f; /* derived */
+  --pfControl_Track_SubtleBackground: #0f172a14;
+  --pfControl_Ghost_TextColor: #075985;
+
+  /* Content roles */
+  --pfContent_BodyTextColor: #0f172ae0;
+  --pfContent_PlaceholderTextColor: #0f172a8a;
+  --pfContent_SubtleBorderColor: #0f172a1f;
+  --pfContent_SurfaceBackground: #ffffffe6;
+  --pfContent_SurfaceHeaderBackground: #f1f5f9;
+  --pfContent_SurfaceBorderColor: #0f172a1a;
+  --pfContent_InsetBackground: #ffffff;
+  --pfContent_DividerColor: #0f172a12;
+  --pfContent_StripeBackground: #0f172a05;
+  --pfContent_HoverBackground: #0f172a06;
+  --pfContent_ListHoverBackground: #0080ff0d;
+  --pfContent_ListSelectionBackground: #0080ff21;
+  --pfContent_RequiredColor: #be185d;
+
+  /* Highlight and status roles */
+  --pfGlobal_HighlightBorderColor: #0284c773;
+  --pfGlobal_HighlightHoverBackground: #0284c714;
+  --pfGlobal_HighlightSoftBackground: #0284c726; /* derived */
+  --pfGlobal_HighlightMediumBackground: #0284c733; /* derived */
+  --pfGlobal_PositiveFillColor: #15803d;
+
+  /* Avatar accents */
+  --pfAccent_Avatar1_Background: #fef3c7;
+  --pfAccent_Avatar1_TextColor: #92400e;
+  --pfAccent_Avatar2_Background: #fee2e2;
+  --pfAccent_Avatar2_TextColor: #991b1b;
+  --pfAccent_Avatar3_Background: #fae8ff;
+  --pfAccent_Avatar3_TextColor: #86198f;
+  --pfAccent_Avatar4_Background: #f3e8ff;
+  --pfAccent_Avatar4_TextColor: #6b21a8;
+  --pfAccent_Avatar5_Background: #e0e7ff;
+  --pfAccent_Avatar5_TextColor: #3730a3;
+  --pfAccent_Avatar6_Background: #dbeafe;
+  --pfAccent_Avatar6_TextColor: #1d4ed8;
+  --pfAccent_Avatar7_Background: #ccfbf1;
+  --pfAccent_Avatar7_TextColor: #0f766e;
+  --pfAccent_Avatar8_Background: #dcfce7;
+  --pfAccent_Avatar8_TextColor: #166534;
+  --pfAccent_Avatar9_Background: #ede9fe; /* derived */
+  --pfAccent_Avatar9_TextColor: #6d28d9; /* derived */
+  --pfAccent_Avatar10_Background: #f1f5f9; /* derived */
+  --pfAccent_Avatar10_TextColor: #334155; /* derived */
+
+  /* Gold tier badge */
+  --pfAccent_Gold_TextColor: #92400e; /* derived */
+}

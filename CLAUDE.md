@@ -19,7 +19,11 @@ components in chat, they appear on a browser stage within a second.
   `tools/contrast.mjs` and is hand-derived from css/pathfinder.css — if a
   component adds a new fg/bg pair, add it there or it goes unchecked.
 - Theme: ◐ THEME chip on stage, or `data-theme="light"` on <html> — light mode is
-  ~90 semantic overrides at the bottom of `tokens/pathfinder.tokens.css`
+  ~90 semantic overrides at the bottom of `tokens/pathfinder.tokens.css`, plus
+  `tokens/pathfinder.figma-additions.css` (loaded right after it; also read by
+  ./contrast.sh). The additions file is generated from the Figma library and only
+  adds tokens or light values the token file does not set; never let it override
+  a value that already exists in pathfinder.tokens.css.
 
 ## Build rules (full detail in .claude/skills/pathfinder/SKILL.md)
 - To show something: Write `stage/app.html` (fragment only). Never edit stage/index.html.
@@ -35,6 +39,11 @@ components in chat, they appear on a browser stage within a second.
   Horizon references anywhere; `tokens/_site-raw.css` is the only permitted trace
   (raw extraction archive, not served).
 - `figma-library-map.json` maps tokens to Figma VariableIDs in file 38dpOqgSdfgnc34LOj4TRf.
+- The newer Figma library (file ysLgPqCzELzxKw6KVZdKjE, 2026-10-04) matches this repo's
+  light values first: when they disagree with the docs site, the code wins. Its
+  Code Connect Prep page maps each component to the `.pf-*` classes here.
+- 2026-10-04: `.pf-badge-critical` became orange (was red, same as negative) to match
+  Figma and the docs-site React Badge; red status uses `.pf-badge-negative`.
 - Deferred builds (see memory: pathfinder-optional-builds): self-generating /docs/
   page, web component in playground, provenance table. Offer only if usage is healthy.
 

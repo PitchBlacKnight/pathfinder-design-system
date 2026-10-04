@@ -144,9 +144,12 @@ code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 .pf-badge-active,
 .pf-badge-positive { background: var(--pfSuccessBackground); border-color: var(--pfSuccessBorderColor); color: var(--pfPositiveTextColor); }
 .pf-badge-info { background: var(--pfInformationBackground); border-color: var(--pfInformationBorderColor); color: var(--pfInformativeTextColor); }
-.pf-badge-warning { background: var(--pfWarningBackground); border-color: var(--pfWarningBorderColor); color: var(--pfCriticalTextColor); }
+/* critical = orange, matching the Figma Badge and the docs-site React variant. warning kept as an alias. */
 .pf-badge-critical,
+.pf-badge-warning { background: var(--pfWarningBackground); border-color: var(--pfWarningBorderColor); color: var(--pfCriticalTextColor); }
 .pf-badge-negative { background: var(--pfErrorBackground); border-color: var(--pfErrorBorderColor); color: var(--pfNegativeTextColor); }
+.pf-badge-neutral { /* the base .pf-badge look, named to match Status=Neutral */ }
+.pf-badge-gold { background: var(--pfAccent_Gold_Background); border-color: var(--pfAccent_Gold_BorderColor); color: var(--pfAccent_Gold_TextColor); }
 
 /* ---------- Card ---------- */
 .pf-card {
@@ -263,6 +266,17 @@ code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 .pf-avatar.c2 { background: var(--pfAvatar_4_Background); color: var(--pfAvatar_4_TextColor); }
 .pf-avatar.c3 { background: var(--pfAvatar_7_Background); color: var(--pfAvatar_7_TextColor); }
 .pf-avatar.c4 { background: var(--pfAvatar_8_Background); color: var(--pfAvatar_8_TextColor); }
+/* color-1 to color-10 map 1:1 to the avatar tokens, Figma Avatar Color 1-10 and React colorIndex. c1-c4 above are the older picks. */
+.pf-avatar.color-1 { background: var(--pfAvatar_1_Background); color: var(--pfAvatar_1_TextColor); border-color: var(--pfAvatar_1_Background); }
+.pf-avatar.color-2 { background: var(--pfAvatar_2_Background); color: var(--pfAvatar_2_TextColor); border-color: var(--pfAvatar_2_Background); }
+.pf-avatar.color-3 { background: var(--pfAvatar_3_Background); color: var(--pfAvatar_3_TextColor); border-color: var(--pfAvatar_3_Background); }
+.pf-avatar.color-4 { background: var(--pfAvatar_4_Background); color: var(--pfAvatar_4_TextColor); border-color: var(--pfAvatar_4_Background); }
+.pf-avatar.color-5 { background: var(--pfAvatar_5_Background); color: var(--pfAvatar_5_TextColor); border-color: var(--pfAvatar_5_Background); }
+.pf-avatar.color-6 { background: var(--pfAvatar_6_Background); color: var(--pfAvatar_6_TextColor); border-color: var(--pfAvatar_6_Background); }
+.pf-avatar.color-7 { background: var(--pfAvatar_7_Background); color: var(--pfAvatar_7_TextColor); border-color: var(--pfAvatar_7_Background); }
+.pf-avatar.color-8 { background: var(--pfAvatar_8_Background); color: var(--pfAvatar_8_TextColor); border-color: var(--pfAvatar_8_Background); }
+.pf-avatar.color-9 { background: var(--pfAvatar_9_Background); color: var(--pfAvatar_9_TextColor); border-color: var(--pfAvatar_9_Background); }
+.pf-avatar.color-10 { background: var(--pfAvatar_10_Background); color: var(--pfAvatar_10_TextColor); border-color: var(--pfAvatar_10_Background); }
 .pf-avatar-group { display: inline-flex; }
 .pf-avatar-group .pf-avatar { margin-left: -8px; box-shadow: 0 0 0 2px var(--pfBackgroundColor); }
 .pf-avatar-group .pf-avatar:first-child { margin-left: 0; }

@@ -56,6 +56,10 @@ See `DEMO-SCRIPT.md` for the full interview run-of-show.
 
 - **Tokens are the API.** Components consume `var(--pf*)` exclusively, so
   retheming (light mode, a second brand) is a token-file swap.
+- **Figma and code share one light theme.** The Figma library (2026-10-04)
+  takes its Light values from this repo first. Tokens that exist only in Figma
+  ship in `tokens/pathfinder.figma-additions.css`, which loads after the token
+  file and is covered by `./contrast.sh`.
 - **Declarative behavior.** Interactivity is wired by data attributes
   (`data-sort`, `data-modal-open`, `data-toast`) with one delegated listener —
   so HTML injected at runtime by an agent Just Works, no hydration.

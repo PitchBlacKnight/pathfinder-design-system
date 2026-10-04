@@ -70,14 +70,17 @@ asks not in the book (card grid, form, tabs, progress), compose from the
 ## Component quick reference
 
 - Buttons: `pf-btn` + `pf-btn-primary|ghost|lite|danger|success` + `pf-btn-sm|lg`
-- Badges: `pf-badge` + `pf-badge-active|info|warning|critical|neutral`
+- Badges: `pf-badge` + `pf-badge-neutral|info|positive|critical|negative|gold`
+  (critical = orange at-risk, negative = red failed/cancelled, gold = partner tier;
+  `active` and `warning` remain as aliases of positive and critical)
 - Table: `pf-table-wrap[.striped][.compact] > .pf-table-toolbar + table.pf-table + .pf-table-footer`
 - Modal: `.pf-modal-overlay > .pf-modal[.sm|.lg|.fullscreen][.danger|.confirmation] > header/body/footer`
 - Stat tile: `.pf-card.pf-stat > .pf-stat-label + .pf-stat-value + .pf-stat-delta.up|down`
 - Fields: `.pf-field > .pf-label + .pf-input|.pf-select|.pf-textarea + .pf-help`
 - Toggle: `label.pf-toggle > input[type=checkbox] + span.track + span.pf-toggle-label`
 - Progress: `.pf-progress[.positive|.critical|.negative] > .bar[style="width:X%"]`
-- Avatars: `.pf-avatar.c1–c4`, group with `.pf-avatar-group`
+- Avatars: `.pf-avatar.color-1` to `color-10` (1:1 with the avatar tokens and Figma
+  Avatar Color); `.c1–c4` still work. Group with `.pf-avatar-group`
 - Tabs: `.pf-tabs > button.pf-tab[aria-selected]`
 - Shell: `.pf-shell > nav.pf-sidenav + header.pf-topbar + main.pf-main`
 - Chart: `.pf-chart > .pf-chart-head + .pf-chart-plot + .pf-chart-legend`; column =
