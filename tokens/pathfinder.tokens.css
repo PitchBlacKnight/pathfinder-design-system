@@ -16,10 +16,10 @@
   --pfList_SelectionBackgroundColor: #0080ff33;
   --pfHighlightColor: #27bdfa;
   --pfBrandColor: #0080ff;
-  --pfButton_Emphasized_Background: #0080ff;
-  --pfButton_Emphasized_BorderColor: #0080ff;
+  --pfButton_Emphasized_Background: #0066cc;
+  --pfButton_Emphasized_BorderColor: #0066cc;
   --pfButton_Emphasized_TextColor: #fff;
-  --pfButton_Emphasized_Hover_Background: #06c;
+  --pfButton_Emphasized_Hover_Background: #0055aa;
   --pfInformativeElement_Background: #0080ff1f;
   --pfPositiveColor: #22c55e;
   --pfPositiveElement_Background: #22c55e24;
@@ -36,12 +36,12 @@
   --pfLinkHoverColor: #5ccffb;
   --pfContent_NonInteractiveIconColor: #ffffff80;
   --pfContent_ForegroundBorderColor: #ffffff14;
-  --pfField_BorderColor: #ffffff2e;
+  --pfField_BorderColor: #ffffff61;
   --pfField_InformationColor: #0080ff59;
   --pfContent_FocusColor: #27bdfa;
   --pfContent_FocusWidth: 2px;
   --pfButton_Background: #ffffff0d;
-  --pfButton_BorderColor: #ffffff2e;
+  --pfButton_BorderColor: #ffffff61;
   --pfButton_TextColor: #ffffffe0;
   --pfButton_Hover_Background: #ffffff17;
   --pfButton_Hover_BorderColor: #ffffff47;
@@ -349,7 +349,7 @@
   --pfButton_Active_BorderColor: #27bdfa;
   --pfButton_Active_TextColor: #27bdfa;
   --pfButton_Emphasized_BorderWidth: .0625rem;
-  --pfButton_Emphasized_Hover_BorderColor: #05a;
+  --pfButton_Emphasized_Hover_BorderColor: #004488;
   --pfButton_Emphasized_Hover_TextColor: #fff;
   --pfButton_Emphasized_Active_Background: #ffffff14;
   --pfButton_Emphasized_Active_BorderColor: #27bdfa;
@@ -396,14 +396,14 @@
   --pfButton_Attention_Active_Background: #ffffff14;
   --pfButton_Attention_Active_BorderColor: #fbbf24;
   --pfButton_Attention_Active_TextColor: #fbbf24;
-  --pfButton_Negative_Background: #ef4444;
-  --pfButton_Negative_BorderColor: #ef4444;
+  --pfButton_Negative_Background: #dc2626;
+  --pfButton_Negative_BorderColor: #dc2626;
   --pfButton_Negative_TextColor: #fff;
-  --pfButton_Negative_Hover_Background: #dc2626;
-  --pfButton_Negative_Hover_BorderColor: #dc2626;
+  --pfButton_Negative_Hover_Background: #b91c1c;
+  --pfButton_Negative_Hover_BorderColor: #b91c1c;
   --pfButton_Negative_Hover_TextColor: #fff;
   --pfButton_Negative_Active_Background: #ffffff14;
-  --pfButton_Negative_Active_BorderColor: #ef4444;
+  --pfButton_Negative_Active_BorderColor: #dc2626;
   --pfButton_Negative_Active_TextColor: #fca5a5;
   --pfButton_Critical_Background: #f97316;
   --pfButton_Critical_BorderColor: #f97316;
@@ -414,14 +414,14 @@
   --pfButton_Critical_Active_Background: #ffffff14;
   --pfButton_Critical_Active_BorderColor: #f97316;
   --pfButton_Critical_Active_TextColor: #fdba74;
-  --pfButton_Success_Background: #22c55e;
-  --pfButton_Success_BorderColor: #22c55e;
+  --pfButton_Success_Background: #15803d;
+  --pfButton_Success_BorderColor: #15803d;
   --pfButton_Success_TextColor: #fff;
-  --pfButton_Success_Hover_Background: #16a34a;
-  --pfButton_Success_Hover_BorderColor: #16a34a;
+  --pfButton_Success_Hover_Background: #166534;
+  --pfButton_Success_Hover_BorderColor: #166534;
   --pfButton_Success_Hover_TextColor: #fff;
   --pfButton_Success_Active_Background: #ffffff14;
-  --pfButton_Success_Active_BorderColor: #22c55e;
+  --pfButton_Success_Active_BorderColor: #15803d;
   --pfButton_Success_Active_TextColor: #86efac;
   --pfButton_Information_Background: #27bdfa1f;
   --pfButton_Information_BorderColor: #27bdfa4d;
@@ -467,7 +467,7 @@
   --pfButton_Segment_BorderCornerRadius: .5rem;
   --pfField_Background: #ffffff0a;
   --pfField_TextColor: #ffffffeb;
-  --pfField_PlaceholderTextColor: #ffffff61;
+  --pfField_PlaceholderTextColor: #ffffff80;
   --pfField_HelpBackground: #ffffff0a;
   --pfField_BorderWidth: .0625rem;
   --pfField_BorderStyle: solid;
@@ -924,7 +924,7 @@
   --pfTile_Interactive_BorderColor: #0f172a29;
 
   --pfButton_Background: #0f172a08;
-  --pfButton_BorderColor: #0f172a2e;
+  --pfButton_BorderColor: #0f172a80;
   --pfButton_TextColor: #0f172ae0;
   --pfButton_Hover_Background: #0f172a12;
   --pfButton_Hover_BorderColor: #0f172a47;
@@ -940,7 +940,7 @@
   --pfButton_Track_Selected_BorderColor: #0284c7;
 
   --pfField_Background: #ffffff;
-  --pfField_BorderColor: #0f172a2e;
+  --pfField_BorderColor: #0f172a80;
   --pfField_TextColor: #0f172aeb;
 
   --pfList_Background: #ffffff;
@@ -971,7 +971,7 @@
   --pfErrorBackground: #b91c1c14;
 
   --pfField_RequiredColor: #be185d;
-  --pfField_PlaceholderTextColor: #0f172a8a;
+  --pfField_PlaceholderTextColor: #0f172a99;
 
   --pfTab_TextColor: #0f172a99;
   --pfTab_Selected_TextColor: #075985;
