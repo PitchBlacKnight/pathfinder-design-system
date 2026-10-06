@@ -237,6 +237,19 @@ const PAIRINGS = [
   { what: 'Progress fill on track',     fg: '--pfProgress_Value_Background',            on: [...TILE, '--pfProgress_Background'], min: 3.0, nonText: true },
   { what: 'Progress positive on track', fg: '--pfProgress_Value_PositiveBackground',    on: [...TILE, '--pfProgress_Background'], min: 3.0, nonText: true },
   { what: 'Progress negative on track', fg: '--pfProgress_Value_NegativeBackground',    on: [...TILE, '--pfProgress_Background'], min: 3.0, nonText: true },
+  { group: 'Library 1.3 - 1.7' },
+  { what: 'Menu item text',             fg: '--pfList_TextColor',               on: TILE, min: 4.5 },
+  { what: 'Menu destructive text',      fg: '--pfNegativeTextColor',            on: TILE, min: 4.5 },
+  { what: 'Link on page',               fg: '--pfLinkColor',                    on: PAGE, min: 4.5 },
+  { what: 'Kbd text',                   fg: '--pfContent_LabelColor',           on: [...TILE, '--pfContent_InsetBackground'], min: 4.5 },
+  { what: 'AI label text',              fg: '--pfContent_Selected_TextColor',               on: [...TILE, '--pfGlobal_HighlightSoftBackground'], min: 4.5 },
+  { what: 'Selected list text',         fg: '--pfContent_Selected_TextColor',   on: [...TILE, '--pfContent_ListSelectionBackground'], min: 4.5 },
+  { what: 'Unread notification',        fg: '--pfContent_ForegroundColor',      on: [...TILE, '--pfGlobal_HighlightHoverBackground'], min: 4.5 },
+  { what: 'Diff removed text',          fg: '--pfNegativeTextColor',            on: [...TILE, '--pfErrorBackground'], min: 4.5 },
+  { what: 'Diff added text',            fg: '--pfPositiveTextColor',            on: [...TILE, '--pfSuccessBackground'], min: 4.5 },
+  { what: 'Segment selected text',      fg: '--pfContent_ForegroundColor',      on: [...TILE, '--pfControl_Track_Background', '--pfGroup_ContentBackground'], min: 4.5 },
+  { what: 'Status dot (positive)',      fg: '--pfPositiveElementColor',         on: TILE, min: 3.0, nonText: true },
+  { what: 'Focus ring',                 fg: '--pfContent_FocusColor',           on: PAGE, min: 3.0, nonText: true },
   { what: 'Toggle track (on)',          fg: '--pfButton_Track_Selected_Background',     on: TILE, min: 3.0, nonText: true },
   { what: 'Disabled text',              fg: '--pfContent_DisabledTextColor',            on: TILE, min: 3.0, nonText: true,
     exempt: 'WCAG 1.4.3 — inactive components exempt' },
@@ -382,7 +395,44 @@ if (palette.length) {
   }
   console.log('  ' + '─'.repeat(64));
 }
-console.log(`  ${checked} enforced pairings × 2 modes = ${checked * 2} contrast checks`);
+/* ── 6c. Extra modes (Figma library 1.5) ───────────────────────────────────
+   High contrast and the Northbeam demo brand are layered on Dark or Light the
+   same way the browser cascades them. Same pairings, same floors.            */
+function blockMap(sel) {
+  const m = new Map();
+  for (const [, rawSel, body] of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (rawSel.trim().split('\n').pop().trim() !== sel) continue;
+    for (const [, n, v] of body.matchAll(/(--[A-Za-z0-9_-]+)\s*:\s*([^;]+);/g)) m.set(n, v.trim());
+  }
+  return m;
+}
+const layer = (...maps) => new Map(maps.flatMap(m => [...m]));
+const HC = layer(dark, blockMap(':root[data-theme="high-contrast"]'));
+const NB = blockMap(':root[data-brand="northbeam"]');
+const EXTRA = [
+  ['High contrast', HC],
+  ['Northbeam dark', layer(dark, NB, blockMap(':root[data-brand="northbeam"]:not([data-theme="light"]):not([data-theme="high-contrast"])'))],
+  ['Northbeam light', layer(light, NB, blockMap(':root[data-brand="northbeam"][data-theme="light"]'))],
+  ['Northbeam high contrast', layer(HC, NB, blockMap(':root[data-brand="northbeam"][data-theme="high-contrast"]'))],
+];
+let extraChecked = 0, extraFailures = 0;
+console.log('  ' + bold('EXTRA MODES'));
+for (const [label, map] of EXTRA) {
+  const fails = [];
+  for (const pair of PAIRINGS) {
+    if (pair.group || pair.exempt) continue;
+    const r = evaluate(pair, map);
+    if (r.missing) { missing.add(r.missing); continue; }
+    extraChecked++;
+    if (r.ratio < pair.min) fails.push(`${pad(pair.what, 26)}${fmt(r.ratio)}  ${pair.fg} = ${resolve(pair.fg, map)}`);
+  }
+  extraFailures += fails.length;
+  console.log('    ' + pad(label, 26) + (fails.length ? red(`${fails.length} below AA`) : green('pass')));
+  for (const f of fails) console.log('      ' + dim(f));
+}
+failures += extraFailures;
+console.log('  ' + '─'.repeat(64));
+console.log(`  ${checked} enforced pairings × 2 modes + ${extraChecked} in extra modes = ${checked * 2 + extraChecked} contrast checks`);
 if (failures === 0) {
   console.log('  ' + green('RESULT: PASS') + ' — every pairing clears its WCAG AA floor in both modes');
 } else {

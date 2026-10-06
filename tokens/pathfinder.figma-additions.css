@@ -223,4 +223,324 @@
 
   /* Gold tier badge */
   --pfAccent_Gold_TextColor: #92400e; /* derived */
+
+  /* List text (menus, options): code light block had no value, so it stayed white */
+  --pfList_TextColor: #0f172ae0;
+}
+
+/* ============================================================
+   MODES - Figma library 1.5 (2026-10-06)
+   Generated from the Figma mode collections. Each axis is set on <html>:
+     data-theme="high-contrast"  (Dark is the default; light stays data-theme="light")
+     data-brand="northbeam"      (fictional partner brand; Avant is the default)
+     data-density="compact"      (Comfortable is the default)
+   Breakpoint sizes follow the viewport (Tablet below 1024px, Mobile below 600px).
+   Values equal Figma exactly; ./contrast.sh audits High contrast and every
+   Northbeam theme alongside Dark and Light. Motion uses the existing
+   --pfContent_Easing_* and --pfContent_TransitionDuration_* tokens; Figma
+   motion/easing/* now mirrors them.
+   ============================================================ */
+
+
+
+/* Theme: High contrast (built on Dark) */
+:root[data-theme="high-contrast"] {
+  --pfBase_Background: #000000;
+  --pfShell_Background: #000000;
+  --pfBaseColor: #000000;
+  --pfBackgroundColor: #000000;
+  --pfShellColor: #000000;
+  --pfHighlightColor: #5ccffb;
+  --pfTextColor: #ffffff;
+  --pfTitleColor: #ffffff;
+  --pfSelectedColor: #5ccffb;
+  --pfLinkColor: #5ccffb;
+  --pfLinkHoverColor: #ffffff;
+  --pfContent_ForegroundColor: #ffffff;
+  --pfContent_LabelColor: #e2e8f0;
+  --pfContent_DisabledTextColor: #a0aec0;
+  --pfContent_ForegroundBorderColor: #a0aec0;
+  --pfBorderColor: #a0aec0;
+  --pfContent_IconColor: #e2e8f0;
+  --pfContent_NonInteractiveIconColor: #e2e8f0;
+  --pfContent_FocusColor: #ffd60a;
+  --pfContent_Selected_TextColor: #5ccffb;
+  --pfShell_BorderColor: #a0aec0;
+  --pfShell_TextColor: #ffffff;
+  --pfShell_Selected_TextColor: #5ccffb;
+  --pfShell_InteractiveBorderColor: #a0aec0;
+  --pfShell_Navigation_TextColor: #e2e8f0;
+  --pfShell_Navigation_Selected_TextColor: #5ccffb;
+  --pfChart_Data_TextColor: #ffffff;
+  --pfButton_BorderColor: #a0aec0;
+  --pfButton_TextColor: #ffffff;
+  --pfButton_IconColor: #e2e8f0;
+  --pfButton_Hover_BorderColor: #a0aec0;
+  --pfButton_Hover_TextColor: #ffffff;
+  --pfButton_Active_BorderColor: #5ccffb;
+  --pfButton_Active_TextColor: #5ccffb;
+  --pfButton_Emphasized_Active_BorderColor: #5ccffb;
+  --pfButton_Emphasized_Active_TextColor: #5ccffb;
+  --pfButton_Ghost_TextColor: #5ccffb;
+  --pfButton_Lite_Active_BorderColor: #5ccffb;
+  --pfButton_Selected_BorderColor: #5ccffb;
+  --pfButton_Selected_TextColor: #5ccffb;
+  --pfButton_Track_Selected_Background: #5ccffb;
+  --pfButton_Handle_BorderColor: #a0aec0;
+  --pfButton_Handle_Selected_BorderColor: #5ccffb;
+  --pfButton_TokenBorderColor: #a0aec0;
+  --pfField_TextColor: #ffffff;
+  --pfField_PlaceholderTextColor: #e2e8f0;
+  --pfField_BorderColor: #a0aec0;
+  --pfField_Hover_BorderColor: #5ccffb;
+  --pfField_Focus_BorderColor: #ffd60a;
+  --pfField_ReadOnly_BorderColor: #a0aec0;
+  --pfGroup_TitleBorderColor: #a0aec0;
+  --pfGroup_TitleTextColor: #ffffff;
+  --pfGroup_ContentBorderColor: #a0aec0;
+  --pfList_HeaderBorderColor: #a0aec0;
+  --pfList_HeaderTextColor: #ffffff;
+  --pfList_BorderColor: #a0aec0;
+  --pfList_TextColor: #ffffff;
+  --pfList_SelectionBorderColor: #5ccffb;
+  --pfTile_BorderColor: #a0aec0;
+  --pfTile_TitleTextColor: #ffffff;
+  --pfTile_TextColor: #e2e8f0;
+  --pfTile_IconColor: #e2e8f0;
+  --pfTile_SeparatorColor: #a0aec0;
+  --pfTab_TextColor: #e2e8f0;
+  --pfTab_Selected_TextColor: #5ccffb;
+  --pfTab_Selected_Background: #5ccffb;
+  --pfProgress_TextColor: #ffffff;
+  --pfProgress_Value_Background: #5ccffb;
+  --pfSlider_Selected_Background: #5ccffb;
+  --pfSlider_HandleBorderColor: #5ccffb;
+  --pfControl_BorderColor: #a0aec0;
+  --pfControl_Hover_BorderColor: #a0aec0;
+  --pfControl_Handle_BorderColor: #a0aec0;
+  --pfControl_Token_BorderColor: #a0aec0;
+  --pfControl_Field_BorderColor: #a0aec0;
+  --pfContent_BodyTextColor: #ffffff;
+  --pfContent_PlaceholderTextColor: #e2e8f0;
+  --pfContent_SubtleBorderColor: #a0aec0;
+  --pfContent_DividerColor: #a0aec0;
+  --pfControl_Ghost_TextColor: #5ccffb;
+  --pfContent_SurfaceBorderColor: #a0aec0;
+}
+
+
+/* Brand: Northbeam, per theme */
+:root[data-brand="northbeam"] {
+  --pfFontHeaderFamily: "Schibsted Grotesk", sans-serif;
+}
+
+:root[data-brand="northbeam"]:not([data-theme="light"]):not([data-theme="high-contrast"]) {
+  --pfBrandColor: #7c3aed;
+  --pfHighlightColor: #a78bfa;
+  --pfSelectedColor: #a78bfa;
+  --pfLinkColor: #a78bfa;
+  --pfLinkHoverColor: #c4b5fd;
+  --pfContent_FocusColor: #a78bfa;
+  --pfContent_Selected_Background: #7c3aed33;
+  --pfContent_Selected_Hover_Background: #7c3aed47;
+  --pfContent_Selected_TextColor: #a78bfa;
+  --pfContent_SearchHighlightColor: #a78bfa33;
+  --pfShell_Selected_Background: #7c3aed33;
+  --pfShell_Selected_TextColor: #a78bfa;
+  --pfShell_Navigation_Selected_TextColor: #a78bfa;
+  --pfShell_Navigation_Active_Background: #7c3aed26;
+  --pfButton_Active_BorderColor: #a78bfa;
+  --pfButton_Active_TextColor: #a78bfa;
+  --pfButton_Emphasized_Background: #6d28d9;
+  --pfButton_Emphasized_BorderColor: #6d28d9;
+  --pfButton_Emphasized_Hover_Background: #5b21b6;
+  --pfButton_Emphasized_Hover_BorderColor: #4c1d95;
+  --pfButton_Emphasized_Active_BorderColor: #a78bfa;
+  --pfButton_Emphasized_Active_TextColor: #a78bfa;
+  --pfButton_Ghost_BorderColor: #a78bfa73;
+  --pfButton_Ghost_TextColor: #a78bfa;
+  --pfButton_Ghost_Hover_Background: #a78bfa14;
+  --pfButton_Lite_Active_BorderColor: #a78bfa;
+  --pfButton_Selected_Background: #7c3aed33;
+  --pfButton_Selected_BorderColor: #a78bfa;
+  --pfButton_Selected_TextColor: #a78bfa;
+  --pfButton_Track_Selected_Background: #a78bfa;
+  --pfButton_Handle_Selected_BorderColor: #a78bfa;
+  --pfField_Hover_BorderColor: #a78bfa;
+  --pfField_Focus_BorderColor: #a78bfa;
+  --pfList_Hover_Background: #7c3aed0f;
+  --pfList_SelectionBackgroundColor: #7c3aed33;
+  --pfList_SelectionBorderColor: #a78bfa;
+  --pfTab_Selected_TextColor: #a78bfa;
+  --pfTab_Selected_Background: #a78bfa;
+  --pfProgress_Value_Background: #a78bfa;
+  --pfSlider_Selected_Background: #a78bfa;
+  --pfSlider_HandleBorderColor: #a78bfa;
+  --pfSlider_Hover_HandleBackground: #a78bfa26;
+  --pfSlider_RangeHandleBackground: #a78bfa33;
+  --pfElevation_3_AmbientColor: #7c3aed14;
+  --pfElevation_4_AmbientColor: #7c3aed1f;
+  --pfGlobal_HighlightBorderColor: #a78bfa73;
+  --pfGlobal_HighlightHoverBackground: #a78bfa14;
+  --pfGlobal_HighlightSoftBackground: #a78bfa26;
+  --pfGlobal_HighlightMediumBackground: #a78bfa33;
+  --pfElevation_GlowColor: #7c3aed59;
+  --pfControl_Ghost_TextColor: #a78bfa;
+  --pfContent_ListHoverBackground: #7c3aed0f;
+  --pfContent_ListSelectionBackground: #7c3aed33;
+  --pfContent_Shadow3: 0 8px 36px #000000a6, 0 0 24px #7c3aed14;
+  --pfContent_Shadow4: 0 16px 48px #000000bf, 0 0 40px #7c3aed1f;
+}
+
+:root[data-brand="northbeam"][data-theme="light"] {
+  --pfBrandColor: #7c3aed;
+  --pfHighlightColor: #7c3aed;
+  --pfSelectedColor: #7c3aed;
+  --pfLinkColor: #6d28d9;
+  --pfLinkHoverColor: #7c3aed;
+  --pfContent_FocusColor: #7c3aed;
+  --pfContent_Selected_Background: #7c3aed26;
+  --pfContent_Selected_Hover_Background: #7c3aed26;
+  --pfContent_Selected_TextColor: #5b21b6;
+  --pfContent_SearchHighlightColor: #7c3aed2e;
+  --pfShell_Selected_Background: #7c3aed1a;
+  --pfShell_Selected_TextColor: #5b21b6;
+  --pfShell_Navigation_Selected_TextColor: #5b21b6;
+  --pfShell_Navigation_Active_Background: #7c3aed1a;
+  --pfButton_Active_BorderColor: #7c3aed;
+  --pfButton_Active_TextColor: #7c3aed;
+  --pfButton_Emphasized_Background: #6d28d9;
+  --pfButton_Emphasized_BorderColor: #6d28d9;
+  --pfButton_Emphasized_Hover_Background: #5b21b6;
+  --pfButton_Emphasized_Hover_BorderColor: #4c1d95;
+  --pfButton_Emphasized_Active_BorderColor: #7c3aed;
+  --pfButton_Emphasized_Active_TextColor: #7c3aed;
+  --pfButton_Ghost_BorderColor: #7c3aed73;
+  --pfButton_Ghost_TextColor: #5b21b6;
+  --pfButton_Ghost_Hover_Background: #7c3aed14;
+  --pfButton_Lite_Active_BorderColor: #7c3aed;
+  --pfButton_Selected_Background: #7c3aed26;
+  --pfButton_Selected_BorderColor: #7c3aed;
+  --pfButton_Selected_TextColor: #7c3aed;
+  --pfButton_Track_Selected_Background: #7c3aed;
+  --pfButton_Handle_Selected_BorderColor: #7c3aed;
+  --pfField_Hover_BorderColor: #7c3aed;
+  --pfField_Focus_BorderColor: #7c3aed;
+  --pfList_Hover_Background: #7c3aed0d;
+  --pfList_SelectionBackgroundColor: #7c3aed21;
+  --pfList_SelectionBorderColor: #7c3aed;
+  --pfTab_Selected_TextColor: #5b21b6;
+  --pfTab_Selected_Background: #7c3aed;
+  --pfProgress_Value_Background: #7c3aed;
+  --pfSlider_Selected_Background: #7c3aed;
+  --pfSlider_HandleBorderColor: #7c3aed;
+  --pfSlider_Hover_HandleBackground: #7c3aed26;
+  --pfSlider_RangeHandleBackground: #7c3aed33;
+  --pfElevation_3_AmbientColor: #7c3aed0d;
+  --pfElevation_4_AmbientColor: #7c3aed14;
+  --pfGlobal_HighlightBorderColor: #7c3aed73;
+  --pfGlobal_HighlightHoverBackground: #7c3aed14;
+  --pfGlobal_HighlightSoftBackground: #7c3aed26;
+  --pfGlobal_HighlightMediumBackground: #7c3aed33;
+  --pfElevation_GlowColor: #7c3aed33;
+  --pfControl_Ghost_TextColor: #5b21b6;
+  --pfContent_ListHoverBackground: #7c3aed0d;
+  --pfContent_ListSelectionBackground: #7c3aed21;
+  --pfContent_Shadow3: 0 8px 36px #0f172a26, 0 0 24px #7c3aed0d;
+  --pfContent_Shadow4: 0 16px 48px #0f172a33, 0 0 40px #7c3aed14;
+}
+
+:root[data-brand="northbeam"][data-theme="high-contrast"] {
+  --pfBrandColor: #7c3aed;
+  --pfHighlightColor: #c4b5fd;
+  --pfSelectedColor: #c4b5fd;
+  --pfLinkColor: #c4b5fd;
+  --pfContent_Selected_Background: #7c3aed33;
+  --pfContent_Selected_Hover_Background: #7c3aed47;
+  --pfContent_Selected_TextColor: #c4b5fd;
+  --pfContent_SearchHighlightColor: #a78bfa33;
+  --pfShell_Selected_Background: #7c3aed33;
+  --pfShell_Selected_TextColor: #c4b5fd;
+  --pfShell_Navigation_Selected_TextColor: #c4b5fd;
+  --pfShell_Navigation_Active_Background: #7c3aed26;
+  --pfButton_Active_BorderColor: #c4b5fd;
+  --pfButton_Active_TextColor: #c4b5fd;
+  --pfButton_Emphasized_Background: #6d28d9;
+  --pfButton_Emphasized_BorderColor: #6d28d9;
+  --pfButton_Emphasized_Hover_Background: #5b21b6;
+  --pfButton_Emphasized_Hover_BorderColor: #4c1d95;
+  --pfButton_Emphasized_Active_BorderColor: #c4b5fd;
+  --pfButton_Emphasized_Active_TextColor: #c4b5fd;
+  --pfButton_Ghost_BorderColor: #a78bfa73;
+  --pfButton_Ghost_TextColor: #c4b5fd;
+  --pfButton_Ghost_Hover_Background: #a78bfa14;
+  --pfButton_Lite_Active_BorderColor: #c4b5fd;
+  --pfButton_Selected_Background: #7c3aed33;
+  --pfButton_Selected_BorderColor: #c4b5fd;
+  --pfButton_Selected_TextColor: #c4b5fd;
+  --pfButton_Track_Selected_Background: #c4b5fd;
+  --pfButton_Handle_Selected_BorderColor: #c4b5fd;
+  --pfField_Hover_BorderColor: #c4b5fd;
+  --pfList_Hover_Background: #7c3aed0f;
+  --pfList_SelectionBackgroundColor: #7c3aed33;
+  --pfList_SelectionBorderColor: #c4b5fd;
+  --pfTab_Selected_TextColor: #c4b5fd;
+  --pfTab_Selected_Background: #c4b5fd;
+  --pfProgress_Value_Background: #c4b5fd;
+  --pfSlider_Selected_Background: #c4b5fd;
+  --pfSlider_HandleBorderColor: #c4b5fd;
+  --pfSlider_Hover_HandleBackground: #a78bfa26;
+  --pfSlider_RangeHandleBackground: #a78bfa33;
+  --pfElevation_3_AmbientColor: #7c3aed14;
+  --pfElevation_4_AmbientColor: #7c3aed1f;
+  --pfGlobal_HighlightBorderColor: #a78bfa73;
+  --pfGlobal_HighlightHoverBackground: #a78bfa14;
+  --pfGlobal_HighlightSoftBackground: #a78bfa26;
+  --pfGlobal_HighlightMediumBackground: #a78bfa33;
+  --pfElevation_GlowColor: #7c3aed59;
+  --pfControl_Ghost_TextColor: #c4b5fd;
+  --pfContent_ListHoverBackground: #7c3aed0f;
+  --pfContent_ListSelectionBackground: #7c3aed33;
+  --pfContent_Shadow3: 0 8px 36px #000000a6, 0 0 24px #7c3aed14;
+  --pfContent_Shadow4: 0 16px 48px #000000bf, 0 0 40px #7c3aed1f;
+}
+
+
+/* Density: Compact */
+:root[data-density="compact"] {
+  --pfContent_Space_Tiny: 0.25rem;
+  --pfContent_Space_S: 0.75rem;
+  --pfContent_Space_L: 1.5rem;
+  --pfContent_Space_XL: 2rem;
+  --pfContent_Gap: 0.75rem;
+  --pfContent_GridGutter: 12px;
+  --pfContent_GridGutter_L: 16px;
+  --pfContent_GridGutter_XL: 24px;
+  --pfElement_Height: 2rem;
+  --pfElement_Compact_Height: 1.375rem;
+  --pfElement_Condensed_Height: 1.25rem;
+}
+
+
+/* Breakpoint: Tablet and Mobile */
+@media (max-width: 1023px) {
+  :root {
+    --pfContent_Space_M: 1.5rem;
+    --pfFontHeader1Size: 48px;
+    --pfFontHeader2Size: 40px;
+    --pfFontHeader3Size: 28px;
+    --pfFontHeader4Size: 22px;
+    --pfGlobal_FontDisplaySize: 72px;
+  }
+}
+
+@media (max-width: 599px) {
+  :root {
+    --pfContent_Space_M: 1rem;
+    --pfFontHeader1Size: 36px;
+    --pfFontHeader2Size: 32px;
+    --pfFontHeader3Size: 24px;
+    --pfFontHeader4Size: 20px;
+    --pfGlobal_FontDisplaySize: 56px;
+  }
 }

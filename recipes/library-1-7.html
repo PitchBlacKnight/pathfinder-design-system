@@ -1,0 +1,164 @@
+<!-- RECIPE: Figma library 1.3 - 1.7 components in one sheet. Exercises every class
+     added on 2026-10-06: icon button, link, kbd, status dot, checkbox, radio, tag,
+     segmented, slider, search, combobox, number, inline edit, breadcrumb, steps,
+     accordion, divider, tooltip, popover, menu, list item, tree, bulk bar, cmdk,
+     notifications, timeline, comment, composer, kanban, dropzone, line chart,
+     donut, chart tip, and the AI set. Modes: set data-theme, data-brand and
+     data-density on <html>. Sample data only. -->
+<div style="padding:40px;max-width:1240px;margin:0 auto;" class="pf-stack">
+  <div class="pf-stack" style="gap:6px;margin-bottom:24px;">
+    <span class="pf-overline">FIGMA LIBRARY 1.3 - 1.7</span>
+    <h3>New components</h3>
+    <p style="color:var(--pfContent_LabelColor);margin:0;">Sample data. Switch modes with data-theme, data-brand and data-density on the html element.</p>
+  </div>
+
+  <div class="pf-grid cols-3" style="gap:24px;align-items:start;">
+
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">ACTIONS</span>
+      <div class="pf-row" style="gap:8px;align-items:center;">
+        <button class="pf-btn pf-btn-secondary pf-btn-icon" aria-label="More actions">⋯</button>
+        <button class="pf-btn pf-btn-primary pf-btn-icon pf-btn-sm" aria-label="Send">➤</button>
+        <a class="pf-link" href="#">View contract</a>
+        <a class="pf-link external" href="#">Supplier portal</a>
+      </div>
+      <div class="pf-row" style="gap:6px;align-items:center;"><span class="pf-kbd">⌘</span><span class="pf-kbd">K</span><span class="pf-kbd">Esc</span></div>
+      <div class="pf-menu" role="menu">
+        <div class="section pf-overline">DEAL</div>
+        <button role="menuitem"><span class="label">Edit details</span><span class="pf-kbd">⌘E</span></button>
+        <button role="menuitem"><span class="label">Duplicate</span></button>
+        <button role="menuitem" aria-disabled="true"><span class="label">Archive</span></button>
+        <hr>
+        <button role="menuitem" class="destructive"><span class="label">Delete deal</span></button>
+      </div>
+    </section>
+
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">INPUTS</span>
+      <div class="pf-search"><span class="lead">⚲</span><input class="pf-input" placeholder="Search Pathfinder" aria-label="Search Pathfinder"><span class="pf-kbd">⌘K</span></div>
+      <div class="pf-field"><label class="pf-label">Technology</label>
+        <div class="pf-combobox"><div class="control"><span class="pf-tag">SD-WAN <button class="remove" aria-label="Remove SD-WAN">×</button></span><span class="pf-tag">Fiber <button class="remove" aria-label="Remove Fiber">×</button></span><input placeholder="Add technology" aria-label="Add technology"></div></div></div>
+      <div class="pf-row" style="gap:16px;align-items:end;">
+        <div class="pf-field"><label class="pf-label">Sites</label><div class="pf-number"><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Decrease">−</button><input type="number" value="3" aria-label="Sites"><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Increase">+</button></div></div>
+        <div class="pf-field" style="flex:1"><label class="pf-label">Account manager</label><div class="pf-inline-edit" tabindex="0">Sara Kim</div></div>
+      </div>
+      <input class="pf-slider" type="range" value="60" aria-label="Discount">
+      <div class="pf-dropzone"><strong>Drag and drop files</strong><span>PDF, CSV or XLSX up to 25 MB</span></div>
+    </section>
+
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">SELECTION</span>
+      <label class="pf-check"><input type="checkbox" checked> Selected</label>
+      <label class="pf-check"><input type="checkbox"> Unselected</label>
+      <fieldset class="pf-radio-group"><legend>Contract term</legend>
+        <label class="pf-radio"><input type="radio" name="t"> 12 months</label>
+        <label class="pf-radio"><input type="radio" name="t" checked> 24 months</label>
+        <label class="pf-radio"><input type="radio" name="t"> 36 months</label></fieldset>
+      <div class="pf-segmented" role="radiogroup" aria-label="View"><button role="radio" aria-checked="true">Table</button><button role="radio" aria-checked="false">Board</button><button role="radio" aria-checked="false">Map</button></div>
+      <div class="pf-row" style="gap:6px;"><span class="pf-tag">Platinum</span><span class="pf-tag" aria-pressed="true">Gold</span></div>
+      <div class="pf-row" style="gap:16px;flex-wrap:wrap;"><span class="pf-dot positive">Active</span><span class="pf-dot critical">At risk</span><span class="pf-dot negative">Down</span><span class="pf-dot info">Provisioning</span><span class="pf-dot">Inactive</span></div>
+    </section>
+
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">NAVIGATION</span>
+      <nav class="pf-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Floorplans</a></li><li><a href="#">Partners</a></li><li aria-current="page">Acme Corp</li></ol></nav>
+      <ol class="pf-steps"><li class="done"><span class="n">✓</span>Company</li><li aria-current="step"><span class="n">2</span>Contact</li><li><span class="n">3</span>Review</li></ol>
+      <ul class="pf-tree" role="tree">
+        <li role="treeitem" aria-expanded="true"><div class="row">▾ Lumen Technologies <span class="count">3</span></div>
+          <ul role="group"><li role="treeitem" aria-expanded="true"><div class="row">▾ Chicago, IL <span class="count">2</span></div>
+            <ul role="group"><li role="treeitem" aria-selected="true"><div class="row">CHI-10G-0042</div></li><li role="treeitem"><div class="row">CHI-1G-0187</div></li></ul></li></ul></li></ul>
+    </section>
+
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">DATA DISPLAY</span>
+      <a class="pf-list-item" href="#"><span class="lead">▦</span><span class="text"><span class="title">Lumen 10G fiber, Chicago</span><br><span class="desc">Quote 4471 · Updated 2h ago</span></span><span class="meta">$4,200/mo</span></a>
+      <a class="pf-list-item" href="#" aria-selected="true"><span class="lead">▦</span><span class="text"><span class="title">Thornwood SD-WAN</span></span><span class="meta">$9,800/mo</span></a>
+      <div class="pf-accordion"><details open><summary>Contract terms</summary><div class="body">36 months, auto renew off.</div></details><details><summary>Sites</summary><div class="body">3 locations.</div></details></div>
+      <hr class="pf-divider">
+      <ol class="pf-timeline">
+        <li class="approval"><span class="marker">✓</span><div><div class="title">Jordan Lee approved the pricing exception</div><time>Today · 10:42 AM</time></div></li>
+        <li><span class="marker">✉</span><div><div class="title">Sam Patel commented</div><time>Today · 9:15 AM</time><div class="detail">Partner asked for a 36-month term.</div></div></li>
+        <li class="created"><span class="marker">+</span><div><div class="title">Avery Chen created Quote 4471</div><time>Oct 4 · 11:20 AM</time></div></li>
+      </ol>
+    </section>
+
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">FEEDBACK AND OVERLAYS</span>
+      <span class="pf-tooltip">Export as CSV</span>
+      <div class="pf-notifs"><header>Notifications <a class="pf-link" href="#">Mark all as read</a></header>
+        <ul><li class="unread"><div>Jordan Lee approved the pricing exception<time>12m ago</time></div></li><li class="unread"><div>Sam Patel mentioned you in Quote 4471<time>1h ago</time></div></li><li><div>Partner data refreshed overnight<time>Yesterday</time></div></li></ul></div>
+    </section>
+  </div>
+
+  <div class="pf-row" style="gap:24px;align-items:flex-start;margin-top:24px;">
+    <div class="pf-bulkbar"><label class="pf-check"><input type="checkbox" checked aria-label="Select all"></label><span class="count">3 selected</span><span class="sep"></span><button class="pf-btn pf-btn-ghost pf-btn-sm">Approve</button><button class="pf-btn pf-btn-ghost pf-btn-sm">Export</button><button class="pf-btn pf-btn-danger pf-btn-sm">Reject</button><span class="sep"></span><button class="pf-btn pf-btn-ghost pf-btn-sm">Clear</button></div>
+  </div>
+
+  <div class="pf-row" style="gap:24px;align-items:flex-start;margin-top:24px;flex-wrap:wrap;">
+    <div class="pf-cmdk" role="dialog" aria-label="Command palette">
+      <div class="query"><span>⚲</span><input value="lumen" aria-label="Search"><span class="pf-kbd">Esc</span></div>
+      <div class="results" role="listbox"><div class="group pf-overline">DEALS</div>
+        <div role="option" aria-selected="true"><mark>Lumen</mark> 10G fiber, Chicago <span class="meta">Deal</span></div>
+        <div role="option"><mark>Lumen</mark> SD-WAN, 14 sites <span class="meta">Deal</span></div>
+        <div class="group pf-overline">ACTIONS</div><div role="option">Create quote for <mark>Lumen</mark> <span class="meta">Action</span></div></div>
+      <footer><span><span class="pf-kbd">↑↓</span> Navigate</span><span><span class="pf-kbd">⏎</span> Open</span></footer>
+    </div>
+    <div class="pf-kanban"><div class="pf-kanban-col"><header>Proposal <span class="meta">3</span><span class="meta total">$243K</span></header>
+      <div class="pf-kanban-card"><span class="title">Lumen 10G fiber</span><span class="account">Lumen Technologies · Chicago, IL</span><span class="pf-dot critical">Expires Oct 8</span><footer>Sam Patel · 3 comments</footer></div>
+      <div class="pf-kanban-card dragging"><span class="title">Harbor UCaaS</span><span class="account">Harbor Logistics · 320 seats</span><footer>Avery Chen</footer></div></div></div>
+  </div>
+
+  <div class="pf-grid cols-3" style="gap:24px;align-items:start;margin-top:24px;">
+    <section class="pf-card pf-stack" style="gap:14px;"><span class="pf-overline">LINE CHART</span>
+      <svg class="pf-line-chart" viewBox="0 0 320 160" role="img" aria-label="Pipeline, Jan to Jun, rising from 30K to 61K">
+        <g class="grid"><line x1="0" x2="320" y1="20" y2="20"/><line x1="0" x2="320" y1="70" y2="70"/><line x1="0" x2="320" y1="120" y2="120"/></g>
+        <polyline class="series s1" points="10,110 70,98 130,102 190,80 250,66 310,48"/>
+        <polyline class="series s3" points="10,70 70,66 130,60 190,56 250,50 310,46"/>
+      </svg></section>
+    <section class="pf-card pf-stack" style="gap:14px;"><span class="pf-overline">DONUT</span>
+      <div class="pf-donut"><div class="wrap"><div class="ring" role="img" aria-label="SD-WAN 42%, Fiber 28%, UCaaS 18%, Security 12%"></div><div class="center"><strong>$3.6M</strong><span>Pipeline</span></div></div></div></section>
+    <section class="pf-card pf-stack" style="gap:14px;"><span class="pf-overline">CHART TOOLTIP</span>
+      <div class="pf-chart-tip"><span>May 2026</span><div class="row"><i></i>Pipeline<strong>$66K</strong></div><div class="row"><i></i>Closed<strong>$41K</strong></div></div></section>
+  </div>
+
+  <div class="pf-row" style="gap:24px;align-items:stretch;margin-top:24px;flex-wrap:wrap;">
+    <div class="pf-stack" style="gap:16px;width:420px;">
+      <span class="pf-overline">AI</span>
+      <div class="pf-row" style="gap:8px;"><span class="pf-ai-label">Generated</span><span class="pf-ai-label suggested">Suggested</span><span class="pf-ai-label edited">Edited by you</span></div>
+      <div class="pf-assist-summary"><header>Deal summary <span class="pf-ai-label">Generated</span></header>
+        <ul><li>Lumen 10G, 36-month term at $4,200/mo; pricing exception approved today.</li><li>Waiting on the partner signature; quote expires Oct 8.</li></ul>
+        <footer><span>From 14 events, 2 quotes · Check before sharing</span></footer></div>
+      <div class="pf-suggest pending"><header>Contract term <span class="pf-ai-label suggested">Suggested</span></header>
+        <del><b>−</b><span>24 months</span></del><ins><b>+</b><span>36 months</span></ins>
+        <div class="why">Partner asked for 36 months in the Oct 6 thread. <a class="pf-cite" href="#"><span class="n">1</span>Comment</a></div>
+        <div class="actions"><button class="pf-btn pf-btn-success pf-btn-sm">Accept</button><button class="pf-btn pf-btn-secondary pf-btn-sm">Reject</button></div></div>
+      <div class="pf-approval pending"><header>Assist wants to send this quote</header>
+        <dl><dt>To</dt><dd>Lumen Technologies</dd><dt>Price</dt><dd>$4,200/mo · 36 months</dd></dl>
+        <span class="note">Nothing is sent until you approve.</span>
+        <div class="actions"><button class="pf-btn pf-btn-primary pf-btn-sm">Approve and send</button><button class="pf-btn pf-btn-secondary pf-btn-sm">Edit first</button></div></div>
+    </div>
+    <aside class="pf-assist-panel" style="height:720px;" aria-label="Assist">
+      <header><h2>Assist</h2><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Close Assist">×</button></header>
+      <div class="context">Working on: Lumen 10G fiber, Chicago</div>
+      <div class="thread">
+        <div class="pf-msg user"><p>What is blocking the Lumen deal?</p></div>
+        <div class="pf-msg"><div class="who"><span class="bot">✦</span>Assist <span class="pf-ai-label">Generated</span></div>
+          <div class="thinking"><i></i><i></i><i></i> Reading 14 events and 2 quotes</div></div>
+        <div class="pf-msg"><div class="who"><span class="bot">✦</span>Assist <span class="pf-ai-label">Generated</span></div>
+          <p class="answer">Lumen is waiting on the signed quote, which expires Oct 8. Two of three site surveys are still open.</p>
+          <div class="sources"><a class="pf-cite" href="#"><span class="n">1</span>Quote 4471</a><a class="pf-cite" href="#"><span class="n">2</span>Site survey</a></div>
+          <div class="pf-ai-feedback"><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Helpful">👍</button><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Not helpful">👎</button><span class="msg">Was this helpful?</span></div></div>
+        <div class="pf-msg"><div class="error">Assist could not finish this answer. <a class="pf-link" href="#">Try again</a></div></div>
+      </div>
+      <footer><div class="pf-prompt"><div class="field"><textarea placeholder="Ask Assist about this deal" aria-label="Ask Assist"></textarea>
+        <div class="toolbar"><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Mention">@</button><button class="pf-btn pf-btn-primary pf-btn-icon pf-btn-sm" aria-label="Send">➤</button></div></div>
+        <span class="disclaimer">Assist can be wrong. Check before you share.</span></div></footer>
+    </aside>
+    <div class="pf-stack" style="gap:16px;flex:1;min-width:280px;">
+      <span class="pf-overline">COMMENTS</span>
+      <div class="pf-comment"><span class="pf-avatar color-3">SP</span><div><span class="author">Sam Patel</span><time>2h ago</time><p><span class="mention">@Jordan</span> can we hold the 36-month price through Friday?</p><div class="actions"><span>Reply</span><span>Resolve</span></div></div></div>
+      <div class="pf-row" style="gap:12px;align-items:flex-start;"><span class="pf-avatar color-1">MR</span><div class="pf-composer"><textarea placeholder="Add a comment, @ to mention" aria-label="Add a comment"></textarea><div class="toolbar"><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Mention">@</button><button class="pf-btn pf-btn-primary pf-btn-icon pf-btn-sm" aria-label="Send">➤</button></div></div></div>
+      <div class="pf-popover">Popover content: 16px padding, popover radius, Shadow3.</div>
+    </div>
+  </div>
+</div>

@@ -631,3 +631,384 @@ code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 @media (max-width: 599px) { .pf-grid.cols-2, .pf-grid.cols-3, .pf-grid.cols-4 { grid-template-columns: 1fr; } }
 .pf-row { display: flex; align-items: center; gap: 12px; }
 .pf-stack { display: flex; flex-direction: column; gap: 12px; }
+
+/* ============================================================
+   FIGMA LIBRARY 1.3 - 1.7 COMPONENTS (2026-10-06)
+   Classes for the components the Figma library added after the docs
+   site. Same rules as above: tokens only, one block per component,
+   states as classes or native attributes. Handoff anchors match the
+   section names (pbk-demos.vercel.app/pathfinder/handoff/#<name>).
+   ============================================================ */
+
+/* ---------- Icon button ---------- */
+.pf-btn.pf-btn-icon { width: var(--pfElement_Height); padding: 0; gap: 0; }
+.pf-btn.pf-btn-icon.pf-btn-sm { width: 28px; }
+.pf-btn.pf-btn-icon.pf-btn-lg { width: 44px; }
+
+/* ---------- Link ---------- */
+.pf-link { color: var(--pfLinkColor); text-decoration: none; font-weight: 500; border-radius: 3px; }
+.pf-link:hover { color: var(--pfLinkHoverColor); text-decoration: underline; }
+.pf-link:focus-visible { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: 2px; text-decoration: underline; }
+.pf-link[aria-disabled="true"] { color: var(--pfContent_DisabledTextColor); pointer-events: none; }
+.pf-link.external::after { content: " \2197"; }
+
+/* ---------- Kbd ---------- */
+.pf-kbd {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 20px;
+  padding: 1px 6px; border-radius: 4px;
+  font-family: var(--pfFontMonoFamily); font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor);
+  background: var(--pfContent_InsetBackground);
+  border: 1px solid var(--pfContent_SubtleBorderColor); border-bottom-width: 2px;
+}
+
+/* ---------- Status dot ---------- */
+.pf-dot { display: inline-flex; align-items: center; gap: 6px; font-size: var(--pfFontSmallSize); color: var(--pfContent_ForegroundColor); }
+.pf-dot::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--pfNeutralElementColor); flex: none; }
+.pf-dot.positive::before { background: var(--pfPositiveElementColor); }
+.pf-dot.critical::before { background: var(--pfCriticalElementColor); }
+.pf-dot.negative::before { background: var(--pfNegativeElementColor); }
+.pf-dot.info::before { background: var(--pfInformativeElementColor); }
+
+/* ---------- Checkbox and Radio ---------- */
+.pf-check, .pf-radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: var(--pfFontMediumSize); color: var(--pfContent_ForegroundColor); }
+.pf-check input, .pf-radio input {
+  appearance: none; margin: 0; width: 16px; height: 16px; flex: none; display: grid; place-items: center;
+  border: 1px solid var(--pfControl_BorderColor); background: var(--pfControl_Background);
+  transition: background var(--pfContent_TransitionDuration_S) var(--pfContent_Easing_Standard), border-color var(--pfContent_TransitionDuration_S) var(--pfContent_Easing_Standard);
+}
+.pf-check input { border-radius: 3px; }
+.pf-radio input { border-radius: 50%; }
+.pf-check input:hover, .pf-radio input:hover { border-color: var(--pfControl_Hover_BorderColor); }
+.pf-check input:checked, .pf-check input:indeterminate, .pf-radio input:checked { background: var(--pfSelectedColor); border-color: var(--pfSelectedColor); }
+.pf-check input:checked::after { content: ""; width: 8px; height: 4px; border: 2px solid var(--pfContent_ContrastTextColor); border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
+.pf-check input:indeterminate::after { content: ""; width: 8px; height: 2px; background: var(--pfContent_ContrastTextColor); }
+.pf-radio input:checked::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--pfContent_ContrastTextColor); }
+.pf-check input:focus-visible, .pf-radio input:focus-visible { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: 2px; }
+.pf-check input:disabled, .pf-radio input:disabled { opacity: .4; cursor: not-allowed; }
+.pf-radio-group { display: flex; flex-direction: column; gap: 8px; border: 0; margin: 0; padding: 0; }
+.pf-radio-group legend { font-size: var(--pfFontSmallSize); font-weight: 600; color: var(--pfContent_LabelColor); margin-bottom: 4px; }
+
+/* ---------- Tag ---------- */
+.pf-tag {
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 8px;
+  border-radius: var(--pfButton_TokenBorderCornerRadius, 6px); font-size: var(--pfFontSmallSize); font-weight: 600;
+  background: var(--pfButton_TokenBackground); color: var(--pfContent_ForegroundColor); border: 1px solid var(--pfButton_TokenBorderColor);
+}
+.pf-tag[aria-pressed="true"] { background: var(--pfGlobal_HighlightSoftBackground); border-color: var(--pfGlobal_HighlightBorderColor); color: var(--pfHighlightColor); }
+.pf-tag .remove { border: 0; background: none; color: inherit; padding: 0; cursor: pointer; font-size: var(--pfFontSmallSize); }
+
+/* ---------- Segmented control ---------- */
+.pf-segmented { display: inline-flex; gap: 2px; padding: 2px; border-radius: 8px; background: var(--pfControl_Track_Background); border: 1px solid var(--pfContent_SubtleBorderColor); }
+.pf-segmented button {
+  height: 28px; padding: 0 12px; border: 0; border-radius: var(--pfButton_Segment_BorderCornerRadius); background: none;
+  font: 600 var(--pfFontSmallSize) var(--pfFontFamily); color: var(--pfContent_LabelColor); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: background var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Sharp), color var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Sharp);
+}
+.pf-segmented button:hover { background: var(--pfContent_HoverBackground); color: var(--pfContent_ForegroundColor); }
+.pf-segmented button[aria-checked="true"] { background: var(--pfGroup_ContentBackground); color: var(--pfContent_ForegroundColor); box-shadow: var(--pfContent_Shadow1); }
+.pf-segmented button:focus-visible { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: 1px; }
+
+/* ---------- Slider ---------- */
+.pf-slider { width: 100%; appearance: none; height: 4px; border-radius: 2px; background: var(--pfSlider_Background); accent-color: var(--pfSlider_Selected_Background); }
+.pf-slider::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--pfSlider_HandleBackground); border: 2px solid var(--pfSlider_HandleBorderColor); cursor: pointer; }
+.pf-slider::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--pfSlider_HandleBackground); border: 2px solid var(--pfSlider_HandleBorderColor); cursor: pointer; }
+.pf-slider::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--pfSlider_Selected_Background); }
+.pf-slider:focus-visible { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: 6px; }
+
+/* ---------- Search field ---------- */
+.pf-search { position: relative; display: flex; align-items: center; }
+.pf-search .pf-input { padding-left: 34px; padding-right: 34px; border-radius: 999px; }
+.pf-search .lead { position: absolute; left: 12px; color: var(--pfContent_LabelColor); pointer-events: none; }
+.pf-search .clear, .pf-search .pf-kbd { position: absolute; right: 10px; }
+.pf-search .clear { border: 0; background: none; color: var(--pfContent_LabelColor); cursor: pointer; }
+
+/* ---------- Combobox ---------- */
+.pf-combobox { position: relative; }
+.pf-combobox .control {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px; min-height: var(--pfElement_Height); padding: 4px 8px;
+  border-radius: var(--pfField_BorderCornerRadius); background: var(--pfField_Background); box-shadow: var(--pfField_Shadow);
+}
+.pf-combobox .control:focus-within { background: var(--pfField_Focus_Background); box-shadow: inset 0 0 0 2px var(--pfField_Focus_BorderColor); }
+.pf-combobox .control input { flex: 1; min-width: 80px; border: 0; background: none; outline: none; color: var(--pfField_TextColor); font: var(--pfFontMediumSize) var(--pfFontFamily); }
+.pf-combobox .control input::placeholder { color: var(--pfField_PlaceholderTextColor); }
+.pf-combobox .pf-menu { position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 50; }
+.pf-combobox .count { padding: 4px 10px; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+
+/* ---------- Number stepper ---------- */
+.pf-number { display: inline-flex; align-items: center; gap: 2px; height: var(--pfElement_Height); padding: 0 4px; border-radius: var(--pfField_BorderCornerRadius); background: var(--pfField_Background); box-shadow: var(--pfField_Shadow); }
+.pf-number:focus-within { box-shadow: inset 0 0 0 2px var(--pfField_Focus_BorderColor); }
+.pf-number input { width: 48px; border: 0; background: none; text-align: center; color: var(--pfField_TextColor); font: 600 var(--pfFontMediumSize) var(--pfFontFamily); outline: none; appearance: textfield; }
+.pf-number input::-webkit-inner-spin-button { appearance: none; }
+
+/* ---------- Inline edit ---------- */
+.pf-inline-edit { display: flex; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 6px; border: 1px solid transparent; cursor: text; font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-inline-edit:hover { background: var(--pfContent_HoverBackground); border-color: var(--pfContent_SubtleBorderColor); }
+.pf-inline-edit.editing { padding: 0; border: 0; background: none; gap: 4px; }
+
+/* ---------- Breadcrumb ---------- */
+.pf-breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; font-size: var(--pfFontSmallSize); }
+.pf-breadcrumb li + li::before { content: "\203A"; color: var(--pfContent_LabelColor); margin-right: 6px; }
+.pf-breadcrumb a { color: var(--pfLinkColor); text-decoration: none; }
+.pf-breadcrumb a:hover { text-decoration: underline; }
+.pf-breadcrumb [aria-current="page"] { color: var(--pfContent_ForegroundColor); font-weight: 600; }
+
+/* ---------- Steps (wizard stepper) ---------- */
+.pf-steps { display: flex; align-items: center; gap: 12px; list-style: none; margin: 0; padding: 0; font-size: var(--pfFontSmallSize); }
+.pf-steps li { display: flex; align-items: center; gap: 8px; color: var(--pfContent_LabelColor); }
+.pf-steps li + li::before { content: ""; width: 32px; height: 1px; background: var(--pfContent_DividerColor); }
+.pf-steps .n { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--pfContent_ForegroundBorderColor); font-size: var(--pfGlobal_FontXsmallSize); }
+.pf-steps [aria-current="step"] { color: var(--pfContent_ForegroundColor); font-weight: 600; }
+.pf-steps [aria-current="step"] .n { border-color: var(--pfSelectedColor); color: var(--pfSelectedColor); }
+.pf-steps .done .n { background: var(--pfSelectedColor); border-color: var(--pfSelectedColor); color: var(--pfContent_ContrastTextColor); }
+
+/* ---------- Accordion (details / summary) ---------- */
+.pf-accordion { border: 1px solid var(--pfGroup_ContentBorderColor); border-radius: var(--pfElement_BorderCornerRadius); background: var(--pfGroup_ContentBackground); }
+.pf-accordion details + details { border-top: 1px solid var(--pfContent_DividerColor); }
+.pf-accordion summary { list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-accordion summary::-webkit-details-marker { display: none; }
+.pf-accordion summary::after { content: "\203A"; color: var(--pfContent_LabelColor); transition: transform var(--pfContent_TransitionDuration_L) var(--pfContent_Easing_Standard); }
+.pf-accordion details[open] summary::after { transform: rotate(90deg); }
+.pf-accordion summary:focus-visible { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: -2px; }
+.pf-accordion .body { padding: 0 16px 16px; color: var(--pfContent_BodyTextColor); font-size: var(--pfFontMediumSize); }
+
+/* ---------- Divider ---------- */
+.pf-divider { border: 0; height: 1px; margin: 0; background: var(--pfContent_DividerColor); }
+.pf-divider.vertical { width: 1px; height: auto; align-self: stretch; }
+
+/* ---------- Tooltip and Popover ---------- */
+.pf-tooltip { display: inline-block; max-width: 240px; padding: 6px 10px; border-radius: 6px; font-size: var(--pfFontSmallSize); color: var(--pfContent_ForegroundColor); background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfContent_ForegroundBorderColor); box-shadow: var(--pfContent_Shadow2); }
+.pf-popover, .pf-menu {
+  background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfContent_ForegroundBorderColor);
+  border-radius: var(--pfPopover_BorderCornerRadius); box-shadow: var(--pfContent_Shadow3);
+  animation: pf-pop-in var(--pfContent_TransitionDuration_M) var(--pfContent_Easing_Decelerate);
+}
+.pf-popover { padding: 16px; }
+@keyframes pf-pop-in { from { opacity: 0; transform: scale(.96); } }
+
+/* ---------- Menu ---------- */
+.pf-menu { display: flex; flex-direction: column; gap: 2px; min-width: 220px; padding: 4px; }
+.pf-menu .section { padding: 6px 10px 2px; }
+.pf-menu [role="menuitem"], .pf-menu [role="option"] {
+  display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 10px; border: 0; border-radius: 6px; background: none; text-align: left;
+  font: var(--pfFontMediumSize) var(--pfFontFamily); color: var(--pfList_TextColor); cursor: pointer;
+}
+.pf-menu [role="menuitem"]:hover, .pf-menu [role="option"]:hover, .pf-menu .active { background: var(--pfList_Hover_Background); }
+.pf-menu [aria-selected="true"] { background: var(--pfList_SelectionBackgroundColor); color: var(--pfContent_Selected_TextColor); font-weight: 600; }
+.pf-menu [role="menuitem"] .label { flex: 1; }
+.pf-menu .destructive { color: var(--pfNegativeTextColor); }
+.pf-menu .destructive:hover { background: var(--pfErrorBackground); }
+.pf-menu [aria-disabled="true"] { color: var(--pfContent_DisabledTextColor); pointer-events: none; }
+.pf-menu hr { border: 0; height: 1px; margin: 2px 0; background: var(--pfContent_DividerColor); }
+
+/* ---------- List item ---------- */
+.pf-list-item { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 8px; color: inherit; text-decoration: none; }
+.pf-list-item:hover { background: var(--pfContent_ListHoverBackground); }
+.pf-list-item[aria-selected="true"] { background: var(--pfContent_ListSelectionBackground); }
+.pf-list-item[aria-selected="true"] .title { color: var(--pfContent_Selected_TextColor); }
+.pf-list-item .lead { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 8px; background: var(--pfContent_InsetBackground); color: var(--pfContent_IconColor); }
+.pf-list-item .text { flex: 1; min-width: 0; }
+.pf-list-item .title { font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-list-item .desc, .pf-list-item .meta { font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+
+/* ---------- Tree view ---------- */
+.pf-tree, .pf-tree ul { list-style: none; margin: 0; padding: 0; }
+.pf-tree ul { padding-left: 20px; }
+.pf-tree [role="treeitem"] > .row { display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 8px; border-radius: 6px; cursor: pointer; color: var(--pfContent_ForegroundColor); }
+.pf-tree .row:hover { background: var(--pfContent_ListHoverBackground); }
+.pf-tree [aria-selected="true"] > .row { background: var(--pfContent_ListSelectionBackground); color: var(--pfContent_Selected_TextColor); font-weight: 600; }
+.pf-tree .count { margin-left: auto; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+.pf-tree [aria-expanded="false"] > ul { display: none; }
+
+/* ---------- Drawer ---------- */
+.pf-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 200; width: 480px; max-width: 100vw;
+  display: flex; flex-direction: column; background: var(--pfContent_SurfaceBackground);
+  border-left: 1px solid var(--pfContent_ForegroundBorderColor); box-shadow: var(--pfContent_Shadow4);
+  animation: pf-drawer-in var(--pfContent_TransitionDuration_XL) var(--pfContent_Easing_Decelerate);
+}
+.pf-drawer.lg { width: 640px; }
+.pf-drawer header, .pf-drawer footer { display: flex; align-items: flex-start; gap: 12px; padding: 20px 16px 16px 24px; }
+.pf-drawer header { border-bottom: 1px solid var(--pfContent_DividerColor); }
+.pf-drawer footer { justify-content: flex-end; gap: 8px; padding: 16px 24px; border-top: 1px solid var(--pfContent_DividerColor); }
+.pf-drawer .body { flex: 1; overflow: auto; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+@keyframes pf-drawer-in { from { transform: translateX(100%); } }
+
+/* ---------- Bulk action bar ---------- */
+.pf-bulkbar {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 8px 8px 16px; border-radius: 12px;
+  background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfGlobal_HighlightBorderColor); box-shadow: var(--pfContent_Shadow4);
+}
+.pf-bulkbar .count { font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-bulkbar .sep { width: 1px; height: 20px; background: var(--pfContent_DividerColor); }
+
+/* ---------- Command palette ---------- */
+.pf-cmdk { width: 640px; max-width: calc(100vw - 32px); overflow: hidden; background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfContent_ForegroundBorderColor); border-radius: var(--pfDialog_BorderCornerRadius); box-shadow: var(--pfContent_Shadow4); }
+.pf-cmdk .query { display: flex; align-items: center; gap: 12px; padding: 16px 16px 16px 20px; border-bottom: 1px solid var(--pfContent_DividerColor); }
+.pf-cmdk .query input { flex: 1; border: 0; background: none; outline: none; color: var(--pfContent_ForegroundColor); font: var(--pfFontLargeSize) var(--pfFontFamily); }
+.pf-cmdk .results { padding: 8px; display: flex; flex-direction: column; gap: 2px; max-height: 420px; overflow: auto; }
+.pf-cmdk .group { padding: 8px 12px 4px; }
+.pf-cmdk [role="option"] { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 12px; border-radius: 8px; color: var(--pfContent_ForegroundColor); }
+.pf-cmdk [role="option"] .meta { margin-left: auto; font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+.pf-cmdk [aria-selected="true"] { background: var(--pfContent_ListSelectionBackground); color: var(--pfContent_Selected_TextColor); }
+.pf-cmdk mark { background: var(--pfContent_SearchHighlightColor); color: inherit; border-radius: 2px; }
+.pf-cmdk footer { display: flex; gap: 16px; padding: 10px 20px; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); background: var(--pfContent_InsetBackground); border-top: 1px solid var(--pfContent_DividerColor); }
+
+/* ---------- Notification center ---------- */
+.pf-notifs { width: 380px; max-height: 560px; display: flex; flex-direction: column; overflow: hidden; background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfContent_ForegroundBorderColor); border-radius: var(--pfPopover_BorderCornerRadius); box-shadow: var(--pfContent_Shadow4); }
+.pf-notifs header, .pf-notifs footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 16px; }
+.pf-notifs header { border-bottom: 1px solid var(--pfContent_DividerColor); font-weight: 600; }
+.pf-notifs ul { list-style: none; margin: 0; padding: 0; overflow: auto; }
+.pf-notifs li { display: flex; gap: 10px; padding: 12px 16px 12px 12px; border-bottom: 1px solid var(--pfContent_DividerColor); color: var(--pfContent_ForegroundColor); }
+.pf-notifs li::before { content: ""; width: 6px; height: 6px; margin-top: 7px; border-radius: 50%; flex: none; }
+.pf-notifs li.unread { background: var(--pfGlobal_HighlightHoverBackground); font-weight: 600; }
+.pf-notifs li.unread::before { background: var(--pfHighlightColor); }
+.pf-notifs time { display: block; font-weight: 400; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+
+/* ---------- Activity timeline ---------- */
+.pf-timeline { list-style: none; margin: 0; padding: 0; }
+.pf-timeline li { position: relative; display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding-bottom: 20px; }
+.pf-timeline li:not(:last-child)::after { content: ""; position: absolute; left: 13px; top: 32px; bottom: 4px; width: 2px; background: var(--pfContent_DividerColor); }
+.pf-timeline .marker { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: var(--pfFontSmallSize); background: var(--pfNeutralBackground); color: var(--pfNeutralElementColor); }
+.pf-timeline .approval .marker { background: var(--pfSuccessBackground); color: var(--pfPositiveElementColor); }
+.pf-timeline .status .marker { background: var(--pfWarningBackground); color: var(--pfCriticalElementColor); }
+.pf-timeline .created .marker { background: var(--pfInformationBackground); color: var(--pfInformativeElementColor); }
+.pf-timeline .title { color: var(--pfContent_ForegroundColor); padding-top: 4px; }
+.pf-timeline time { display: block; margin-top: 2px; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+.pf-timeline .detail { margin-top: 6px; padding: 8px 12px; border-radius: 8px; background: var(--pfContent_InsetBackground); color: var(--pfContent_BodyTextColor); font-size: var(--pfFontSmallSize); }
+
+/* ---------- Comment and composer ---------- */
+.pf-comment { display: flex; gap: 12px; }
+.pf-comment .author { font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-comment time { margin-left: 8px; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+.pf-comment p { margin: 4px 0; color: var(--pfContent_BodyTextColor); }
+.pf-comment .mention { color: var(--pfLinkColor); font-weight: 600; }
+.pf-comment .actions { display: flex; gap: 16px; font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+.pf-composer { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 10px 8px 8px 12px; border-radius: var(--pfField_BorderCornerRadius); background: var(--pfField_Background); box-shadow: var(--pfField_Shadow); }
+.pf-composer:focus-within { background: var(--pfField_Focus_Background); box-shadow: inset 0 0 0 2px var(--pfField_Focus_BorderColor); }
+.pf-composer textarea { border: 0; background: none; outline: none; resize: none; min-height: 40px; color: var(--pfField_TextColor); font: var(--pfFontMediumSize) var(--pfFontFamily); }
+.pf-composer textarea::placeholder { color: var(--pfField_PlaceholderTextColor); }
+.pf-composer .toolbar { display: flex; align-items: center; gap: 4px; }
+.pf-composer .toolbar .pf-btn-primary { margin-left: auto; }
+
+/* ---------- Kanban ---------- */
+.pf-kanban { display: flex; gap: 16px; align-items: flex-start; overflow-x: auto; }
+.pf-kanban-col { width: 304px; flex: none; display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 12px; background: var(--pfContent_InsetBackground); }
+.pf-kanban-col header { display: flex; gap: 8px; align-items: baseline; font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-kanban-col header .meta { font-weight: 400; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+.pf-kanban-col header .total { margin-left: auto; }
+.pf-kanban-card { display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; border-radius: var(--pfCard_BorderCornerRadius); background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfGroup_ContentBorderColor); cursor: grab; }
+.pf-kanban-card:hover { border-color: var(--pfGlobal_HighlightBorderColor); box-shadow: var(--pfContent_Shadow2); }
+.pf-kanban-card.dragging { transform: rotate(-2deg); box-shadow: var(--pfContent_Shadow4); cursor: grabbing; }
+.pf-kanban-card .title { font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-kanban-card .account { font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+.pf-kanban-card footer { display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--pfContent_DividerColor); font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+
+/* ---------- File upload dropzone ---------- */
+.pf-dropzone { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 32px; border-radius: var(--pfElement_BorderCornerRadius); border: 1px dashed var(--pfContent_ForegroundBorderColor); background: var(--pfContent_InsetBackground); color: var(--pfContent_LabelColor); text-align: center; }
+.pf-dropzone strong { color: var(--pfContent_ForegroundColor); }
+.pf-dropzone.over { border-color: var(--pfGlobal_HighlightBorderColor); background: var(--pfGlobal_HighlightHoverBackground); }
+
+/* ---------- Charts: line, donut, tooltip ---------- */
+.pf-line-chart { width: 100%; height: auto; overflow: visible; }
+.pf-line-chart .grid line { stroke: var(--pfChart_LineColor_1); }
+.pf-line-chart .axis text { fill: var(--pfChart_Data_TextColor); font: var(--pfGlobal_FontXsmallSize) var(--pfFontFamily); }
+.pf-line-chart .series { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.pf-line-chart .s1 { stroke: var(--pfChart_OrderedColor_1); }
+.pf-line-chart .s2 { stroke: var(--pfChart_OrderedColor_2); }
+.pf-line-chart .s3 { stroke: var(--pfChart_OrderedColor_3); stroke-dasharray: 6 4; }
+.pf-donut { display: flex; align-items: center; gap: 24px; }
+.pf-donut .ring {
+  --a: 42; --b: 28; --c: 18;
+  width: 160px; height: 160px; border-radius: 50%; display: grid; place-items: center; text-align: center;
+  background: conic-gradient(var(--pfChart_OrderedColor_1) 0 calc(var(--a) * 1%), var(--pfChart_OrderedColor_2) 0 calc((var(--a) + var(--b)) * 1%), var(--pfChart_OrderedColor_3) 0 calc((var(--a) + var(--b) + var(--c)) * 1%), var(--pfChart_OrderedColor_4) 0);
+  -webkit-mask: radial-gradient(circle, transparent 57px, var(--pfContent_ForegroundColor) 58px);
+          mask: radial-gradient(circle, transparent 57px, var(--pfContent_ForegroundColor) 58px);
+}
+.pf-donut .center { position: absolute; width: 160px; text-align: center; }
+.pf-donut .center strong { display: block; font: 700 var(--pfFontHeader5Size) var(--pfFontHeaderFamily); color: var(--pfContent_ForegroundColor); }
+.pf-donut .center span { font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+.pf-donut .wrap { position: relative; display: grid; place-items: center; }
+.pf-chart-tip { display: inline-flex; flex-direction: column; gap: 6px; min-width: 160px; padding: 10px 12px; border-radius: var(--pfPopover_BorderCornerRadius); background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfContent_ForegroundBorderColor); box-shadow: var(--pfContent_Shadow3); font-size: var(--pfFontSmallSize); color: var(--pfContent_BodyTextColor); }
+.pf-chart-tip .row { display: flex; align-items: center; gap: 6px; }
+.pf-chart-tip .row strong { margin-left: auto; color: var(--pfContent_ForegroundColor); }
+.pf-chart-tip i { width: 8px; height: 8px; border-radius: 50%; background: var(--pfChart_OrderedColor_1); }
+.pf-chart-tip .row:nth-of-type(2) i { background: var(--pfChart_OrderedColor_2); }
+.pf-chart-tip .row:nth-of-type(3) i { background: var(--pfChart_OrderedColor_3); }
+
+/* ---------- AI: label, citation, feedback ---------- */
+.pf-ai-label { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 6px; border-radius: 6px; font-size: var(--pfGlobal_FontMicroSize); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--pfContent_Selected_TextColor); background: var(--pfGlobal_HighlightSoftBackground); }
+.pf-ai-label::before { content: "\2726"; }
+.pf-ai-label.suggested { background: var(--pfGlobal_HighlightHoverBackground); border: 1px dashed var(--pfGlobal_HighlightBorderColor); }
+.pf-ai-label.edited { color: var(--pfNeutralTextColor); background: var(--pfNeutralBackground); }
+.pf-ai-label.edited::before { content: "\270E"; }
+.pf-cite { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px 2px 3px; border-radius: 999px; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); background: var(--pfContent_InsetBackground); border: 1px solid var(--pfContent_SubtleBorderColor); text-decoration: none; }
+.pf-cite:hover { color: var(--pfContent_ForegroundColor); background: var(--pfGlobal_HighlightHoverBackground); border-color: var(--pfGlobal_HighlightBorderColor); }
+.pf-cite .n { width: 16px; height: 16px; border-radius: 50%; display: grid; place-items: center; color: var(--pfContent_Selected_TextColor); background: var(--pfGlobal_HighlightSoftBackground); }
+.pf-ai-feedback { display: flex; align-items: center; gap: 2px; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+.pf-ai-feedback .msg { margin-left: 6px; }
+
+/* ---------- AI: prompt input ---------- */
+.pf-prompt { display: flex; flex-direction: column; gap: 6px; }
+.pf-prompt .field { display: flex; flex-direction: column; gap: 8px; padding: 10px 8px 8px 12px; border-radius: 12px; background: var(--pfField_Background); box-shadow: var(--pfField_Shadow); }
+.pf-prompt .field:focus-within { background: var(--pfField_Focus_Background); box-shadow: inset 0 0 0 2px var(--pfField_Focus_BorderColor); }
+.pf-prompt textarea { border: 0; background: none; outline: none; resize: none; min-height: 44px; color: var(--pfField_TextColor); font: var(--pfFontMediumSize) var(--pfFontFamily); }
+.pf-prompt textarea::placeholder { color: var(--pfField_PlaceholderTextColor); }
+.pf-prompt .toolbar { display: flex; align-items: center; gap: 4px; }
+.pf-prompt .toolbar > :last-child { margin-left: auto; }
+.pf-prompt .disclaimer { font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+
+/* ---------- AI: messages ---------- */
+.pf-msg { display: flex; flex-direction: column; gap: 10px; }
+.pf-msg.user { align-items: flex-end; }
+.pf-msg.user p { max-width: 320px; margin: 0; padding: 10px 14px; border-radius: 12px 12px 4px 12px; color: var(--pfContent_ForegroundColor); background: var(--pfGlobal_HighlightSoftBackground); }
+.pf-msg .who { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-msg .who .bot { width: 24px; height: 24px; border-radius: 6px; display: grid; place-items: center; color: var(--pfHighlightColor); background: var(--pfGlobal_HighlightSoftBackground); }
+.pf-msg .answer { margin: 0; color: var(--pfContent_BodyTextColor); }
+.pf-msg[aria-busy="true"] .answer::after { content: ""; display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: text-bottom; background: var(--pfHighlightColor); animation: pf-blink 1s steps(2) infinite; }
+.pf-msg .thinking { display: flex; align-items: center; gap: 8px; font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+.pf-msg .thinking i { width: 6px; height: 6px; border-radius: 50%; background: var(--pfHighlightColor); animation: pf-pulse 1.2s var(--pfContent_Easing_Standard) infinite; }
+.pf-msg .thinking i:nth-child(2) { animation-delay: .2s; }
+.pf-msg .thinking i:nth-child(3) { animation-delay: .4s; }
+.pf-msg .sources { display: flex; flex-wrap: wrap; gap: 6px; }
+.pf-msg .error { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; color: var(--pfContent_ForegroundColor); background: var(--pfErrorBackground); border: 1px solid var(--pfErrorBorderColor); }
+@keyframes pf-blink { 50% { opacity: 0; } }
+@keyframes pf-pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+
+/* ---------- AI: suggested edit and approval step ---------- */
+.pf-suggest, .pf-approval { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: var(--pfCard_BorderCornerRadius); background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfGroup_ContentBorderColor); }
+.pf-suggest.pending { border: 1px dashed var(--pfGlobal_HighlightBorderColor); }
+.pf-suggest header, .pf-approval header { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-suggest header .pf-ai-label { margin-left: auto; }
+.pf-suggest del, .pf-suggest ins { display: flex; gap: 10px; padding: 6px 10px; border-radius: 6px; text-decoration: none; }
+.pf-suggest del { color: var(--pfNegativeTextColor); background: var(--pfErrorBackground); }
+.pf-suggest del span { text-decoration: line-through; }
+.pf-suggest ins { color: var(--pfPositiveTextColor); background: var(--pfSuccessBackground); }
+.pf-suggest .why { display: flex; align-items: center; gap: 8px; font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
+.pf-suggest .actions, .pf-approval .actions { display: flex; gap: 8px; align-items: center; }
+.pf-approval.pending { border-color: var(--pfWarningBorderColor); }
+.pf-approval dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--pfContent_InsetBackground); font-size: var(--pfFontSmallSize); }
+.pf-approval dt { color: var(--pfContent_LabelColor); }
+.pf-approval dd { margin: 0; text-align: right; color: var(--pfContent_ForegroundColor); }
+.pf-approval .note { font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+
+/* ---------- AI: assist summary and assistant panel ---------- */
+.pf-assist-summary { display: flex; flex-direction: column; gap: 12px; padding: 16px 20px; border-radius: var(--pfCard_BorderCornerRadius); background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfGlobal_HighlightBorderColor); }
+.pf-assist-summary header { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-assist-summary header .pf-ai-label { margin-left: auto; }
+.pf-assist-summary ul { margin: 0; padding-left: 18px; color: var(--pfContent_BodyTextColor); font-size: var(--pfFontSmallSize); display: flex; flex-direction: column; gap: 6px; }
+.pf-assist-summary footer { display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--pfContent_DividerColor); font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); }
+.pf-assist-summary footer span { flex: 1; }
+.pf-assist-summary .skeleton { height: 12px; border-radius: 6px; background: var(--pfContent_Placeholderloading_Background); }
+.pf-assist-panel { width: 400px; height: 100%; display: flex; flex-direction: column; background: var(--pfContent_SurfaceBackground); border-left: 1px solid var(--pfContent_ForegroundBorderColor); box-shadow: var(--pfContent_Shadow4); }
+.pf-assist-panel > header { display: flex; align-items: center; gap: 8px; padding: 14px 12px 14px 16px; border-bottom: 1px solid var(--pfContent_DividerColor); font-weight: 600; color: var(--pfContent_ForegroundColor); }
+.pf-assist-panel > header h2 { flex: 1; font-size: var(--pfFontLargeSize); }
+.pf-assist-panel .context { padding: 8px 16px; font-size: var(--pfGlobal_FontXsmallSize); color: var(--pfContent_LabelColor); background: var(--pfContent_InsetBackground); }
+.pf-assist-panel .thread { flex: 1; overflow: auto; display: flex; flex-direction: column; gap: 20px; padding: 16px; }
+.pf-assist-panel > footer { padding: 12px 16px 16px; border-top: 1px solid var(--pfContent_DividerColor); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-drawer, .pf-popover, .pf-menu { animation-name: pf-fade; animation-duration: var(--pfContent_TransitionDuration_S); }
+  .pf-msg .thinking i, .pf-msg[aria-busy="true"] .answer::after { animation: none; }
+}
+@keyframes pf-fade { from { opacity: 0; } }
