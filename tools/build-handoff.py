@@ -125,7 +125,7 @@ page = f'''<!doctype html>
   <button class="pf-btn pf-btn-secondary pf-btn-sm" id="theme" type="button">Switch to Light</button>
 </nav>
 <main>
-  <span class="pf-overline">Pathfinder 2.0 · Figma library 1.2 · 2026-10-04</span>
+  <span class="pf-overline">Pathfinder 2.0 · Figma library 1.8.1 · 2026-10-06</span>
   <h1>Developer handoff</h1>
   <p class="lead">Everything a developer needs to build from the Pathfinder Figma file. Figma shows what to build and which tokens it uses. This page covers how: classes, behavior, accessibility and what is not in code yet. It lives next to the code so the two stay in step.</p>
   <div class="links">
