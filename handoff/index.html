@@ -69,9 +69,9 @@
     <a class="pf-btn pf-btn-secondary pf-btn-sm" href="../recipes/desktop.html">Recipes</a>
   </div>
   <div class="stats">
-    <div class="pf-card pf-stat"><span class="pf-stat-label">Mapped components</span><span class="pf-stat-value">39</span></div>
+    <div class="pf-card pf-stat"><span class="pf-stat-label">Mapped components</span><span class="pf-stat-value">57</span></div>
     <div class="pf-card pf-stat"><span class="pf-stat-label">In pathfinder.css</span><span class="pf-stat-value">20</span></div>
-    <div class="pf-card pf-stat"><span class="pf-stat-label">Figma only</span><span class="pf-stat-value">18</span></div>
+    <div class="pf-card pf-stat"><span class="pf-stat-label">Figma only</span><span class="pf-stat-value">36</span></div>
     <div class="pf-card pf-stat"><span class="pf-stat-label">Contrast checks passing</span><span class="pf-stat-value">126/126</span></div>
   </div>
 
@@ -371,6 +371,132 @@
   <td><ul><li class="muted">No variant mapping</li></ul></td>
   <td class="code"><code>not found in the docs site source</code></td>
 </tr>
+<tr id="radio">
+  <td><strong>Radio</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=78-468">node 78:468</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Value: Unselected, Selected → checked attribute</li><li>State: Hover, Focus → CSS states; Disabled → disabled</li><li>Group: role=radiogroup, arrow keys move selection</li></ul></td>
+  <td class="code"><code>Radio: value, name, label, disabled; RadioGroup: value, onChange, orientation</code></td>
+</tr>
+<tr id="textarea">
+  <td><strong>Textarea</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=79-16">node 79:16</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>State: same as Input</li><li>Counter → maxLength, shows used / max</li><li>Min height 96px, grows to about 8 lines</li></ul></td>
+  <td class="code"><code>Textarea: label, value, placeholder, helper, maxLength, required, state(error|warning|success), readOnly, disabled</code></td>
+</tr>
+<tr id="search-field">
+  <td><strong>Search Field</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=79-204">node 79:204</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Show clear → visible when value is not empty</li><li>Show shortcut → global header only, Cmd K opens Command Palette</li><li>Esc clears the value</li></ul></td>
+  <td class="code"><code>SearchField: value, placeholder, onClear, shortcut, size(default|compact)</code></td>
+</tr>
+<tr id="icon-button">
+  <td><strong>Icon Button</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=80-15">node 80:15</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Variant: Default, Emphasized, Ghost, Reject → same classes as Button</li><li>Size: sm 28, md 36, lg 44 square</li><li>Always pair with Tooltip</li></ul></td>
+  <td class="code"><code>IconButton: icon, aria-label (required), variant(default|primary|ghost|danger), size(sm|md|lg), disabled</code></td>
+</tr>
+<tr id="link">
+  <td><strong>Link</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=80-380">node 80:380</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>External → target=_blank rel=noopener plus icon</li><li>Hover and Focus → underline</li></ul></td>
+  <td class="code"><code>Link: href, external, size(default|small), disabled</code></td>
+</tr>
+<tr id="kbd">
+  <td><strong>Kbd</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=80-430">node 80:430</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Key → text content, use kbd element</li></ul></td>
+  <td class="code"><code>Kbd: children (key label)</code></td>
+</tr>
+<tr id="status-dot">
+  <td><strong>Status Dot</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=80-496">node 80:496</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Status → dot color from global/*-element-color</li><li>Show label off → label becomes aria-label</li></ul></td>
+  <td class="code"><code>StatusDot: status(positive|critical|negative|informative|neutral), label, showLabel</code></td>
+</tr>
+<tr id="segmented-control">
+  <td><strong>Segmented Control</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=82-80">node 82:80</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Count: 2 to 5 segments</li><li>Segment State: Selected → aria-checked=true</li><li>role=radiogroup</li></ul></td>
+  <td class="code"><code>SegmentedControl: options[{label, icon}], value, onChange</code></td>
+</tr>
+<tr id="menu">
+  <td><strong>Menu</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=82-150">node 82:150</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Menu / Item Type: Destructive → negative text color, last group</li><li>Show shortcut → Kbd text right aligned</li><li>Esc closes and returns focus to the trigger</li></ul></td>
+  <td class="code"><code>Menu: trigger, items[{label, icon, shortcut, destructive, disabled}], sections</code></td>
+</tr>
+<tr id="list-item">
+  <td><strong>List Item</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=82-276">node 82:276</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Lines: One line, Two line → description present</li><li>Show chevron → only when the row navigates</li><li>State: Selected → aria-selected</li></ul></td>
+  <td class="code"><code>ListItem: title, description, meta, leading, href</code></td>
+</tr>
+<tr id="toast">
+  <td><strong>Toast</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=83-55">node 83:55</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Status: Information, Success, Warning → role=status; Error → role=alert, no auto dismiss</li><li>Auto dismiss 6s, paused on hover and focus</li><li>Max 3 stacked, bottom right</li></ul></td>
+  <td class="code"><code>toast({status, title, message, action}) via ToastProvider</code></td>
+</tr>
+<tr id="drawer">
+  <td><strong>Drawer</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=83-150">node 83:150</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Size: md 480, lg 640</li><li>Focus to title on open, back to trigger on close</li><li>Unsaved edits confirm before close</li></ul></td>
+  <td class="code"><code>Drawer: open, onClose, title, subtitle, size(md|lg), footer</code></td>
+</tr>
+<tr id="bulk-action-bar">
+  <td><strong>Bulk Action Bar</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=83-183">node 83:183</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Count → aria-live=polite</li><li>Max 4 actions, extras in a Menu</li><li>Destructive actions confirm with Modal</li></ul></td>
+  <td class="code"><code>BulkActionBar: count, actions, onClear</code></td>
+</tr>
+<tr id="command-palette">
+  <td><strong>Command Palette</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=84-33">node 84:33</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Opened by Cmd K or Ctrl K</li><li>Result State: Active → aria-activedescendant</li><li>Groups: Recent, Deals, Accounts, Actions</li></ul></td>
+  <td class="code"><code>CommandPalette: open, groups[{label, items}], onSelect, recent</code></td>
+</tr>
+<tr id="tree-view">
+  <td><strong>Tree View</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=84-196">node 84:196</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Tree / Item Type: Collapsed, Expanded → aria-expanded; Leaf → no chevron</li><li>Indent 20px per level</li><li>role=tree, treeitem</li></ul></td>
+  <td class="code"><code>Tree: nodes[{id, label, icon, count, children}], expanded, selected, onToggle</code></td>
+</tr>
+<tr id="activity-timeline">
+  <td><strong>Activity Timeline</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=85-70">node 85:70</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Type: Created, Status change, Approval, Comment, System → marker icon and color</li><li>Show line off on the last event</li><li>Absolute time on hover</li></ul></td>
+  <td class="code"><code>Timeline: events[{type, title, time, detail}]</code></td>
+</tr>
+<tr id="comment">
+  <td><strong>Comment</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=85-151">node 85:151</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Composer Send disabled until text; Cmd Enter sends</li><li>Mentions → global/link-color</li></ul></td>
+  <td class="code"><code>Comment: author, avatar, time, body, onReply, onResolve; CommentComposer: onSubmit, mentions</code></td>
+</tr>
+<tr id="assist-summary">
+  <td><strong>Assist Summary</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=85-310">node 85:310</a></td>
+  <td><span class="pf-badge pf-badge-neutral">Figma only</span></td>
+  <td class="code"><span class="muted">Not in pathfinder.css yet</span></td>
+  <td><ul><li>Always labeled GENERATED and lists sources</li><li>Copy and Regenerate only; never sends or edits records</li><li>Loading → skeleton lines</li></ul></td>
+  <td class="code"><code>AssistSummary: title, bullets, sources, state(ready|loading), onCopy, onRegenerate</code></td>
+</tr>
     </tbody></table></div>
   </section>
 
@@ -427,7 +553,7 @@
   <section id="gaps">
     <h2>Known gaps</h2>
     <div class="pf-card"><ul class="checklist">
-      <li><strong>18 components are Figma only.</strong> They exist in Figma and the docs site but not in <code>pathfinder.css</code>. Build them from tokens and add them to the library rather than one-off in a product.</li>
+      <li><strong>36 components are Figma only.</strong> They exist in Figma and the docs site but not in <code>pathfinder.css</code>. Build them from tokens and add them to the library rather than one-off in a product.</li>
       <li><strong>No focus trap yet.</strong> Modals move and restore focus, but Tab can still leave an open modal. Add a trap in <code>openModal</code>.</li>
       <li><strong>Stepper is not in code.</strong> Proposed markup: an ordered list with <code>aria-current="step"</code> on the active step.</li>
       <li><strong>Code Connect is not published.</strong> It needs a Figma Organization or Enterprise plan; the file is on Pro. The mappings above stand in for it.</li>
