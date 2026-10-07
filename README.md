@@ -1,8 +1,13 @@
 # PATHFINDER DESIGN SYSTEM 2.0 — Agentic Demo Framework
 
 AVANT Communications Partner Portal design system, rebuilt as a live,
-agent-buildable component framework. Dark-theme token suite, extracted 1:1 from the published spec site:
-https://flyer-topaz-40707494.figma.site
+agent-buildable component framework. Dark-theme token suite, extracted 1:1 from the original spec site
+(https://flyer-topaz-40707494.figma.site, Figma Make, no longer maintained).
+
+Current sources of truth:
+- Docs site: https://pathfinder-docs.vercel.app (repo ~/Sites/pathfinder-docs)
+- Figma library: https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE (library 1.8.1)
+- Version labels: `version.js` (mirrors the Figma Cover)
 
 ## What this is
 

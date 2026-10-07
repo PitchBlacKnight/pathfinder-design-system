@@ -17,8 +17,9 @@ within a second. Works live in a room, on Zoom, or as a recorded Loom.
 python3 -m http.server 4173 --directory .
 ```
 
-4. Optional third window: the published spec site
-   (https://flyer-topaz-40707494.figma.site) to show the source of truth.
+4. Optional third window: the docs site
+   (https://pathfinder-docs.vercel.app) or the Figma library
+   (https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE) to show the source of truth.
 
 The stage polls `stage/app.html` every 800ms — whatever Claude writes there
 animates onto the screen. **No refresh, no build step.** The LIVE chip pulses

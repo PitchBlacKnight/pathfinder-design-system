@@ -17,6 +17,11 @@
 
 :root {
   /* Elevation colors (bound to the shadow, focus and glow effect styles) */
+  /* Figma Theme tokens with no code equivalent until 1.8 */
+  --pfBorderColor: #ffffff14;
+  --pfButton_TokenTextColor: #ffffffeb;
+  --pfPopover_Background: #081224e0;
+
   --pfElevation_0_ShadowColor: #00000066;
   --pfElevation_0_AmbientColor: #00000066;
   --pfElevation_1_ShadowColor: #00000099;
@@ -31,7 +36,7 @@
 
   /* Control roles */
   --pfControl_Background: #ffffff0d;
-  --pfControl_BorderColor: #ffffff2e;
+  --pfControl_BorderColor: #ffffff61;
   --pfControl_Hover_Background: #ffffff17;
   --pfControl_Hover_BorderColor: #ffffff47;
   --pfControl_Active_Background: #ffffff1f;
@@ -42,7 +47,7 @@
   --pfControl_Token_Background: #ffffff0f;
   --pfControl_Token_BorderColor: #ffffff26;
   --pfControl_Field_Background: #ffffff0a;
-  --pfControl_Field_BorderColor: #ffffff2e;
+  --pfControl_Field_BorderColor: #ffffff61;
   --pfControl_Field_Hover_Background: #ffffff0f;
   --pfControl_Field_Focus_Background: #ffffff0d;
   --pfControl_Field_ReadOnly_Background: #ffffff05;
@@ -52,7 +57,7 @@
 
   /* Content roles */
   --pfContent_BodyTextColor: #ffffffe0;
-  --pfContent_PlaceholderTextColor: #ffffff61;
+  --pfContent_PlaceholderTextColor: #ffffff80;
   --pfContent_SubtleBorderColor: #ffffff1a;
   --pfContent_SurfaceBackground: #081224e0;
   --pfContent_SurfaceHeaderBackground: #0f1e35;
@@ -117,6 +122,57 @@
 }
 
 :root[data-theme="light"] {
+  /* Component tokens Light mode was missing (fell back to Dark); values from Figma 1.8 */
+  --pfButton_IconColor: #0f172ab3;
+  --pfButton_Hover_TextColor: #0f172aeb;
+  --pfButton_Active_Background: #0f172a1f;
+  --pfButton_Active_BorderColor: #0284c7;
+  --pfButton_Active_TextColor: #0284c7;
+  --pfButton_Emphasized_Active_Background: #0f172a14;
+  --pfButton_Emphasized_Active_BorderColor: #0284c7;
+  --pfButton_Emphasized_Active_TextColor: #0284c7;
+  --pfButton_Lite_Active_Background: #0284c71a;
+  --pfButton_Lite_Active_BorderColor: #0284c7;
+  --pfButton_Reject_Active_Background: #0f172a14;
+  --pfButton_Reject_Active_TextColor: #b91c1c;
+  --pfButton_Accept_Active_Background: #0f172a14;
+  --pfButton_Accept_Active_TextColor: #166534;
+  --pfButton_Selected_Background: #0080ff26;
+  --pfButton_Selected_BorderColor: #0284c7;
+  --pfButton_Selected_TextColor: #0284c7;
+  --pfButton_Handle_Selected_Background: #ffffff;
+  --pfButton_Handle_Selected_BorderColor: #0284c7;
+  --pfButton_TokenBackground: #0f172a0f;
+  --pfButton_TokenTextColor: #0f172aeb;
+  --pfButton_TokenBorderColor: #0f172a26;
+  --pfField_Hover_Background: #ffffff;
+  --pfField_Hover_BorderColor: #0284c7;
+  --pfField_Focus_Background: #ffffff;
+  --pfField_Focus_BorderColor: #0284c7;
+  --pfField_ReadOnly_Background: #0f172a05;
+  --pfField_ReadOnly_BorderColor: #0f172a1f;
+  --pfField_InvalidBackground: #b91c1c14;
+  --pfField_WarningBackground: #c2410c14;
+  --pfField_SuccessBackground: #15803d14;
+  --pfField_InformationBackground: #0284c71a;
+  --pfGroup_TitleBorderColor: #0f172a1f;
+  --pfGroup_TitleTextColor: #0f172aeb;
+  --pfList_HeaderTextColor: #0f172aeb;
+  --pfTile_TitleTextColor: #0f172aeb;
+  --pfTile_TextColor: #0f172a99;
+  --pfTile_IconColor: #0f172a80;
+  --pfTile_SeparatorColor: #0f172a14;
+  --pfTab_Selected_Background: #0284c7;
+  --pfProgress_TextColor: #0f172ae0;
+  --pfMessage_InformationBorderColor: #0284c780;
+  --pfPopover_Background: #ffffffe6;
+  --pfSlider_Background: #0f172a1f;
+  --pfSlider_Selected_Background: #0284c7;
+  --pfSlider_HandleBackground: #ffffff;
+  --pfSlider_HandleBorderColor: #0284c7;
+  --pfSlider_Hover_HandleBackground: #0284c726;
+  --pfSlider_RangeHandleBackground: #0284c733;
+
   /* Existing tokens the code light block leaves on their dark values */
   --pfBase_Background: #f4f6fb; /* site */
   --pfShell_Background: #ffffff;
@@ -158,7 +214,7 @@
 
   /* Control roles */
   --pfControl_Background: #0f172a08;
-  --pfControl_BorderColor: #0f172a2e;
+  --pfControl_BorderColor: #0f172a80;
   --pfControl_Hover_Background: #0f172a12;
   --pfControl_Hover_BorderColor: #0f172a47;
   --pfControl_Active_Background: #0f172a1f; /* derived */
@@ -169,7 +225,7 @@
   --pfControl_Token_Background: #0f172a0f; /* derived */
   --pfControl_Token_BorderColor: #0f172a26; /* derived */
   --pfControl_Field_Background: #ffffff;
-  --pfControl_Field_BorderColor: #0f172a2e;
+  --pfControl_Field_BorderColor: #0f172a80;
   --pfControl_Field_Hover_Background: #ffffff; /* derived */
   --pfControl_Field_Focus_Background: #ffffff; /* derived */
   --pfControl_Field_ReadOnly_Background: #0f172a05; /* derived */
@@ -179,7 +235,7 @@
 
   /* Content roles */
   --pfContent_BodyTextColor: #0f172ae0;
-  --pfContent_PlaceholderTextColor: #0f172a8a;
+  --pfContent_PlaceholderTextColor: #0f172a99;
   --pfContent_SubtleBorderColor: #0f172a1f;
   --pfContent_SurfaceBackground: #ffffffe6;
   --pfContent_SurfaceHeaderBackground: #f1f5f9;
@@ -245,6 +301,7 @@
 
 /* Theme: High contrast (built on Dark) */
 :root[data-theme="high-contrast"] {
+  --pfButton_TokenTextColor: #ffffff;
   --pfBase_Background: #000000;
   --pfShell_Background: #000000;
   --pfBaseColor: #000000;
