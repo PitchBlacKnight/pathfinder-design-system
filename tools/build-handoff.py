@@ -3,7 +3,7 @@ cards = json.load(open(sys.argv[1]))
 E = html.escape
 slug = lambda s: re.sub(r'^-|-$', '', re.sub(r'[^a-z0-9]+', '-', s.lower()))
 FIGMA = 'https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE'
-DOCS = 'https://port-sable-50786193.figma.site'
+DOCS = 'https://pathfinder-docs.vercel.app'
 
 def status(h):
     if h == 'RECIPE': return '<span class="pf-badge pf-badge-info">Recipe</span>'
