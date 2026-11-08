@@ -179,6 +179,80 @@
     Pathfinder.closeModal();
   });
 
+  /* ---------- Date picker ----------
+     <div class="pf-datepicker"><input class="pf-input" data-datepicker>
+       <div class="pf-calendar" data-month="2026-10" data-selected="2026-10-14"></div></div>
+     The calendar grid is rendered from the data attributes, so markup stays
+     small. Clicking the input opens it; a day sets the input (MM/DD/YYYY). */
+  var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function iso(y, m, d) { return y + "-" + pad(m + 1) + "-" + pad(d); }
+
+  Pathfinder.renderCalendar = function (cal) {
+    var ym = (cal.getAttribute("data-month") || new Date().toISOString().slice(0, 7)).split("-");
+    var y = +ym[0], m = +ym[1] - 1;
+    var sel = cal.getAttribute("data-selected") || "";
+    var today = cal.getAttribute("data-today") || new Date().toISOString().slice(0, 10);
+    var first = new Date(y, m, 1).getDay();
+    var days = new Date(y, m + 1, 0).getDate();
+    var prevDays = new Date(y, m, 0).getDate();
+    var html = '<header><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" data-cal-prev aria-label="Previous month">‹</button>' +
+      '<span class="month">' + MONTHS[m] + " " + y + '</span>' +
+      '<button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" data-cal-next aria-label="Next month">›</button></header><div class="grid" role="grid">';
+    "SMTWTFS".split("").forEach(function (d) { html += '<span class="dow">' + d + "</span>"; });
+    var cells = [];
+    for (var i = first - 1; i >= 0; i--) cells.push({ d: prevDays - i, muted: true });
+    for (var d = 1; d <= days; d++) cells.push({ d: d, date: iso(y, m, d) });
+    while (cells.length % 7) cells.push({ d: cells.length - first - days + 1, muted: true });
+    cells.forEach(function (c) {
+      var cls = "day" + (c.muted ? " muted" : "") + (c.date === today ? " today" : "");
+      html += '<button type="button" class="' + cls + '"' + (c.muted ? " disabled" : ' data-date="' + c.date + '"') +
+        (c.date && c.date === sel ? ' aria-selected="true"' : "") + ">" + c.d + "</button>";
+    });
+    cal.innerHTML = html + "</div>";
+  };
+
+  function shiftMonth(cal, delta) {
+    var ym = cal.getAttribute("data-month").split("-");
+    var dt = new Date(+ym[0], +ym[1] - 1 + delta, 1);
+    cal.setAttribute("data-month", dt.getFullYear() + "-" + pad(dt.getMonth() + 1));
+    Pathfinder.renderCalendar(cal);
+  }
+
+  document.addEventListener("click", function (e) {
+    var picker = e.target.closest(".pf-datepicker");
+    if (!picker) {
+      document.querySelectorAll(".pf-datepicker.open").forEach(function (p) { p.classList.remove("open"); });
+      return;
+    }
+    var cal = picker.querySelector(".pf-calendar");
+    if (e.target.closest("[data-datepicker]")) {
+      if (cal && !cal.children.length) Pathfinder.renderCalendar(cal);
+      picker.classList.toggle("open");
+      return;
+    }
+    if (e.target.closest("[data-cal-prev]")) { shiftMonth(cal, -1); return; }
+    if (e.target.closest("[data-cal-next]")) { shiftMonth(cal, 1); return; }
+    var day = e.target.closest(".day[data-date]");
+    if (day) {
+      var p = day.getAttribute("data-date").split("-");
+      cal.setAttribute("data-selected", day.getAttribute("data-date"));
+      var input = picker.querySelector("[data-datepicker]");
+      if (input) input.value = p[1] + "/" + p[2] + "/" + p[0];
+      Pathfinder.renderCalendar(cal);
+      picker.classList.remove("open");
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") document.querySelectorAll(".pf-datepicker.open").forEach(function (p) { p.classList.remove("open"); });
+  });
+
+  // Calendars written with data-month but no children render on load.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".pf-calendar[data-month]:empty").forEach(Pathfinder.renderCalendar);
+  });
+
   /* ---------- Live stage hot-swap ----------
      stage/index.html polls app.html and swaps it in when it changes,
      so components written to disk appear on screen within ~1s. */

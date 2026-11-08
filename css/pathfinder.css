@@ -1007,8 +1007,96 @@ code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 .pf-assist-panel .thread { flex: 1; overflow: auto; display: flex; flex-direction: column; gap: 20px; padding: 16px; }
 .pf-assist-panel > footer { padding: 12px 16px 16px; border-top: 1px solid var(--pfContent_DividerColor); }
 
+/* ============================================================
+   Figma library 1.8.2 additions (2026-10-07): the five components that were
+   Figma only. Spinner 26:250, Skeleton 26:257, Error Card 27:320,
+   Error Page 27:384, Date Picker 15:570.
+   ============================================================ */
+
+/* ---------- Spinner ---------- */
+.pf-spinner {
+  display: inline-block; width: 24px; height: 24px; flex: none; border-radius: 50%;
+  border: 3px solid var(--pfContent_Placeholderloading_Background);
+  border-top-color: var(--pfHighlightColor);
+  animation: pf-spin .8s linear infinite;
+}
+.pf-spinner.sm { width: 16px; height: 16px; border-width: 2px; }
+.pf-spinner.lg { width: 40px; height: 40px; border-width: 4px; }
+.pf-spinner.inverse { border-color: #ffffff33; border-top-color: #fff; }
+@keyframes pf-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Skeleton ---------- */
+.pf-skeleton {
+  display: block; background: var(--pfContent_Placeholderloading_Gradient);
+  background-size: 200% 100%; animation: pf-shimmer 1.4s linear infinite;
+  border-radius: 8px;
+}
+.pf-skeleton.line   { height: 12px; width: 160px; border-radius: 6px; }
+.pf-skeleton.circle { width: 40px; height: 40px; border-radius: 50%; }
+.pf-skeleton.block  { width: 160px; height: 80px; }
+.pf-skeleton.full   { width: 100%; }
+@keyframes pf-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+/* ---------- Error Card ---------- */
+.pf-error-card {
+  display: flex; flex-direction: column; gap: 16px; padding: 24px;
+  border-radius: var(--pfCard_BorderCornerRadius);
+  background: var(--pfGroup_ContentBackground); border: 1px solid var(--pfErrorBorderColor);
+}
+.pf-error-card .message { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
+.pf-error-card .icon {
+  width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  border: 2px solid var(--pfNegativeElementColor); color: var(--pfNegativeElementColor);
+  font-size: 13px; font-weight: 700; line-height: 1;
+}
+.pf-error-card .title { display: block; font-size: var(--pfFontLargeSize); font-weight: 600; color: var(--pfContent_ForegroundTextColor); }
+.pf-error-card .desc { display: block; margin-top: 4px; color: var(--pfContent_LabelColor); font-size: var(--pfFontMediumSize); }
+.pf-error-card .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ---------- Error Page ---------- */
+.pf-error-page {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px;
+  padding: 48px 24px; max-width: 420px; margin: 0 auto;
+}
+.pf-error-page .code {
+  font-family: var(--pfFontHeaderFamily); font-weight: 700; font-size: 64px; line-height: 1; letter-spacing: .02em;
+  color: var(--pfInformativeElementColor);
+}
+.pf-error-page.negative .code { color: var(--pfNegativeElementColor); }
+.pf-error-page.critical .code { color: var(--pfCriticalElementColor); }
+.pf-error-page h2 { font-size: var(--pfFontHeader4Size); }
+.pf-error-page p { margin: 0; color: var(--pfContent_LabelColor); }
+.pf-error-page .actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
+
+/* ---------- Date Picker ---------- */
+.pf-datepicker { position: relative; }
+.pf-datepicker .pf-search .lead { pointer-events: none; }
+.pf-datepicker .pf-calendar { display: none; position: absolute; top: calc(100% + 6px); left: 0; z-index: 150; }
+.pf-datepicker.open .pf-calendar { display: block; animation: pf-pop-in var(--pfContent_TransitionDuration_S) var(--pfContent_Easing_Decelerate); }
+.pf-calendar {
+  width: 252px; padding: 12px; border-radius: var(--pfPopover_BorderCornerRadius);
+  background: var(--pfContent_SurfaceBackground); border: 1px solid var(--pfContent_ForegroundBorderColor);
+  box-shadow: var(--pfContent_Shadow3);
+}
+.pf-calendar header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.pf-calendar header .month { font-weight: 600; font-size: var(--pfFontMediumSize); color: var(--pfContent_ForegroundTextColor); }
+.pf-calendar .grid { display: grid; grid-template-columns: repeat(7, 32px); gap: 4px 0; justify-content: center; }
+.pf-calendar .dow { text-align: center; font-size: var(--pfGlobal_FontXsmallSize); font-weight: 600; color: var(--pfContent_LabelColor); padding: 4px 0; }
+.pf-calendar .day {
+  width: 32px; height: 32px; border: 1px solid transparent; border-radius: 6px; background: none;
+  font: inherit; font-size: var(--pfFontSmallSize); color: var(--pfContent_ForegroundTextColor); cursor: pointer;
+}
+.pf-calendar .day:hover { background: var(--pfContent_Hover_Background, var(--pfHoverColor)); }
+.pf-calendar .day.muted { color: var(--pfContent_NonInteractiveIconColor); }
+.pf-calendar .day.today { border-color: var(--pfHighlightColor); color: var(--pfHighlightColor); }
+.pf-calendar .day.in-range { background: var(--pfContent_Selected_Background); border-radius: 0; }
+.pf-calendar .day[aria-selected="true"] { background: var(--pfHighlightColor); color: var(--pfBackgroundColor); border-color: var(--pfHighlightColor); font-weight: 600; }
+.pf-calendar .day:disabled { opacity: .35; cursor: not-allowed; }
+
 @media (prefers-reduced-motion: reduce) {
   .pf-drawer, .pf-popover, .pf-menu { animation-name: pf-fade; animation-duration: var(--pfContent_TransitionDuration_S); }
   .pf-msg .thinking i, .pf-msg[aria-busy="true"] .answer::after { animation: none; }
+  .pf-skeleton { animation: none; background: var(--pfContent_Placeholderloading_Background); }
+  .pf-spinner { animation-duration: 1.6s; }
 }
 @keyframes pf-fade { from { opacity: 0; } }

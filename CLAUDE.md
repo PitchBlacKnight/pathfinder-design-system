@@ -52,5 +52,4 @@ components in chat, they appear on a browser stage within a second.
   published at guide.mikelrosenthal.com (never share that link with interviewers).
 - DEMO-SCRIPT.md in this folder is the run-of-show. Demo etiquette: announce in one
   line, Write, confirm in one line naming tokens/variants. Keep responses tight.
-- Mikel is conserving Fable 5 usage until Monday's reset — verify leanly (one
-  screenshot, not interaction loops) and flag cost before any sizeable build.
+- Cost: keep verification lean (one screenshot, not interaction loops) and flag cost before any sizeable build.
