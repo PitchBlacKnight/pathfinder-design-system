@@ -24,6 +24,7 @@
   section { margin-top: 64px; scroll-margin-top: 24px; }
   h1 { margin: 8px 0 12px; line-height: 1.1; }
   h2 { margin: 0 0 8px; font-size: var(--pfFontHeader3Size); }
+  h3.sub-h { margin: 28px 0 6px; font-size: var(--pfFontHeader5Size); }
   .lead { color: var(--pfContent_LabelColor); max-width: 760px; margin: 0; }
   .sub { color: var(--pfContent_LabelColor); max-width: 760px; margin: 0 0 20px; }
   .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
@@ -60,7 +61,7 @@
   <button class="pf-btn pf-btn-secondary pf-btn-sm" id="theme" type="button">Switch to Light</button>
 </nav>
 <main>
-  <span class="pf-overline" data-pf-version>Pathfinder 2.1 · Figma library 1.8.2 · 2026-10-07</span>
+  <span class="pf-overline" data-pf-version>Pathfinder 2.1 · Figma library 1.8.1 · 2026-10-06</span>
   <h1>Developer handoff</h1>
   <p class="lead">Everything a developer needs to build from the Pathfinder Figma file. Figma shows what to build and which tokens it uses. This page covers how: classes, behavior, accessibility and what is not in code yet. It lives next to the code so the two stay in step.</p>
   <div class="links">
@@ -78,12 +79,13 @@
 
   <section id="setup">
     <h2>Setup</h2>
-    <p class="sub">No build step and no dependencies. Load the files in this order; the additions file must come after the token file.</p>
+    <p class="sub">No build step and no dependencies. Load the files in this order; the additions file must come after the token file, and <code>pathfinder.behavior.js</code> (combobox, command palette, menu, drawer, tree, segmented control, tooltip) after <code>pathfinder.js</code>.</p>
     <div class="pf-card"><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/pathfinder.fonts.css&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;tokens/pathfinder.tokens.css&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;tokens/pathfinder.figma-additions.css&quot;&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;css/pathfinder.css&quot;&gt;
 &lt;script src=&quot;js/pathfinder.js&quot; defer&gt;&lt;/script&gt;
+&lt;script src=&quot;js/pathfinder.behavior.js&quot; defer&gt;&lt;/script&gt;
 
 &lt;!-- Light mode: one attribute. Dark is the default. --&gt;
 &lt;html data-theme=&quot;light&quot;&gt;</code></pre></div>
@@ -228,8 +230,8 @@
 <tr id="date-picker">
   <td><strong>Date Picker</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=15-570">node 15:570</a></td>
   <td><span class="pf-badge pf-badge-positive">In code</span></td>
-  <td class="code"><code>&lt;div class=&quot;pf-datepicker&quot;&gt;&lt;input class=&quot;pf-input&quot; data-datepicker&gt; + .pf-calendar[data-month]</code></td>
-  <td><ul><li>Open → .pf-datepicker.open (input click). Month, selected → data-month, data-selected. Day states: .today, [aria-selected], .muted, .in-range</li></ul></td>
+  <td class="code"><code>&lt;div class=&quot;pf-datepicker&quot;&gt;&lt;div class=&quot;pf-search&quot;&gt;&lt;span class=&quot;lead&quot;&gt;▦&lt;/span&gt;&lt;input class=&quot;pf-input&quot; data-datepicker&gt;&lt;/div&gt;&lt;div class=&quot;pf-calendar&quot; data-month=&quot;2026-10&quot; data-selected=&quot;2026-10-14&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>Open: False → .pf-datepicker; True → .pf-datepicker.open (pathfinder.js toggles it on input click)</li><li>Month, selected day → data-month, data-selected on .pf-calendar; the grid renders from them</li><li>Day states: Today → .day.today; Selected → .day[aria-selected=true]; Outside month → .day.muted; Range → .day.in-range</li><li>Prev / Next → [data-cal-prev] / [data-cal-next]</li></ul></td>
   <td class="code"><code>currentMonth, selectedDate, onSelect, onPrev, onNext, rangeStart, rangeEnd [use]</code></td>
 </tr>
 <tr id="file-upload-dropzone">
@@ -347,29 +349,29 @@
 <tr id="spinner">
   <td><strong>Spinner</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=26-250">node 26:250</a></td>
   <td><span class="pf-badge pf-badge-positive">In code</span></td>
-  <td class="code"><code>&lt;span class=&quot;pf-spinner&quot; role=&quot;status&quot; aria-label=&quot;Loading&quot;&gt;</code></td>
-  <td><ul><li>Size: sm → .sm; md → (none); lg → .lg. On filled buttons → .inverse</li></ul></td>
+  <td class="code"><code>&lt;span class=&quot;pf-spinner&quot; role=&quot;status&quot; aria-label=&quot;Loading&quot;&gt;&lt;/span&gt;</code></td>
+  <td><ul><li>Size: sm → .sm (16px); md → (none, 24px); lg → .lg (40px)</li><li>On a filled button → .inverse</li><li>Reduced motion slows the rotation, it does not stop</li></ul></td>
   <td class="code"><code>in code since 2026-10-07; no docs-site React props yet</code></td>
 </tr>
 <tr id="skeleton">
   <td><strong>Skeleton</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=26-257">node 26:257</a></td>
   <td><span class="pf-badge pf-badge-positive">In code</span></td>
-  <td class="code"><code>&lt;span class=&quot;pf-skeleton line&quot;&gt;</code></td>
-  <td><ul><li>Shape: Line → .line; Circle → .circle; Block → .block. Width → .full or inline</li></ul></td>
+  <td class="code"><code>&lt;span class=&quot;pf-skeleton line&quot;&gt;&lt;/span&gt;</code></td>
+  <td><ul><li>Shape: Line → .line; Circle → .circle; Block → .block</li><li>Width → inline style or .full</li><li>Reduced motion removes the shimmer and keeps the placeholder fill</li></ul></td>
   <td class="code"><code>in code since 2026-10-07; no docs-site React props yet</code></td>
 </tr>
 <tr id="error-card">
   <td><strong>Error Card</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=27-320">node 27:320</a></td>
   <td><span class="pf-badge pf-badge-positive">In code</span></td>
-  <td class="code"><code>&lt;div class=&quot;pf-error-card&quot;&gt; .message (.icon, .title, .desc) + .actions</code></td>
-  <td><ul><li>Primary action → .pf-btn-primary.pf-btn-sm; Secondary → .pf-btn-secondary.pf-btn-sm</li></ul></td>
+  <td class="code"><code>&lt;div class=&quot;pf-error-card&quot;&gt;&lt;div class=&quot;message&quot;&gt;&lt;span class=&quot;icon&quot;&gt;✕&lt;/span&gt;&lt;div&gt;&lt;span class=&quot;title&quot;&gt;&lt;/span&gt;&lt;span class=&quot;desc&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;actions&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>Title → .title. Description → .desc</li><li>Primary action → .pf-btn-primary.pf-btn-sm; Secondary action → .pf-btn-secondary.pf-btn-sm in .actions</li></ul></td>
   <td class="code"><code>in code since 2026-10-07; no docs-site React props yet</code></td>
 </tr>
 <tr id="error-page">
   <td><strong>Error Page</strong><br><a class="node" href="https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE?node-id=27-384">node 27:384</a></td>
   <td><span class="pf-badge pf-badge-positive">In code</span></td>
-  <td class="code"><code>&lt;div class=&quot;pf-error-page&quot;&gt; .code, h2, p, .actions</code></td>
-  <td><ul><li>Code: 404 → (none); 500 → .negative; 403 → .critical</li></ul></td>
+  <td class="code"><code>&lt;div class=&quot;pf-error-page&quot;&gt;&lt;span class=&quot;code&quot;&gt;404&lt;/span&gt;&lt;h2&gt;&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;div class=&quot;actions&quot;&gt;&lt;/div&gt;&lt;/div&gt;</code></td>
+  <td><ul><li>Code: 404 → (none, informative); 500 → .negative; 403 → .critical</li><li>Title → h2. Description → p. Actions → .actions</li></ul></td>
   <td class="code"><code>in code since 2026-10-07; no docs-site React props yet</code></td>
 </tr>
 <tr id="radio">
@@ -636,8 +638,16 @@
 
   <section id="behavior">
     <h2>Behavior</h2>
-    <p class="sub"><code>js/pathfinder.js</code> wires all interaction through data attributes and one delegated listener, so markup added at runtime works without setup.</p>
-    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Attribute</th><th>On</th><th>Does</th></tr></thead><tbody><tr><td class="code"><code>data-datepicker</code></td><td>Input inside .pf-datepicker</td><td>Click opens the sibling .pf-calendar, rendered from data-month and data-selected. A day fills the input as MM/DD/YYYY and closes it. Escape and outside clicks close it.</td></tr><tr><td class="code"><code>data-modal-open=&quot;id&quot;</code></td><td>Any button</td><td>Opens the overlay with that id. Focus moves to its first control.</td></tr><tr><td class="code"><code>data-modal-close</code></td><td>Button inside a modal</td><td>Closes the modal and returns focus to the trigger.</td></tr><tr><td class="code"><code>data-static</code></td><td>.pf-modal-overlay</td><td>Danger and confirmation dialogs. Escape and overlay click do not close it.</td></tr><tr><td class="code"><code>data-confirm-gate=&quot;checkboxId&quot;</code></td><td>Button</td><td>Stays disabled until that checkbox is checked. Required on the most critical deletes.</td></tr><tr><td class="code"><code>data-toast=&quot;Title|Detail|tone&quot;</code></td><td>Any button</td><td>Shows a .pf-toast in the aria-live region. Can share a button with data-modal-close.</td></tr><tr><td class="code"><code>data-sort</code></td><td>th</td><td>Click toggles aria-sort ascending/descending. Numeric values sort as numbers.</td></tr><tr><td class="code"><code>data-select-all / data-select-row</code></td><td>Checkbox in th / td</td><td>Keeps row checkboxes and aria-selected in sync.</td></tr><tr><td class="code"><code>data-filter-table=&quot;#table&quot;</code></td><td>select</td><td>Shows only rows whose data-status matches the value (&quot;all&quot; shows every row).</td></tr><tr><td class="code"><code>data-open</code></td><td>.pf-modal-overlay</td><td>Renders the modal already open (used by the live stage).</td></tr></tbody></table></div>
+    <p class="sub"><code>js/pathfinder.js</code> and <code>js/pathfinder.behavior.js</code> wire all interaction through data attributes, classes and delegated listeners, so markup added at runtime works without setup.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Attribute</th><th>On</th><th>Does</th></tr></thead><tbody><tr><td class="code"><code>data-modal-open=&quot;id&quot;</code></td><td>Any button</td><td>Opens the .pf-modal-overlay with that id. Focus moves to its first control, or to [data-autofocus] when one is set.</td></tr><tr><td class="code"><code>data-modal-close</code></td><td>Button inside a modal</td><td>Closes the modal and returns focus to the trigger.</td></tr><tr><td class="code"><code>data-static</code></td><td>.pf-modal-overlay or .pf-drawer</td><td>Danger and confirmation dialogs. Escape and scrim click do not close it; a button must.</td></tr><tr><td class="code"><code>data-autofocus</code></td><td>Control inside a modal or drawer</td><td>Receives focus on open instead of the first control.</td></tr><tr><td class="code"><code>data-open</code></td><td>.pf-modal-overlay</td><td>Renders the modal already open (used by the live stage).</td></tr><tr><td class="code"><code>data-confirm-gate=&quot;checkboxId&quot;</code></td><td>Button</td><td>Stays disabled until that checkbox is checked. Required on the most critical deletes.</td></tr><tr><td class="code"><code>data-toast=&quot;Title|Detail|tone&quot;</code></td><td>Any button</td><td>Shows a .pf-toast in the aria-live region. tone: positive, negative, critical or info. Can share a button with data-modal-close.</td></tr><tr><td class="code"><code>data-drawer-open=&quot;id&quot; / data-drawer-close</code></td><td>Button / button inside .pf-drawer[hidden]</td><td>Opens or closes the drawer as a layer: focus trap, Escape, focus returns to the trigger.</td></tr><tr><td class="code"><code>data-sort</code></td><td>th</td><td>Click toggles aria-sort ascending/descending. Numeric values sort as numbers.</td></tr><tr><td class="code"><code>data-select-all / data-select-row</code></td><td>Checkbox in th / td</td><td>Keeps row checkboxes and aria-selected in sync.</td></tr><tr><td class="code"><code>data-filter-table=&quot;#table&quot;</code></td><td>select</td><td>Shows only rows whose data-status matches the value (&quot;all&quot; shows every row).</td></tr><tr><td class="code"><code>data-status=&quot;value&quot;</code></td><td>tbody tr</td><td>The value data-filter-table matches against.</td></tr><tr><td class="code"><code>data-page=&quot;prev&quot; / data-page=&quot;next&quot;</code></td><td>.pf-page inside .pages</td><td>Prev and Next buttons. Numbered .pf-page buttons need no attribute; aria-current=&quot;page&quot; follows the click and the ends disable.</td></tr><tr><td class="code"><code>aria-orientation=&quot;vertical&quot;</code></td><td>.pf-tabs</td><td>Arrow Up/Down move between tabs instead of Left/Right. Tabs get role=tablist, tab and tabpanel on their own.</td></tr><tr><td class="code"><code>data-datepicker</code></td><td>.pf-input inside .pf-datepicker</td><td>Click, Enter, Space or Alt+ArrowDown opens the .pf-calendar next to it. Arrows move a day or week, Home/End the week, PageUp/PageDown the month (Shift: year), Escape closes.</td></tr><tr><td class="code"><code>data-month=&quot;YYYY-MM&quot; / data-selected=&quot;YYYY-MM-DD&quot;</code></td><td>.pf-calendar</td><td>The grid is rendered from these two values. data-cal-prev / data-cal-next on buttons move the month; Pathfinder.renderCalendar(el) redraws.</td></tr><tr><td class="code"><code>data-menu / data-menu=&quot;menuId&quot;</code></td><td>Button</td><td>Opens the sibling .pf-menu (or the one with that id) as a popup: arrows, Home/End, typeahead, Escape. role=&quot;listbox&quot; with [role=option] makes it a select.</td></tr><tr><td class="code"><code>data-menu-value</code></td><td>Span inside a select trigger</td><td>Receives the chosen option label.</td></tr><tr><td class="code"><code>data-value=&quot;x&quot;</code></td><td>[role=option] or segmented button</td><td>The value sent in pf:menu-select, pf:segmented-change and combobox changes instead of the visible text.</td></tr><tr><td class="code"><code>data-tooltip=&quot;Text&quot;</code></td><td>Any control</td><td>A .pf-tooltip is created and linked by aria-describedby. Shows on hover (short delay) and focus; Escape hides it.</td></tr><tr><td class="code"><code>data-pf-inert</code></td><td>Set by the layer stack</td><td>Internal. Marks what an open modal or drawer made inert; never write it by hand.</td></tr></tbody></table></div>
+    <h3 class="sub-h">Class-driven widgets</h3>
+    <p class="sub"><code>js/pathfinder.behavior.js</code> adds keyboard behavior to these classes with no attributes at all.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Class</th><th>Behavior</th></tr></thead><tbody><tr><td class="code"><code>.pf-cmdk</code></td><td>Cmd or Ctrl+K opens the palette when it sits in a .pf-modal-overlay (scrim, focus trap, Escape, focus returns to the trigger). Typing filters and highlights; arrows move, Enter selects. Standalone it only takes focus.</td></tr><tr><td class="code"><code>.pf-combobox</code></td><td>Type to filter the .pf-menu[role=listbox]; arrows move, Enter toggles the option into a .pf-tag; Backspace on an empty input removes the last tag. Changes are announced politely.</td></tr><tr><td class="code"><code>.pf-tree</code></td><td>Roving focus on [role=treeitem]: arrows move, Right/Left expand and collapse, Enter or Space selects.</td></tr><tr><td class="code"><code>.pf-segmented</code></td><td>Buttons become a radiogroup: arrows and Home/End move the checked segment.</td></tr><tr><td class="code"><code>.pf-tabs</code></td><td>Tabs get roles and roving tabindex; the panel named by aria-controls shows, the others hide.</td></tr></tbody></table></div>
+    <h3 class="sub-h">Events</h3>
+    <p class="sub">Every behavior fires a bubbling CustomEvent, so product code listens on document and never patches the library.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Event</th><th>Fires on</th><th>detail</th></tr></thead><tbody><tr><td class="code"><code>pf:modal-open / pf:modal-close</code></td><td>.pf-modal-overlay</td><td class="code"><span class=muted>none</span></td></tr><tr><td class="code"><code>pf:drawer-open / pf:drawer-close</code></td><td>.pf-drawer</td><td class="code"><span class=muted>none</span></td></tr><tr><td class="code"><code>pf:tab-change</code></td><td>.pf-tab that became selected</td><td class="code"><span class=muted>none</span></td></tr><tr><td class="code"><code>pf:page</code></td><td>.pages</td><td class="code"><code>detail.page (1-based)</code></td></tr><tr><td class="code"><code>pf:date-pick</code></td><td>.pf-calendar</td><td class="code"><code>detail.date (YYYY-MM-DD, local)</code></td></tr><tr><td class="code"><code>pf:menu-select</code></td><td>Trigger (or the menu)</td><td class="code"><code>detail.item, detail.value</code></td></tr><tr><td class="code"><code>pf:combobox-change</code></td><td>.pf-combobox</td><td class="code"><code>detail.values, plus detail.added or detail.removed</code></td></tr><tr><td class="code"><code>pf:cmdk-select</code></td><td>The chosen [role=option]</td><td class="code"><code>detail.label, detail.option</code></td></tr><tr><td class="code"><code>pf:tree-select</code></td><td>The chosen [role=treeitem]</td><td class="code"><code>detail.item</code></td></tr><tr><td class="code"><code>pf:segmented-change</code></td><td>.pf-segmented</td><td class="code"><code>detail.value, detail.button</code></td></tr></tbody></table></div>
+    <h3 class="sub-h">Script API</h3>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Call</th><th>Does</th></tr></thead><tbody><tr><td class="code"><code>Pathfinder.openModal(id, trigger) / closeModal(el)</code></td><td>Same as the data attributes, from script.</td></tr><tr><td class="code"><code>Pathfinder.openDrawer(id, trigger) / closeDrawer(el)</code></td><td>Drawer as a layer.</td></tr><tr><td class="code"><code>Pathfinder.toast(title, detail, tone, {duration, persist})</code></td><td>Newest on top, at most three visible, the rest queue. Timers pause on hover and focus; negative persists.</td></tr><tr><td class="code"><code>Pathfinder.announce(text)</code></td><td>Polite live-region announcement.</td></tr><tr><td class="code"><code>Pathfinder.renderCalendar(el)</code></td><td>Redraws a .pf-calendar from its data attributes.</td></tr><tr><td class="code"><code>Pathfinder.enhanceCore(root) / enhanceWidgets(root)</code></td><td>Idempotent passes that add roles and wiring to markup injected at runtime. The stage calls both after every hot swap.</td></tr><tr><td class="code"><code>Pathfinder.pushLayer / popLayer / topLayer</code></td><td>The layer stack behind modals and drawers: inert outside, Tab trap, Escape, scroll lock, focus restore in order.</td></tr></tbody></table></div>
   </section>
 
   <section id="a11y">
@@ -687,8 +697,10 @@
   <section id="gaps">
     <h2>Known gaps</h2>
     <div class="pf-card"><ul class="checklist">
-            <li><strong>No focus trap yet.</strong> Modals move and restore focus, but Tab can still leave an open modal. Add a trap in <code>openModal</code>.</li>
-            <li><strong>Code Connect is not published.</strong> It needs a Figma Organization or Enterprise plan; the file is on Pro. The mappings above stand in for it.</li>
+      <li><strong>0 components are Figma only.</strong> They exist in Figma and the docs site but not in <code>pathfinder.css</code>. Build them from tokens and add them to the library rather than one-off in a product.</li>
+      <li><strong>No focus trap yet.</strong> Modals move and restore focus, but Tab can still leave an open modal. Add a trap in <code>openModal</code>.</li>
+      <li><strong>Stepper is not in code.</strong> Proposed markup: an ordered list with <code>aria-current="step"</code> on the active step.</li>
+      <li><strong>Code Connect is not published.</strong> It needs a Figma Organization or Enterprise plan; the file is on Pro. The mappings above stand in for it.</li>
       <li><strong>Some floorplan content is invented:</strong> chart values, some table rows, file names, audit text and map positions. Do not treat them as real data.</li>
     </ul></div>
   </section>

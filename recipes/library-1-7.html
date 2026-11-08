@@ -98,13 +98,20 @@
   </div>
 
   <div class="pf-row" style="gap:24px;align-items:flex-start;margin-top:24px;flex-wrap:wrap;">
-    <div class="pf-cmdk" role="dialog" aria-label="Command palette">
-      <div class="query"><span>⚲</span><input value="lumen" aria-label="Search"><span class="pf-kbd">Esc</span></div>
-      <div class="results" role="listbox"><div class="group pf-overline">DEALS</div>
-        <div role="option" aria-selected="true"><mark>Lumen</mark> 10G fiber, Chicago <span class="meta">Deal</span></div>
-        <div role="option"><mark>Lumen</mark> SD-WAN, 14 sites <span class="meta">Deal</span></div>
-        <div class="group pf-overline">ACTIONS</div><div role="option">Create quote for <mark>Lumen</mark> <span class="meta">Action</span></div></div>
-      <footer><span><span class="pf-kbd">↑↓</span> Navigate</span><span><span class="pf-kbd">⏎</span> Open</span></footer>
+    <div class="pf-stack" style="gap:10px;width:420px;">
+      <span class="pf-overline">COMMAND PALETTE</span>
+      <button class="pf-btn pf-btn-secondary" data-modal-open="library-cmdk" style="align-self:start;">Open command palette <span class="pf-kbd">⌘K</span></button>
+      <p class="pf-help" style="margin:0;">Cmd or Ctrl+K opens it from anywhere on the page. Escape or a click on the scrim closes it and returns focus to the trigger. Tab stays inside while it is open.</p>
+    </div>
+    <div class="pf-modal-overlay" id="library-cmdk" style="display:none" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="pf-cmdk">
+        <div class="query"><span>⚲</span><input value="lumen" aria-label="Search"><span class="pf-kbd">Esc</span></div>
+        <div class="results" role="listbox"><div class="group pf-overline">DEALS</div>
+          <div role="option" aria-selected="true"><mark>Lumen</mark> 10G fiber, Chicago <span class="meta">Deal</span></div>
+          <div role="option"><mark>Lumen</mark> SD-WAN, 14 sites <span class="meta">Deal</span></div>
+          <div class="group pf-overline">ACTIONS</div><div role="option">Create quote for <mark>Lumen</mark> <span class="meta">Action</span></div></div>
+        <footer><span><span class="pf-kbd">↑↓</span> Navigate</span><span><span class="pf-kbd">⏎</span> Open</span><span><span class="pf-kbd">Esc</span> Close</span></footer>
+      </div>
     </div>
     <div class="pf-kanban"><div class="pf-kanban-col"><header>Proposal <span class="meta">3</span><span class="meta total">$243K</span></header>
       <div class="pf-kanban-card"><span class="title">Lumen 10G fiber</span><span class="account">Lumen Technologies · Chicago, IL</span><span class="pf-dot critical">Expires Oct 8</span><footer>Sam Patel · 3 comments</footer></div>

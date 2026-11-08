@@ -41,17 +41,63 @@ def fref(r): return '<code>' + E(r) + '</code>' if r else NONE
 frows = ''.join('<tr><td><strong>%s</strong><br><a class="node" href="%s?node-id=%s">page %s</a></td><td>%s</td><td class="code">%s</td></tr>' % (n, FIGMA, i.replace(':','-'), i, p, fref(r)) for n,i,p,r in floor)
 
 behav = [
- ('data-modal-open="id"','Any button','Opens the overlay with that id. Focus moves to its first control.'),
+ ('data-modal-open="id"','Any button','Opens the .pf-modal-overlay with that id. Focus moves to its first control, or to [data-autofocus] when one is set.'),
  ('data-modal-close','Button inside a modal','Closes the modal and returns focus to the trigger.'),
- ('data-static','.pf-modal-overlay','Danger and confirmation dialogs. Escape and overlay click do not close it.'),
+ ('data-static','.pf-modal-overlay or .pf-drawer','Danger and confirmation dialogs. Escape and scrim click do not close it; a button must.'),
+ ('data-autofocus','Control inside a modal or drawer','Receives focus on open instead of the first control.'),
+ ('data-open','.pf-modal-overlay','Renders the modal already open (used by the live stage).'),
  ('data-confirm-gate="checkboxId"','Button','Stays disabled until that checkbox is checked. Required on the most critical deletes.'),
- ('data-toast="Title|Detail|tone"','Any button','Shows a .pf-toast in the aria-live region. Can share a button with data-modal-close.'),
+ ('data-toast="Title|Detail|tone"','Any button','Shows a .pf-toast in the aria-live region. tone: positive, negative, critical or info. Can share a button with data-modal-close.'),
+ ('data-drawer-open="id" / data-drawer-close','Button / button inside .pf-drawer[hidden]','Opens or closes the drawer as a layer: focus trap, Escape, focus returns to the trigger.'),
  ('data-sort','th','Click toggles aria-sort ascending/descending. Numeric values sort as numbers.'),
  ('data-select-all / data-select-row','Checkbox in th / td','Keeps row checkboxes and aria-selected in sync.'),
  ('data-filter-table="#table"','select','Shows only rows whose data-status matches the value ("all" shows every row).'),
- ('data-open','.pf-modal-overlay','Renders the modal already open (used by the live stage).'),
+ ('data-status="value"','tbody tr','The value data-filter-table matches against.'),
+ ('data-page="prev" / data-page="next"','.pf-page inside .pages','Prev and Next buttons. Numbered .pf-page buttons need no attribute; aria-current="page" follows the click and the ends disable.'),
+ ('aria-orientation="vertical"','.pf-tabs','Arrow Up/Down move between tabs instead of Left/Right. Tabs get role=tablist, tab and tabpanel on their own.'),
+ ('data-datepicker','.pf-input inside .pf-datepicker','Click, Enter, Space or Alt+ArrowDown opens the .pf-calendar next to it. Arrows move a day or week, Home/End the week, PageUp/PageDown the month (Shift: year), Escape closes.'),
+ ('data-month="YYYY-MM" / data-selected="YYYY-MM-DD"','.pf-calendar','The grid is rendered from these two values. data-cal-prev / data-cal-next on buttons move the month; Pathfinder.renderCalendar(el) redraws.'),
+ ('data-menu / data-menu="menuId"','Button','Opens the sibling .pf-menu (or the one with that id) as a popup: arrows, Home/End, typeahead, Escape. role="listbox" with [role=option] makes it a select.'),
+ ('data-menu-value','Span inside a select trigger','Receives the chosen option label.'),
+ ('data-value="x"','[role=option] or segmented button','The value sent in pf:menu-select, pf:segmented-change and combobox changes instead of the visible text.'),
+ ('data-tooltip="Text"','Any control','A .pf-tooltip is created and linked by aria-describedby. Shows on hover (short delay) and focus; Escape hides it.'),
+ ('data-pf-inert','Set by the layer stack','Internal. Marks what an open modal or drawer made inert; never write it by hand.'),
 ]
 brows = ''.join(f'<tr><td class="code"><code>{E(a)}</code></td><td>{E(b)}</td><td>{E(c)}</td></tr>' for a,b,c in behav)
+
+widgets = [
+ ('.pf-cmdk','Cmd or Ctrl+K opens the palette when it sits in a .pf-modal-overlay (scrim, focus trap, Escape, focus returns to the trigger). Typing filters and highlights; arrows move, Enter selects. Standalone it only takes focus.'),
+ ('.pf-combobox','Type to filter the .pf-menu[role=listbox]; arrows move, Enter toggles the option into a .pf-tag; Backspace on an empty input removes the last tag. Changes are announced politely.'),
+ ('.pf-tree','Roving focus on [role=treeitem]: arrows move, Right/Left expand and collapse, Enter or Space selects.'),
+ ('.pf-segmented','Buttons become a radiogroup: arrows and Home/End move the checked segment.'),
+ ('.pf-tabs','Tabs get roles and roving tabindex; the panel named by aria-controls shows, the others hide.'),
+]
+wrows = ''.join(f'<tr><td class="code"><code>{E(a)}</code></td><td>{E(b)}</td></tr>' for a,b in widgets)
+
+events = [
+ ('pf:modal-open / pf:modal-close','.pf-modal-overlay',''),
+ ('pf:drawer-open / pf:drawer-close','.pf-drawer',''),
+ ('pf:tab-change','.pf-tab that became selected',''),
+ ('pf:page','.pages','detail.page (1-based)'),
+ ('pf:date-pick','.pf-calendar','detail.date (YYYY-MM-DD, local)'),
+ ('pf:menu-select','Trigger (or the menu)','detail.item, detail.value'),
+ ('pf:combobox-change','.pf-combobox','detail.values, plus detail.added or detail.removed'),
+ ('pf:cmdk-select','The chosen [role=option]','detail.label, detail.option'),
+ ('pf:tree-select','The chosen [role=treeitem]','detail.item'),
+ ('pf:segmented-change','.pf-segmented','detail.value, detail.button'),
+]
+erows = ''.join(f'<tr><td class="code"><code>{E(a)}</code></td><td>{E(b)}</td><td class="code">{("<code>" + E(c) + "</code>") if c else "<span class=muted>none</span>"}</td></tr>' for a,b,c in events)
+
+api = [
+ ('Pathfinder.openModal(id, trigger) / closeModal(el)','Same as the data attributes, from script.'),
+ ('Pathfinder.openDrawer(id, trigger) / closeDrawer(el)','Drawer as a layer.'),
+ ('Pathfinder.toast(title, detail, tone, {duration, persist})','Newest on top, at most three visible, the rest queue. Timers pause on hover and focus; negative persists.'),
+ ('Pathfinder.announce(text)','Polite live-region announcement.'),
+ ('Pathfinder.renderCalendar(el)','Redraws a .pf-calendar from its data attributes.'),
+ ('Pathfinder.enhanceCore(root) / enhanceWidgets(root)','Idempotent passes that add roles and wiring to markup injected at runtime. The stage calls both after every hot swap.'),
+ ('Pathfinder.pushLayer / popLayer / topLayer','The layer stack behind modals and drawers: inert outside, Tab trap, Escape, scroll lock, focus restore in order.'),
+]
+arows = ''.join(f'<tr><td class="code"><code>{E(a)}</code></td><td>{E(b)}</td></tr>' for a,b in api)
 
 tiers = [
  ('1. Primitives','Raw palette and alphas, such as blue/600 or white/a38.','None. Never reference a primitive in product code.'),
@@ -90,6 +136,7 @@ page = f'''<!doctype html>
   section {{ margin-top: 64px; scroll-margin-top: 24px; }}
   h1 {{ margin: 8px 0 12px; line-height: 1.1; }}
   h2 {{ margin: 0 0 8px; font-size: var(--pfFontHeader3Size); }}
+  h3.sub-h {{ margin: 28px 0 6px; font-size: var(--pfFontHeader5Size); }}
   .lead {{ color: var(--pfContent_LabelColor); max-width: 760px; margin: 0; }}
   .sub {{ color: var(--pfContent_LabelColor); max-width: 760px; margin: 0 0 20px; }}
   .links {{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }}
@@ -144,12 +191,13 @@ page = f'''<!doctype html>
 
   <section id="setup">
     <h2>Setup</h2>
-    <p class="sub">No build step and no dependencies. Load the files in this order; the additions file must come after the token file.</p>
+    <p class="sub">No build step and no dependencies. Load the files in this order; the additions file must come after the token file, and <code>pathfinder.behavior.js</code> (combobox, command palette, menu, drawer, tree, segmented control, tooltip) after <code>pathfinder.js</code>.</p>
     <div class="pf-card"><pre><code>{E("""<link rel="stylesheet" href="css/pathfinder.fonts.css">
 <link rel="stylesheet" href="tokens/pathfinder.tokens.css">
 <link rel="stylesheet" href="tokens/pathfinder.figma-additions.css">
 <link rel="stylesheet" href="css/pathfinder.css">
 <script src="js/pathfinder.js" defer></script>
+<script src="js/pathfinder.behavior.js" defer></script>
 
 <!-- Light mode: one attribute. Dark is the default. -->
 <html data-theme="light">""")}</code></pre></div>
@@ -171,8 +219,16 @@ page = f'''<!doctype html>
 
   <section id="behavior">
     <h2>Behavior</h2>
-    <p class="sub"><code>js/pathfinder.js</code> wires all interaction through data attributes and one delegated listener, so markup added at runtime works without setup.</p>
+    <p class="sub"><code>js/pathfinder.js</code> and <code>js/pathfinder.behavior.js</code> wire all interaction through data attributes, classes and delegated listeners, so markup added at runtime works without setup.</p>
     <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Attribute</th><th>On</th><th>Does</th></tr></thead><tbody>{brows}</tbody></table></div>
+    <h3 class="sub-h">Class-driven widgets</h3>
+    <p class="sub"><code>js/pathfinder.behavior.js</code> adds keyboard behavior to these classes with no attributes at all.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Class</th><th>Behavior</th></tr></thead><tbody>{wrows}</tbody></table></div>
+    <h3 class="sub-h">Events</h3>
+    <p class="sub">Every behavior fires a bubbling CustomEvent, so product code listens on document and never patches the library.</p>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Event</th><th>Fires on</th><th>detail</th></tr></thead><tbody>{erows}</tbody></table></div>
+    <h3 class="sub-h">Script API</h3>
+    <div class="pf-table-wrap"><table class="pf-table"><thead><tr><th>Call</th><th>Does</th></tr></thead><tbody>{arows}</tbody></table></div>
   </section>
 
   <section id="a11y">
