@@ -214,6 +214,18 @@ code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 .pf-field.invalid .pf-input { background: var(--pfField_InvalidBackground); box-shadow: var(--pfField_InvalidShadow); }
 .pf-help { font-size: var(--pfFontSmallSize); color: var(--pfContent_LabelColor); }
 .pf-field.invalid .pf-help { color: var(--pfNegativeTextColor); }
+/* Field states and sizes as classes (the docs-site names). .pf-field.invalid stays the markup-driven form. */
+.pf-input--error, .pf-select--error, .pf-textarea--error { background: var(--pfField_InvalidBackground); box-shadow: var(--pfField_InvalidShadow); }
+.pf-input--warning, .pf-select--warning, .pf-textarea--warning { background: var(--pfField_WarningBackground); box-shadow: var(--pfField_WarningShadow); }
+.pf-input--success, .pf-select--success, .pf-textarea--success { background: var(--pfField_SuccessBackground); box-shadow: var(--pfField_SuccessShadow); }
+.pf-input--info, .pf-select--info, .pf-textarea--info { background: var(--pfField_InformationBackground); box-shadow: var(--pfField_InformationShadow); }
+.pf-input--compact, .pf-select--compact { height: var(--pfElement_Compact_Height); font-size: var(--pfFontSmallSize); }
+.pf-input--readonly, .pf-input[readonly], .pf-input:disabled, .pf-select:disabled, .pf-textarea[readonly], .pf-textarea:disabled {
+  background: var(--pfField_ReadOnly_Background);
+  box-shadow: inset 0 0 0 var(--pfField_BorderWidth) var(--pfField_ReadOnly_BorderColor);
+  color: var(--pfContent_DisabledTextColor);
+  cursor: not-allowed;
+}
 .pf-select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--pfContent_IconColor) 50%), linear-gradient(135deg, var(--pfContent_IconColor) 50%, transparent 50%); background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
 
 /* ---------- Toggle ---------- */
@@ -294,6 +306,10 @@ code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 }
 .pf-tab:hover { color: var(--pfContent_ForegroundTextColor); }
 .pf-tab[aria-selected="true"] { color: var(--pfTab_Selected_TextColor); border-bottom-color: var(--pfTab_ForegroundColor); }
+/* Boxed variant: the selected tab reads as a raised card, the strip has no rule */
+.pf-tabs.boxed { border-bottom: 0; padding: 0 var(--pfSpace_2); }
+.pf-tab-boxed { border-radius: 6px 6px 0 0; }
+.pf-tab-boxed[aria-selected="true"] { background: var(--pfGroup_ContentBackground); box-shadow: var(--pfContent_Shadow1); border-bottom-color: var(--pfTab_ForegroundColor); }
 
 /* ---------- Data Table ---------- */
 .pf-table-wrap {
@@ -710,11 +726,16 @@ code, .pf-mono { font-family: var(--pfFontMonoFamily); }
 .pf-segmented button:focus-visible { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: 1px; }
 
 /* ---------- Slider ---------- */
-.pf-slider { width: 100%; appearance: none; height: 4px; border-radius: 2px; background: var(--pfSlider_Background); accent-color: var(--pfSlider_Selected_Background); }
+/* The filled part of the track is driven by --pf-fill (a percentage, set inline); --pf-fill-color overrides its colour for semantic sliders. */
+.pf-slider { width: 100%; appearance: none; height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--pf-fill-color, var(--pfSlider_Selected_Background)) var(--pf-fill, 0%), var(--pfSlider_Background) var(--pf-fill, 0%)); accent-color: var(--pfSlider_Selected_Background); }
 .pf-slider::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--pfSlider_HandleBackground); border: 2px solid var(--pfSlider_HandleBorderColor); cursor: pointer; }
 .pf-slider::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--pfSlider_HandleBackground); border: 2px solid var(--pfSlider_HandleBorderColor); cursor: pointer; }
 .pf-slider::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--pfSlider_Selected_Background); }
 .pf-slider:focus-visible { outline: var(--pfContent_FocusWidth) solid var(--pfContent_FocusColor); outline-offset: 6px; }
+.pf-slider:disabled { opacity: .4; cursor: not-allowed; }
+.pf-slider.compact { height: 2px; }
+.pf-slider.compact::-webkit-slider-thumb { width: 14px; height: 14px; }
+.pf-slider.compact::-moz-range-thumb { width: 14px; height: 14px; }
 
 /* ---------- Search field ---------- */
 .pf-search { position: relative; display: flex; align-items: center; }
