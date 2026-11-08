@@ -1,4 +1,4 @@
-<!-- RECIPE: Data Table — sortable columns, row selection, status badges,
+<!-- RECIPE: Data Table - sortable columns, row selection, status badges,
      filter, pagination. Variants: add "striped" / "compact" to .pf-table-wrap.
      Behaviors are wired by data attributes; pathfinder.js handles the rest. -->
 <div class="pf-table-wrap">
@@ -16,11 +16,11 @@
     <thead>
       <tr>
         <th style="width:36px"><input type="checkbox" data-select-all aria-label="Select all"></th>
-        <th data-sort>ID</th>
-        <th data-sort>Client</th>
-        <th data-sort>Started</th>
-        <th data-sort>Value</th>
-        <th data-sort>Status</th>
+        <th data-sort><button type="button">ID</button></th>
+        <th data-sort><button type="button">Client</button></th>
+        <th data-sort><button type="button">Started</button></th>
+        <th data-sort><button type="button">Value</button></th>
+        <th data-sort><button type="button">Status</button></th>
         <th>Assigned</th>
         <th>Action</th>
       </tr>
@@ -90,10 +90,12 @@
   </table>
   <div class="pf-table-footer">
     <span>Showing 6 of 6 projects</span>
-    <div class="pages">
+    <div class="pages" role="navigation" aria-label="Pagination">
+      <button class="pf-page" data-page="prev" aria-label="Previous page">‹</button>
       <button class="pf-page" aria-current="page">1</button>
       <button class="pf-page">2</button>
       <button class="pf-page">3</button>
+    <button class="pf-page" data-page="next" aria-label="Next page">›</button>
     </div>
   </div>
 </div>

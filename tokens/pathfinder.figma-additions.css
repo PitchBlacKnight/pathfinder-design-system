@@ -576,6 +576,9 @@
   --pfElement_Height: 2rem;
   --pfElement_Compact_Height: 1.375rem;
   --pfElement_Condensed_Height: 1.25rem;
+  /* Compact tightens component spacing too, not only field height (steps of 8px and up scale by 0.75) */
+  --pfSpace_4: 6px; --pfSpace_5: 9px; --pfSpace_6: 12px; --pfSpace_7: 15px; --pfSpace_8: 18px;
+  --pfSpace_9: 24px; --pfSpace_10: 30px; --pfSpace_11: 36px;
 }
 
 

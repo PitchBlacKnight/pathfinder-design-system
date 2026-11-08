@@ -1,0 +1,5 @@
+#!/bin/sh
+# Pathfinder pre-commit: token lint, copy lint, purity audit and contrast audit.
+# Enable once per clone: git config core.hooksPath tools/hooks
+cd "$(git rev-parse --show-toplevel)" || exit 1
+node tools/check-all.mjs || { echo "Commit blocked. Fix the failures above."; exit 1; }

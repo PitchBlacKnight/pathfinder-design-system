@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Pathfinder Playground — the Figma component model, running</title>
+<title>Pathfinder Playground: the Figma component model, running</title>
 <script>
   var PF_V = Date.now();
   document.write(
@@ -68,7 +68,7 @@
   .pg-tokens ul { margin: 0; padding: 0; }
   .pg-tokens .sw { width: 10px; height: 10px; border-radius: 3px; border: 1px solid var(--pfShell_BorderColor); flex: none; }
 
-  /* properties panel — deliberately shaped like Figma's */
+  /* properties panel: deliberately shaped like Figma's */
   .pg-panel {
     border-left: 1px solid var(--pfShell_BorderColor); background: var(--pfShell_Navigation_Background);
     overflow-y: auto; padding-bottom: 40px;
@@ -233,7 +233,7 @@
         <button class="pg-chip" data-v="✓" aria-pressed="false">✓</button>
         <button class="pg-chip" data-v="→" aria-pressed="false">→</button>
       </div>
-      <p class="pg-note">Exactly one instance, position locked — that's the difference from a slot.</p>
+      <p class="pg-note">Exactly one instance, position locked: that's the difference from a slot.</p>
     </div>
 
     <div class="pg-sec" data-for="donut">
@@ -255,7 +255,7 @@
         <button class="pg-chip" data-v="team" aria-pressed="false">Avatar group</button>
         <button class="pg-chip" data-v="none" aria-pressed="false">None</button>
       </div>
-      <p class="pg-note">The header accessory is one swappable instance — badge, delta, or owner group — position locked, exactly one at a time.</p>
+      <p class="pg-note">The header accessory is one swappable instance: badge, delta, or owner group, position locked, exactly one at a time.</p>
     </div>
 
     <div class="pg-sec" data-for="stat">
@@ -271,7 +271,7 @@
       <div class="pg-row" style="margin-top:12px">
         <label class="pf-toggle"><input type="checkbox" id="b-preferred" checked><span class="track"></span><span class="pf-toggle-label">Only allow preferred instances</span></label>
       </div>
-      <p class="pg-note">Consumers add, resize, and rearrange here without detaching. Max 3 layers — the violation reports as <span style="color:var(--pfCriticalTextColor)">ABOVE_MAX</span>, same as <span style="font-family:var(--pfFontMonoFamily)">slotNode.limitViolations</span> in the Plugin API.</p>
+      <p class="pg-note">Consumers add, resize, and rearrange here without detaching. Max 3 layers: the violation reports as <span style="color:var(--pfCriticalTextColor)">ABOVE_MAX</span>, same as <span style="font-family:var(--pfFontMonoFamily)">slotNode.limitViolations</span> in the Plugin API.</p>
     </div>
 
     <div class="pg-sec">
@@ -285,13 +285,14 @@
       <div class="pg-row">
         <label class="pf-toggle"><input type="checkbox" id="b-motion"><span class="track"></span><span class="pf-toggle-label">Reduced motion</span></label>
       </div>
-      <p class="pg-note">The mode re-resolves the semantic layer — ~90 overrides, not 866. The component markup does not change. Watch the panel: it can't tell you what changed, because nothing did.</p>
+      <p class="pg-note">The mode re-resolves the semantic layer: ~90 overrides, not 866. The component markup does not change. Watch the panel: it can't tell you what changed, because nothing did.</p>
     </div>
 
   </aside>
 </div>
 
 <script src="../js/pathfinder.js"></script>
+<script src="../js/pathfinder.behavior.js"></script>
 <script>
 (function () {
   var S = {
@@ -389,7 +390,7 @@
   function donutHTML() {
     var d = S.donut, size = 190;
     // radial-gradient percentages resolve against the ray length, not the
-    // diameter — so the hole radius must be absolute: half the box minus thickness.
+    // diameter: so the hole radius must be absolute: half the box minus thickness.
     var hole = (size / 2 - d.thick) + 'px';
     var grad, legend = '';
     if (d.type === 'donut') {
@@ -502,7 +503,7 @@
     wrap.innerHTML = S.stat.slots.map(function (k, i) {
       return '<div class="pg-slotitem"><span>' + SLOTS[k].name + '</span><button data-rm="' + i + '" aria-label="Remove">✕</button></div>';
     }).join('');
-    if (S.stat.slots.length >= 3) { warn.textContent = 'limitViolations: ABOVE_MAX — this slot allows a maximum of 3 layers.'; warn.className = 'pg-warn on'; }
+    if (S.stat.slots.length >= 3) { warn.textContent = 'limitViolations: ABOVE_MAX: this slot allows a maximum of 3 layers.'; warn.className = 'pg-warn on'; }
     else { warn.className = 'pg-warn'; }
     $('#pg-rawchip').style.opacity = S.preferredOnly ? .35 : 1;
     $('#pg-rawchip').title = S.preferredOnly ? 'Blocked: only preferred instances are allowed in this slot' : '';
@@ -549,7 +550,7 @@
       var k = c.getAttribute('data-slot');
       if (k === 'raw' && S.preferredOnly) {
         var w = $('#pg-slotwarn');
-        w.textContent = 'Blocked: HAS_NON_PREFERRED — "free text" is not a preferred instance for this slot.';
+        w.textContent = 'Blocked: HAS_NON_PREFERRED: "free text" is not a preferred instance for this slot.';
         w.className = 'pg-warn on'; return;
       }
       S.stat.slots.push(k); render();

@@ -23,6 +23,8 @@
         <a class="pf-link external" href="#">Supplier portal</a>
       </div>
       <div class="pf-row" style="gap:6px;align-items:center;"><span class="pf-kbd">⌘</span><span class="pf-kbd">K</span><span class="pf-kbd">Esc</span></div>
+      <div class="pf-menu-wrap"><button class="pf-btn pf-btn-secondary" data-menu>Deal actions ▾</button>
+        <div class="pf-menu" role="menu"><button role="menuitem"><span class="label">Edit details</span></button><button role="menuitem"><span class="label">Duplicate</span></button><button role="menuitem" class="destructive"><span class="label">Delete deal</span></button></div></div>
       <div class="pf-menu" role="menu">
         <div class="section pf-overline">DEAL</div>
         <button role="menuitem"><span class="label">Edit details</span><span class="pf-kbd">⌘E</span></button>
@@ -37,7 +39,7 @@
       <span class="pf-overline">INPUTS</span>
       <div class="pf-search"><span class="lead">⚲</span><input class="pf-input" placeholder="Search Pathfinder" aria-label="Search Pathfinder"><span class="pf-kbd">⌘K</span></div>
       <div class="pf-field"><label class="pf-label">Technology</label>
-        <div class="pf-combobox"><div class="control"><span class="pf-tag">SD-WAN <button class="remove" aria-label="Remove SD-WAN">×</button></span><span class="pf-tag">Fiber <button class="remove" aria-label="Remove Fiber">×</button></span><input placeholder="Add technology" aria-label="Add technology"></div></div></div>
+        <div class="pf-combobox"><div class="control"><span class="pf-tag">SD-WAN <button class="remove" aria-label="Remove SD-WAN">×</button></span><span class="pf-tag">Fiber <button class="remove" aria-label="Remove Fiber">×</button></span><input placeholder="Add technology" aria-label="Add technology"></div><div class="pf-menu" role="listbox" aria-label="Technology options" hidden><div role="option">SD-WAN</div><div role="option">Fiber</div><div role="option">UCaaS</div><div role="option">Security</div><div role="option">Wireless</div></div></div></div>
       <div class="pf-row" style="gap:16px;align-items:end;">
         <div class="pf-field"><label class="pf-label">Sites</label><div class="pf-number"><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Decrease">−</button><input type="number" value="3" aria-label="Sites"><button class="pf-btn pf-btn-ghost pf-btn-icon pf-btn-sm" aria-label="Increase">+</button></div></div>
         <div class="pf-field" style="flex:1"><label class="pf-label">Account manager</label><div class="pf-inline-edit" tabindex="0">Sara Kim</div></div>
@@ -84,6 +86,7 @@
 
     <section class="pf-card pf-stack" style="gap:14px;">
       <span class="pf-overline">FEEDBACK AND OVERLAYS</span>
+      <button class="pf-btn pf-btn-secondary pf-btn-sm" data-tooltip="Export as CSV" style="align-self:start;">Export</button>
       <span class="pf-tooltip">Export as CSV</span>
       <div class="pf-notifs"><header>Notifications <a class="pf-link" href="#">Mark all as read</a></header>
         <ul><li class="unread"><div>Jordan Lee approved the pricing exception<time>12m ago</time></div></li><li class="unread"><div>Sam Patel mentioned you in Quote 4471<time>1h ago</time></div></li><li><div>Partner data refreshed overnight<time>Yesterday</time></div></li></ul></div>

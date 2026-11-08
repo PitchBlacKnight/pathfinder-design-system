@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Pathfinder smoke</title>
+<script>
+  /* Collect every script error and console.error before anything else runs */
+  window.__errs = [];
+  addEventListener("error", (e) => __errs.push(String(e.message || e.target && e.target.src || e)));
+  addEventListener("unhandledrejection", (e) => __errs.push("unhandled: " + (e.reason && e.reason.message || e.reason)));
+  const ce = console.error; console.error = (...a) => { __errs.push(a.map(String).join(" ")); ce.apply(console, a); };
+</script>
+<link rel="stylesheet" href="../css/pathfinder.fonts.css">
+<link rel="stylesheet" href="../tokens/pathfinder.tokens.css">
+<link rel="stylesheet" href="../tokens/pathfinder.figma-additions.css">
+<link rel="stylesheet" href="../css/pathfinder.css">
+</head>
+<body>
+<main id="stage"></main>
+<script>
+(async () => {
+  const name = new URLSearchParams(location.search).get("recipe");
+  const html = await (await fetch("../recipes/" + name + ".html")).text();
+  document.getElementById("stage").innerHTML = html;
+  const load = (src) => new Promise((ok) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => { __errs.push("failed to load " + src); ok(); }; document.body.appendChild(s); });
+  await load("../js/pathfinder.js"); await load("../js/pathfinder.behavior.js");
+  await new Promise((r) => setTimeout(r, 600));
+  /* light interaction: press keys on the first tab, menu trigger, combobox and date input if present */
+  const key = (el, k) => el && el.dispatchEvent(new KeyboardEvent("keydown", { key: k, bubbles: true, cancelable: true }));
+  key(document.querySelector("[role=tab]"), "ArrowRight");
+  const mt = document.querySelector("[data-menu]"); if (mt) { mt.click(); key(document.activeElement, "ArrowDown"); key(document.activeElement, "Escape"); }
+  const cb = document.querySelector(".pf-combobox input"); if (cb) { cb.focus(); cb.value = "a"; cb.dispatchEvent(new Event("input", { bubbles: true })); key(cb, "ArrowDown"); key(cb, "Escape"); }
+  const th = document.querySelector("th[data-sort] button"); if (th) th.click();
+  await new Promise((r) => setTimeout(r, 300));
+  const o = document.createElement("script"); o.type = "application/json"; o.id = "pf-smoke";
+  o.textContent = JSON.stringify({ recipe: name, errors: __errs.filter((e) => !/favicon/.test(e)) });
+  document.body.appendChild(o);
+})();
+</script>
+</body>
+</html>

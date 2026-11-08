@@ -1,0 +1,39 @@
+<!-- RECIPE: Loading and error states - the five components added 2026-10-07
+     (Figma library 1.8.2): Spinner, Skeleton, Error Card, Error Page, Date
+     Picker. Exercises .pf-spinner, .pf-skeleton, .pf-error-card,
+     .pf-error-page, .pf-datepicker and .pf-calendar. Sample data only. -->
+<div style="padding:40px;max-width:1240px;margin:0 auto;" class="pf-stack">
+  <div class="pf-stack" style="gap:6px;margin-bottom:24px;">
+    <span class="pf-overline">FIGMA LIBRARY 1.8.2</span>
+    <h3>Loading and error states</h3>
+    <p style="color:var(--pfContent_LabelColor);margin:0;">Spinner, Skeleton, Error Card, Error Page and Date Picker. Sample data.</p>
+  </div>
+  <div class="pf-grid cols-3" style="gap:24px;align-items:start;">
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">SPINNER</span>
+      <div class="pf-row" style="gap:24px;"><span class="pf-spinner sm" role="status" aria-label="Loading"></span><span class="pf-spinner" role="status" aria-label="Loading"></span><span class="pf-spinner lg" role="status" aria-label="Loading"></span></div>
+      <button class="pf-btn pf-btn-primary" disabled><span class="pf-spinner sm inverse" aria-hidden="true"></span> Saving</button>
+    </section>
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">SKELETON</span>
+      <div class="pf-row" style="gap:24px;align-items:flex-start;"><span class="pf-skeleton line"></span><span class="pf-skeleton circle"></span><span class="pf-skeleton block"></span></div>
+      <div class="pf-row" style="gap:12px;align-items:flex-start;" aria-busy="true" aria-label="Loading comment"><span class="pf-skeleton circle"></span><div class="pf-stack" style="gap:8px;flex:1"><span class="pf-skeleton line" style="width:40%"></span><span class="pf-skeleton line full"></span><span class="pf-skeleton line" style="width:70%"></span></div></div>
+    </section>
+    <section class="pf-card pf-stack" style="gap:14px;">
+      <span class="pf-overline">DATE PICKER</span>
+      <div class="pf-field"><label class="pf-label" for="st-date">Start date</label>
+        <div class="pf-datepicker"><div class="pf-search"><span class="lead">▦</span><input class="pf-input" id="st-date" data-datepicker value="10/14/2026" placeholder="MM/DD/YYYY"></div>
+          <div class="pf-calendar" data-month="2026-10" data-selected="2026-10-14" data-today="2026-10-04"></div></div></div>
+    </section>
+  </div>
+  <div class="pf-grid cols-2" style="gap:24px;align-items:start;margin-top:24px;">
+    <div class="pf-error-card"><div class="message"><span class="icon">✕</span><div><span class="title">Failed to load partner data</span><span class="desc">This issue has been logged. Our team has been notified.</span></div></div>
+      <div class="actions"><button class="pf-btn pf-btn-primary pf-btn-sm">Try again</button><button class="pf-btn pf-btn-secondary pf-btn-sm">Contact support</button></div></div>
+    <div class="pf-calendar" data-month="2026-10" data-selected="2026-10-14" data-today="2026-10-04" style="justify-self:start"></div>
+  </div>
+  <div class="pf-grid cols-3" style="gap:24px;margin-top:24px;">
+    <div class="pf-card"><div class="pf-error-page"><span class="code">404</span><h2>Page not found</h2><p>The page you're looking for doesn't exist or was moved.</p><div class="actions"><button class="pf-btn pf-btn-primary pf-btn-sm">Back to home</button></div></div></div>
+    <div class="pf-card"><div class="pf-error-page negative"><span class="code">500</span><h2>Something went wrong</h2><p>We're having trouble on our end. This has been reported to our team.</p><div class="actions"><button class="pf-btn pf-btn-primary pf-btn-sm">Try again</button><button class="pf-btn pf-btn-secondary pf-btn-sm">Status page</button></div></div></div>
+    <div class="pf-card"><div class="pf-error-page critical"><span class="code">403</span><h2>Access denied</h2><p>You don't have permission to view this page. Contact your administrator.</p><div class="actions"><button class="pf-btn pf-btn-primary pf-btn-sm">Request access</button></div></div></div>
+  </div>
+</div>

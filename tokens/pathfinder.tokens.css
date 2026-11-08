@@ -173,7 +173,7 @@
   --pfContent_Selected_MeasureIndicatorColor: #27bdfa;
   --pfContent_Space_S: 1rem;
   --pfContent_Space_M: 2rem;
-  --pfContent_Space_L: 2rem;
+  --pfContent_Space_L: 2.5rem; /* was 2rem, the same as M */
   --pfContent_Space_XL: 3rem;
   --pfContent_Space_Tiny: .5rem;
   --pfContent_Space_Small: 1rem;
@@ -189,7 +189,16 @@
   --pfContent_Padding_L: 2rem;
   --pfContent_Padding_XL: 3rem;
   --pfLink_TextDecoration: none;
-  --pfLink_Hover_Color: #5ccffb;
+  --pfLink_Hover_Color: var(--pfLinkHoverColor); /* legacy alias: one hover color, set per theme by --pfLinkHoverColor */
+  /* Tokens for values that were hard-coded in pathfinder.css */
+  --pfModal_ScrimColor: #000000a6;
+  --pfToggle_KnobColor: #ffffff;
+  --pfSpinner_Inverse_TrackColor: #ffffff33;
+  --pfSpinner_Inverse_IndicatorColor: #ffffff;
+  --pfContent_Hover_Background: var(--pfHoverColor);
+  /* Spacing scale for component padding, margin and gap. Compact density scales it (figma-additions). */
+  --pfSpace_1: 2px; --pfSpace_2: 4px; --pfSpace_3: 6px; --pfSpace_4: 8px; --pfSpace_5: 12px; --pfSpace_6: 16px;
+  --pfSpace_7: 20px; --pfSpace_8: 24px; --pfSpace_9: 32px; --pfSpace_10: 40px; --pfSpace_11: 48px;
   --pfLink_Hover_TextDecoration: underline;
   --pfLink_Active_Color: #27bdfa;
   --pfLink_Active_TextDecoration: none;
@@ -902,7 +911,7 @@
   --pfSelectedColor: #0284c7;
   --pfHoverColor: #0f172a0a;
   --pfLinkColor: #0369a1;
-  --pfLinkHoverColor: #0284c7;
+  --pfLinkHoverColor: #0369a1; /* was #0284c7 (4.06:1 on the light page); now 5.4:1 */
 
   --pfPageHeader_Background: #ffffff;
   --pfPageHeader_BorderColor: #0f172a14;

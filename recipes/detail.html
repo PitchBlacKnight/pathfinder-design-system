@@ -1,4 +1,4 @@
-<!-- RECIPE: Detail view — tabs, health metrics with progress bars, team avatar
+<!-- RECIPE: Detail view - tabs, health metrics with progress bars, team avatar
      group, interactive cards. Exercises .pf-tabs/.pf-tab, .pf-progress,
      .pf-avatar-group, .pf-card-interactive, full badge range. -->
 <div class="pf-shell">
@@ -26,13 +26,15 @@
   <main class="pf-main">
     <div class="pf-stack" style="gap:24px">
 
-      <div class="pf-tabs">
-        <button class="pf-tab" aria-selected="true">Overview</button>
-        <button class="pf-tab" aria-selected="false">Orders</button>
-        <button class="pf-tab" aria-selected="false">Contacts</button>
-        <button class="pf-tab" aria-selected="false">Health</button>
-        <button class="pf-tab" aria-selected="false">Billing</button>
+      <div class="pf-tabs" role="tablist" aria-label="Account sections">
+        <button class="pf-tab" role="tab" id="dt-tab-overview" aria-controls="dt-panel-overview" aria-selected="true">Overview</button>
+        <button class="pf-tab" role="tab" id="dt-tab-orders" aria-controls="dt-panel-orders" aria-selected="false">Orders</button>
+        <button class="pf-tab" role="tab" id="dt-tab-contacts" aria-controls="dt-panel-contacts" aria-selected="false">Contacts</button>
+        <button class="pf-tab" role="tab" id="dt-tab-health" aria-controls="dt-panel-health" aria-selected="false">Health</button>
+        <button class="pf-tab" role="tab" id="dt-tab-billing" aria-controls="dt-panel-billing" aria-selected="false">Billing</button>
       </div>
+
+      <div role="tabpanel" id="dt-panel-overview" aria-labelledby="dt-tab-overview" class="pf-stack" style="gap:24px">
 
       <div class="pf-grid cols-3">
         <div class="pf-card pf-stat pf-card-interactive">
@@ -116,7 +118,7 @@
 
             <span class="pf-overline">Open Signals</span>
             <div class="pf-stack" style="gap:10px;">
-              <div class="pf-row"><span class="pf-badge pf-badge-negative">✕ Escalation</span><span style="font-size:var(--pfFontSmallSize);color:var(--pfContent_LabelColor)">Billing dispute — 4 days open</span></div>
+              <div class="pf-row"><span class="pf-badge pf-badge-negative">✕ Escalation</span><span style="font-size:var(--pfFontSmallSize);color:var(--pfContent_LabelColor)">Billing dispute - 4 days open</span></div>
               <div class="pf-row"><span class="pf-badge pf-badge-warning">⚠ At risk</span><span style="font-size:var(--pfFontSmallSize);color:var(--pfContent_LabelColor)">Renewal unconfirmed</span></div>
               <div class="pf-row"><span class="pf-badge pf-badge-info">▶ In flight</span><span style="font-size:var(--pfFontSmallSize);color:var(--pfContent_LabelColor)">Migration to Tier 2 support</span></div>
               <div class="pf-row"><span class="pf-badge">Neutral</span><span style="font-size:var(--pfFontSmallSize);color:var(--pfContent_LabelColor)">Quarterly review scheduled</span></div>
@@ -128,8 +130,12 @@
             </div>
           </div>
         </div>
-
       </div>
+      </div>
+      <div role="tabpanel" id="dt-panel-orders" aria-labelledby="dt-tab-orders" hidden><p style="color:var(--pfContent_LabelColor);">Orders sample content goes here.</p></div>
+      <div role="tabpanel" id="dt-panel-contacts" aria-labelledby="dt-tab-contacts" hidden><p style="color:var(--pfContent_LabelColor);">Contacts sample content goes here.</p></div>
+      <div role="tabpanel" id="dt-panel-health" aria-labelledby="dt-tab-health" hidden><p style="color:var(--pfContent_LabelColor);">Health sample content goes here.</p></div>
+      <div role="tabpanel" id="dt-panel-billing" aria-labelledby="dt-tab-billing" hidden><p style="color:var(--pfContent_LabelColor);">Billing sample content goes here.</p></div>
     </div>
   </main>
 </div>
