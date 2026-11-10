@@ -65,6 +65,18 @@ directory, say things like:
 
 See `DEMO-SCRIPT.md` for the full interview run-of-show.
 
+## Storybook
+
+Every component, recipe and token mode is cataloged in Storybook 10
+(`.storybook/` and `stories/`), with a theme, brand and density toolbar.
+
+```bash
+npm install && npm run storybook   # http://localhost:6006
+```
+
+Live at https://pathfinder-storybook-three.vercel.app. The Vercel project
+`pathfinder-storybook` builds from this repo's `main` branch.
+
 ## Design decisions (the 2026 story)
 
 - **Tokens are the API.** Components consume `var(--pf*)` exclusively, so

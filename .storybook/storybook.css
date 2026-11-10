@@ -1,0 +1,16 @@
+/* Storybook-only chrome. Nothing here is part of the system. */
+.sb-frame { position: relative; overflow: hidden; border: 1px dashed var(--pfShell_BorderColor); border-radius: 8px; background: var(--pfBackgroundColor); }
+.sb-frame .pf-drawer, .sb-frame .pf-modal-overlay { position: absolute; }
+.sb-frame .pf-modal-overlay.open { display: flex; }
+.sb-inline .pf-toast-region { position: static; display: inline-flex; flex-direction: column; gap: 10px; }
+.sb-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.sb-stack { display: flex; flex-direction: column; gap: 16px; }
+.sb-label { font-family: var(--pfFontMonoFamily); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--pfContent_LabelColor); }
+.sb-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.sb-swatch { display: flex; gap: 10px; align-items: center; padding: 8px; border: 1px solid var(--pfShell_BorderColor); border-radius: 8px; background: var(--pfTile_Background); min-width: 0; }
+.sb-swatch i { flex: none; width: 34px; height: 34px; border-radius: 6px; border: 1px solid var(--pfShell_BorderColor); }
+.sb-swatch b { display: block; font-family: var(--pfFontMonoFamily); font-weight: 500; font-size: 10.5px; color: var(--pfContent_ForegroundTextColor); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sb-swatch span { font-family: var(--pfFontMonoFamily); font-size: 10px; color: var(--pfContent_LabelColor); }
+.sb-type { display: grid; grid-template-columns: 220px 1fr; gap: 8px 24px; align-items: baseline; }
+.sb-scale { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; }
+.sb-scale i { display: block; background: var(--pfHighlightColor); border-radius: 2px; }

@@ -1,0 +1,33 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" />
+
+# Pathfinder 2.0
+
+Design system for the AVANT Partner Portal. Vanilla CSS and JS, class prefix `pf-`, no build step. Every story here imports the real files in `css/`, `tokens/` and `js/`, so the catalog can never drift from the system.
+
+## How the system is layered
+
+| Layer | File | What it holds |
+|---|---|---|
+| Fonts | `css/pathfinder.fonts.css` | Schibsted Grotesk, Inter, Barlow Condensed, JetBrains Mono (self-hosted woff2) |
+| Tokens | `tokens/pathfinder.tokens.css` | 860+ `--pf*` custom properties: primitives, semantic, component. Light mode overrides at the bottom |
+| Figma additions | `tokens/pathfinder.figma-additions.css` | Tokens added for the Figma library 1.3 to 1.8, plus the high-contrast theme, the Northbeam brand and compact density |
+| Components | `css/pathfinder.css` | Every `pf-` class. Components only ever reference tokens |
+| Behaviors | `js/pathfinder.js` | Declarative, data-attribute driven: `data-modal-open`, `data-modal-close`, `data-toast`, `data-sort`, `data-select-all`, `data-filter-table`, `data-confirm-gate` |
+
+## Modes
+
+Use the toolbar at the top to switch the three variable modes. They are attributes on the `html` element, so the component markup never changes:
+
+- **Theme** `data-theme="light"` or `"high-contrast"`. Dark is the default.
+- **Brand** `data-brand="northbeam"`. Avant is the default.
+- **Density** `data-density="compact"`. Comfortable is the default.
+
+## How to read a story
+
+Each component page shows the canonical markup under *Show code*. Stories with controls (Button, Badge, Avatar, Toggle, Input, Progress and so on) map one to one to the Figma component properties listed in `handoff/components.json`; the **Handoff / Figma map** page lists every component with its Figma node id and the class that drives each property.
+
+## Loading and error states
+
+Spinner, Skeleton, Error Card, Error Page and Date Picker were the last five Figma components without classes. They were added to `pathfinder.css` on 2026-10-07 (Figma library 1.8.2) and live under Feedback and Inputs, with the Date Picker behavior in `pathfinder.js`.
