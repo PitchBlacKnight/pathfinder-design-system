@@ -11,7 +11,7 @@ the live stage in a browser. Speed and visual fidelity matter more than anything
 
 ## How the stage works
 
-- Everything lives in this directory (the `pathfinder-2.0/` project root).
+- Everything lives in this directory (the `PATHFINDER/` project root).
 - The stage page (`stage/index.html`) polls `stage/app.html` every 800ms and
   swaps its contents into the DOM with an entrance animation.
 - **To put something on screen, Write `stage/app.html`.** That is

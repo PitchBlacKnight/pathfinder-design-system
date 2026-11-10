@@ -7,7 +7,7 @@ within a second. Works live in a room, on Zoom, or as a recorded Loom.
 
 ## Screen setup (before anyone joins)
 
-1. **Left half:** terminal (or Claude Code desktop app) opened in `pathfinder-2.0/`.
+1. **Left half:** terminal (or Claude Code desktop app) opened in `PATHFINDER/`.
 2. **Right half:** browser at **http://localhost:4173/stage/** — the dark
    "Pathfinder 2.0" welcome screen with the pulsing **PATHFINDER LIVE** chip.
 3. Warm up the server ahead of time: ask Claude to "start the pathfinder server",
@@ -106,7 +106,7 @@ API that humans and AI both build with."*
 ## Files that make it work
 
 ```
-pathfinder-2.0/
+PATHFINDER/
 ├── tokens/pathfinder.tokens.css   ← 866 tokens, extracted 1:1 from the spec site
 ├── css/pathfinder.css             ← the pf- component library (token-pure)
 ├── js/pathfinder.js               ← declarative behaviors + the live hot-swap loop

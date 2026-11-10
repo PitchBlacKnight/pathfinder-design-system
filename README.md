@@ -52,7 +52,7 @@ copy of the library after an edit.
 ## Quick start
 
 ```bash
-cd pathfinder-2.0 && python3 -m http.server 4173 --directory .
+cd PATHFINDER && python3 -m http.server 4173 --directory .
 ```
 
 Open http://localhost:4173/stage/ — then, in a Claude Code session in this
