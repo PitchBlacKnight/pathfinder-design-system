@@ -5,7 +5,7 @@ agent-buildable component framework. Dark-theme token suite, extracted 1:1 from 
 (https://flyer-topaz-40707494.figma.site, Figma Make, no longer maintained).
 
 Current sources of truth:
-- Docs site: https://pathfinder-docs.vercel.app (repo ~/Sites/pathfinder-docs)
+- Docs site: https://pathfinder-docs.vercel.app (repo ~/Sites/portfolio/pathfinder-docs)
 - Figma library: https://www.figma.com/design/ysLgPqCzELzxKw6KVZdKjE (library 1.8.1)
 - Version labels: `version.js` (mirrors the Figma Cover)
 
